@@ -4,7 +4,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="clayash">#BBC2AD</color>
     <color name="satin">#E9E8D9</color>
+    <color name="satinlight">#FFFDE3</color>
     <color name="tepapagreen">#1F4137</color>
+    <color name="tepapagreenlight">#306052</color>
     <color name="dallas">#6C4F28</color>
     <color name="capepillas">#997A44</color>
     <color name="claycreek">#9a8d62</color>
