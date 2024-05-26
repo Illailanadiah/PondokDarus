@@ -8,42 +8,45 @@
     android:background="@drawable/background2"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".LoginActivity">
+    tools:context=".SignupActivity">
 
-    <LinearLayout
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="15dp"
+    android:orientation="horizontal">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:drawablePadding="8dp"
+        android:drawableLeft="@drawable/baseline_arrow_back_ios_new_24"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:orientation="horizontal">
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
-            android:drawablePadding="8dp"
-            android:drawableLeft="@drawable/baseline_arrow_back_ios_new_24"
-            android:gravity="center"/>
-
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="30dp"
-            android:gravity="center"
-            android:text="SALAM FINANCE"
-            android:textColor="@color/tepapagreen"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-    </LinearLayout>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SIGN UP"
-        android:layout_marginTop="30dp"
-        android:textSize="35sp"
+        android:layout_marginRight="30dp"
+        android:gravity="center"
+        android:text="SALAM FINANCE"
         android:textColor="@color/tepapagreen"
-        android:textStyle="bold"/>
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+</LinearLayout>
+
+
+    <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="SIGN UP"
+              android:layout_marginTop="30dp"
+              android:textSize="35sp"
+              android:textColor="@color/tepapagreen"
+              android:textStyle="bold"/>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -65,7 +68,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="35dp"
-                android:text="STUDENT"
+                android:text="GUARDIAN"
                 android:textColor="@color/tepapagreen"
                 android:textSize="25sp"
                 android:textStyle="bold" />
@@ -74,7 +77,7 @@
                 android:id="@+id/fullname"
                 android:layout_width="340dp"
                 android:layout_height="55dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="36dp"
                 android:background="@drawable/text_bg"
                 android:gravity="center_vertical"
                 android:hint="Full name"
@@ -95,35 +98,36 @@
                 android:textSize="15sp" />
 
             <EditText
-                android:id="@+id/DOB"
+                android:id="@+id/phonenum"
                 android:layout_width="340dp"
                 android:layout_height="55dp"
                 android:layout_marginTop="30dp"
                 android:background="@drawable/text_bg"
                 android:gravity="center_vertical"
-                android:hint="DOB [dd/mm/yy]"
+                android:hint="Phone number"
                 android:padding="20dp"
                 android:textColor="@color/tepapagreen"
                 android:textSize="15sp" />
 
-            <EditText
-                android:id="@+id/grade"
-                android:layout_width="340dp"
-                android:layout_height="55dp"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/text_bg"
-                android:gravity="center_vertical"
-                android:hint="Grade"
-                android:padding="20dp"
+            <CheckBox
+                android:id="@+id/agreement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:drawableLeft="@drawable/baseline_check_box_outline_blank_24"
+                android:drawablePadding="8dp"
+                android:text="I agree that all the information are correct"
+                android:textSize="14sp"
                 android:textColor="@color/tepapagreen"
-                android:textSize="15sp" />
+                android:buttonTint="@color/tepapagreen"/>
+
 
             <Button
                 android:id="@+id/loginbtn"
                 style="@android:style/Widget.Button"
                 android:layout_width="340dp"
                 android:layout_height="60dp"
-                android:layout_marginTop="60dp"
+                android:layout_marginTop="80dp"
                 android:layout_marginBottom="80dp"
                 android:background="@drawable/background_btn3"
                 android:padding="8dp"

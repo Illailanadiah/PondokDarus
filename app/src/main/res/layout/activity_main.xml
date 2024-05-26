@@ -5,16 +5,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/mainpage_bg"
+    android:background="@drawable/background1"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
 
+    <TextView
+        android:id="@+id/startup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SLOGAN"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="@color/tepapagreen"
+        />
 
-
-
-
-
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        app:srcCompat="@drawable/logo"
+        />
 
 </LinearLayout>
