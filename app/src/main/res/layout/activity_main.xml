@@ -1,110 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/mainpage_bg"
+    android:gravity="center"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="210dp"
-        android:layout_height="212dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/salamlogo" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="20dp"
-        android:gravity="center"
-        android:text="Peace Be Upon You"
-        android:textColor="@color/white"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        tools:layout_editor_absoluteX="-28dp" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/padding_bg"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="319dp">
 
-        <EditText
-            android:id="@+id/email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginEnd="32dp"
-            android:background="@drawable/text_bg"
-            android:drawableLeft="@drawable/baseline_email_24"
-            android:drawablePadding="8dp"
-            android:gravity="center_vertical"
-            android:hint="Email Address"
-            android:inputType="textEmailAddress"
-            android:padding="15dp"
-            android:textColor="@color/tepapagreen"
-            android:textSize="15sp" />
 
-        <EditText
-            android:id="@+id/password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginEnd="32dp"
-            android:background="@drawable/text_bg"
-            android:drawableLeft="@drawable/baseline_password_24"
-            android:drawablePadding="8dp"
-            android:gravity="center_vertical"
-            android:hint="Password"
-            android:inputType="textEmailAddress"
-            android:padding="15dp"
-            android:textColor="@color/tepapagreen"
-            android:textSize="15sp" />
 
-        <EditText
-            android:id="@+id/forgotpswd"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="32dp"
-            android:ems="10"
-            android:gravity="center"
-            android:hint="Forgot Password"
-            android:textColor="@color/tepapagreen"
-            android:textColorLink="@color/claycreek"
-            android:textSize="15dp" />
 
-        <Button
-            android:id="@+id/loginbtn"
-            style="@android:style/Widget.Button"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_marginStart="80dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="80dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/background_btn3"
-            android:text="LOGIN"
-            android:textColor="@color/white"
-            android:textSize="20sp" />
-
-    </LinearLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
