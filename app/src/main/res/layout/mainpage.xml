@@ -50,20 +50,13 @@
     android:layout_below="@id/contact_btn"
     android:layout_marginTop="-45dp">
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:elevation="15dp"
-            app:cardCornerRadius="40dp"
-            app:cardPreventCornerOverlap="false"
-            app:cardUseCompatPadding="true">
+
 
                 <LinearLayout
                     android:id="@+id/linearLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/padding_bg"
+                    android:layout_height="500dp"
+                    android:background="@drawable/paddingtopcorner_bg"
                     android:gravity="center_horizontal"
                     android:orientation="vertical">
 
@@ -82,7 +75,7 @@
                             android:padding="25dp"
                             android:textSize="20sp"
                             android:letterSpacing="0.2"
-                            android:background="@drawable/background_btn3"/>
+                            android:background="@drawable/tepagreen_bkg"/>
 
                         <Button
                             android:id="@+id/_btn"
@@ -99,9 +92,9 @@
                             android:padding="25dp"
                             android:textSize="20sp"
                             android:letterSpacing="0.2"
-                            android:background="@drawable/background_btn3"/>
+                            android:background="@drawable/tepagreen_bkg"/>
                 </LinearLayout>
-        </androidx.cardview.widget.CardView>
+
         </RelativeLayout>
 
                 </LinearLayout>

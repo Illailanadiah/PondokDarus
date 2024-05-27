@@ -44,6 +44,7 @@
               android:layout_height="wrap_content"
               android:text="SIGN UP"
               android:layout_marginTop="30dp"
+              android:letterSpacing="0.2"
               android:textSize="35sp"
               android:textColor="@color/tepapagreen"
               android:textStyle="bold"/>
@@ -63,9 +64,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="35dp"
-                android:text="GUARDIAN"
+                android:text="PRINCIPAL"
                 android:textColor="@color/tepapagreen"
                 android:textSize="25sp"
+                android:letterSpacing="0.2"
                 android:textStyle="bold" />
 
             <EditText
@@ -93,13 +95,13 @@
                 android:textSize="15sp" />
 
             <EditText
-                android:id="@+id/phonenum"
+                android:id="@+id/staffid"
                 android:layout_width="340dp"
                 android:layout_height="55dp"
                 android:layout_marginTop="30dp"
                 android:background="@drawable/text_bg"
                 android:gravity="center_vertical"
-                android:hint="Phone number"
+                android:hint="Staff ID"
                 android:padding="20dp"
                 android:textColor="@color/tepapagreen"
                 android:textSize="15sp" />
