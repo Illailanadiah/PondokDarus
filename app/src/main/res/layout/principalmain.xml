@@ -1,0 +1,122 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/salamfinance_bg"
+    tools:context=".MainActivity">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/baseline_logout_24"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="30dp"
+        android:drawablePadding="10dp"
+        android:gravity="center_horizontal"
+        android:scaleX="-1"
+        ></Button>
+
+
+    <LinearLayout
+        android:id="@+id/contentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="230dp"
+        android:background="@drawable/paddingtopcorner_bg"
+        android:gravity="left"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/welcomeMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="30dp"
+            android:text="Hi Ali"
+            android:textColor="#2C4D3E"
+            android:textStyle="bold"
+            android:textSize="28sp" />
+            <!-- need to make that "Ali" is actually the user's name -->
+        <TextView
+            android:id="@+id/welcomeSubMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:text="Welcome Back!"
+            android:textColor="#2C4D3E"
+            android:textStyle="bold"
+            android:textSize="22sp" />
+
+        <ImageView
+            android:id="@+id/principalImage"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/circular_shape"
+            android:padding="16dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/profile" />
+            <!-- need circle -->
+        <TextView
+            android:id="@+id/principalName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Ali Bin Ahmad"
+            android:textColor="#2C4D3E"
+            android:textSize="18sp" />
+        <!-- need to make that "Ali" is actually the user's name -->
+
+        <TextView
+            android:id="@+id/principalId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="4dp"
+            android:text="RG54-7845"
+            android:textColor="#2C4D3E"
+            android:textSize="18sp" />
+        <!-- need to make that is actually the user's id -->
+        <TextView
+            android:id="@+id/principalRole"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="24dp"
+            android:text="Principal"
+            android:textColor="#2C4D3E"
+            android:textSize="18sp" />
+
+
+        <LinearLayout
+            android:id="@+id/reportButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/tepagreen_bkg"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/reportIcon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/report_icon"
+                android:tint="#FFFFFF" />
+            <!-- add e-REPORT icon -->
+            <TextView
+                android:id="@+id/reportText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="e-REPORT"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>
