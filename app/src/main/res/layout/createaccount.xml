@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -20,18 +19,18 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
         android:drawablePadding="8dp"
-        android:drawableLeft="@drawable/baseline_arrow_back_ios_new_24"
+        android:drawableStart="@drawable/baseline_arrow_back_ios_new_24"
         android:gravity="center"/>
 
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="30dp"
+        android:layout_marginEnd="30dp"
         android:gravity="center"
-        android:text="SALAM FINANCE"
+        android:text="@string/salamfinance"
         android:textColor="@color/tepapagreen"
         android:textSize="24sp"
         android:textStyle="bold" />
@@ -43,7 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:text="SIGN UP"
+        android:text="@string/signup"
         android:letterSpacing="0.2"
         android:textColor="@color/tepapagreen"
         android:textSize="35sp"
@@ -53,7 +52,7 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="610dp"
+        android:layout_height="600dp"
         android:background="@drawable/paddingtopcorner_bg"
         android:gravity="center_horizontal"
         android:orientation="vertical"
@@ -64,7 +63,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             android:letterSpacing="0.2"
-            android:text="CREATE\nACCOUNT"
+            android:text="@string/createacc"
             android:textAlignment="center"
             android:textColor="@color/tepapagreen"
             android:textSize="28sp"
@@ -72,43 +71,45 @@
 
         <EditText
             android:id="@+id/email"
-            android:layout_width="340dp"
+            android:layout_width="320dp"
             android:layout_height="55dp"
             android:layout_marginTop="55dp"
             android:background="@drawable/text_bg"
-            android:drawableLeft="@drawable/baseline_email_24"
+            android:drawableStart="@drawable/baseline_email_24"
             android:drawablePadding="8dp"
             android:gravity="center_vertical"
-            android:hint="Email Address"
+            android:hint="@string/email"
             android:padding="8dp"
             android:textColor="@color/tepapagreen"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:inputType="textEmailAddress" />
 
         <EditText
             android:id="@+id/password"
-            android:layout_width="340dp"
+            android:layout_width="320dp"
             android:layout_height="55dp"
             android:layout_marginTop="35dp"
             android:background="@drawable/text_bg"
-            android:drawableLeft="@drawable/baseline_password_24"
+            android:drawableStart="@drawable/baseline_password_24"
             android:drawablePadding="8dp"
             android:gravity="center_vertical"
-            android:hint="Password"
+            android:hint="@string/password"
             android:padding="8dp"
             android:textColor="@color/tepapagreen"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:inputType="textPassword" />
 
 
         <Button
             android:id="@+id/signupbtn"
             style="@android:style/Widget.Button"
-            android:layout_width="200dp"
-            android:layout_height="60dp"
+            android:layout_width="250dp"
+            android:layout_height="65dp"
             android:layout_marginTop="50dp"
             android:background="@drawable/tepagreen_bkg"
             android:letterSpacing="0.2"
             android:padding="8dp"
-            android:text="SIGN UP"
+            android:text="@string/signup"
             android:textColor="@color/white"
             android:textSize="20sp" />
 
@@ -119,10 +120,10 @@
             android:layout_marginTop="50dp"
             android:gravity="center"
             android:padding="5dp"
-            android:text="Already have an account? Sign in"
+            android:text="@string/haveaccount"
             android:textColor="@color/tepapagreen"
             android:textColorLink="@color/claycreek"
-            android:textSize="15dp" />
+            android:textSize="15sp" />
 
 
     </LinearLayout>

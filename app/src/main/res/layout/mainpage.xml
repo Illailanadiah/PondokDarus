@@ -10,17 +10,15 @@
     android:background="@drawable/salamfinance_bg"
     tools:context=".MainActivity">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <Button
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp">
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:drawableRight="@drawable/baseline_logout_24"
-                    android:drawablePadding="10dp"
-                    android:layout_marginRight="20dp"/>
-        </LinearLayout>
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
+            android:drawableLeft="@drawable/button_logout_24"
+            android:drawablePadding="10dp"
+            android:gravity="center_horizontal"
+            android:scaleX="-1"></Button>
 
 
         <LinearLayout
@@ -37,7 +35,7 @@
             android:layout_gravity="center_horizontal"
             android:background="@drawable/brown_bkg"
             android:padding="15dp"
-            android:text="CONTACT US"
+            android:text="@string/contactus"
             android:textAlignment="center"
             android:textColor="@color/satin"
             android:fontFamily="@font/poppins_semibold"

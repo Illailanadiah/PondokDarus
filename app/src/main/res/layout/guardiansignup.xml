@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -20,18 +19,18 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
         android:drawablePadding="8dp"
-        android:drawableLeft="@drawable/baseline_arrow_back_ios_new_24"
+        android:drawableStart="@drawable/baseline_arrow_back_ios_new_24"
         android:gravity="center"/>
 
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="30dp"
+        android:layout_marginEnd="30dp"
         android:gravity="center"
-        android:text="SALAM FINANCE"
+        android:text="@string/salamfinance"
         android:textColor="@color/tepapagreen"
         android:textSize="24sp"
         android:textStyle="bold" />
@@ -42,8 +41,9 @@
     <TextView
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:text="SIGN UP"
-              android:layout_marginTop="30dp"
+              android:text="@string/signup"
+              android:layout_marginTop="15dp"
+              android:layout_marginBottom="15dp"
               android:textSize="35sp"
               android:textColor="@color/tepapagreen"
               android:textStyle="bold"/>
@@ -63,7 +63,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="35dp"
-                android:text="GUARDIAN"
+                android:text="@string/guardian"
                 android:textColor="@color/tepapagreen"
                 android:textSize="25sp"
                 android:textStyle="bold" />
@@ -75,7 +75,7 @@
                 android:layout_marginTop="36dp"
                 android:background="@drawable/text_bg"
                 android:gravity="center_vertical"
-                android:hint="Full name"
+                android:hint="@string/fullname"
                 android:padding="16dp"
                 android:textColor="@color/tepapagreen"
                 android:textSize="15sp" />
@@ -87,7 +87,7 @@
                 android:layout_marginTop="30dp"
                 android:background="@drawable/text_bg"
                 android:gravity="center_vertical"
-                android:hint="I/C number"
+                android:hint="@string/icnum"
                 android:padding="20dp"
                 android:textColor="@color/tepapagreen"
                 android:textSize="15sp" />
@@ -99,7 +99,7 @@
                 android:layout_marginTop="30dp"
                 android:background="@drawable/text_bg"
                 android:gravity="center_vertical"
-                android:hint="Phone number"
+                android:hint="@string/phonenum"
                 android:padding="20dp"
                 android:textColor="@color/tepapagreen"
                 android:textSize="15sp" />
@@ -109,9 +109,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:drawableLeft="@drawable/baseline_check_box_outline_blank_24"
+                android:drawableStart="@drawable/baseline_check_box_outline_blank_24"
                 android:drawablePadding="8dp"
-                android:text="I agree that all the information are correct"
+                android:text="@string/confirmation"
                 android:textSize="14sp"
                 android:textColor="@color/tepapagreen"
                 android:buttonTint="@color/tepapagreen"/>
@@ -126,7 +126,7 @@
                 android:layout_marginBottom="80dp"
                 android:background="@drawable/tepagreen_bkg"
                 android:padding="8dp"
-                android:text="NEXT"
+                android:text="@string/next"
                 android:textColor="@color/white"
                 android:textSize="20sp" />
 

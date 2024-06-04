@@ -1,5 +1,35 @@
 <resources>
     <string name="app_name">PondokDarus</string>
+    <string name="salamfinance">SALAM FINANCE</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="forgot_pass">Forgot Password</string>
+    <string name="password">Password</string>
+    <string name="email">Email Address</string>
+    <string name="guardian">GUARDIAN</string>
+    <string name="staff">STAFF</string>
+    <string name="CLERK">CLERK</string>
+    <string name="PRINCIPAL">PRINCIPAL</string>
+    <string name="clerk">Clerk</string>
+    <string name="principal">Principal</string>
+    <string name="login">LOGIN</string>
+    <string name="signup">SIGN UP</string>
+    <string name="next">NEXT</string>
+    <string name="noaccount">"Don't have account? Signup"</string>
+    <string name="haveaccount">Already have an account? Sign in</string>
+    <string name="createacc">CREATE\nACCOUNT</string>
+    <string name="emanage">e-MANAGE</string>
+    <string name="hiHawa">Hi Hawa</string>
+    <string name="clerkname">Hawa Binti Adam</string>
+    <string name="clerkid">RG40-1243</string>
+    <string name="welcome">"Welcome Back!"</string>
+    <string name="fullname">Full name</string>
+    <string name="icnum">I/C number</string>
+    <string name="staffid">Staff ID</string>
+    <string name="phonenum">Phone number</string>
+    <string name="confirmation">I agree that all the information are correct</string>
+    <string name="contactus">CONTACT US</string>
+    <!-- date -->
+    <string name="dd_mm_yy">DD/MM/YY</string>
+    <string name="bill_name">bill name</string>
+    <string name="amount">RM 0.00</string>
 </resources>
