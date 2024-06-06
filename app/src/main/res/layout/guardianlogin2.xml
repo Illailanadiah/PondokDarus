@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/loginbg"
+    android:gravity="center"
+    tools:context=".LoginActivity">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="198dp"
+        >
+
+        <LinearLayout
+            android:id="@+id/layoutlogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:background="@drawable/padding_bg"
+            android:padding="20dp">
+
+            <RadioGroup
+                android:id="@+id/loginTypeRadioGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <RadioButton
+                    android:id="@+id/guardianRadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/guardian"
+                    android:textColor="@color/tepapagreen"
+                    android:textSize="20sp"
+                    android:layout_marginEnd="30dp"/>
+
+                <RadioButton
+                    android:id="@+id/staffRadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/staff"
+                    android:textColor="@color/tepapagreen"
+                    android:textSize="20sp"
+                    android:layout_marginStart="30dp"/>
+
+            </RadioGroup>
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="320dp"
+                android:layout_height="55dp"
+                android:layout_marginTop="40dp"
+                android:autofillHints="no"
+                android:background="@drawable/text_bg"
+                android:drawableStart="@drawable/baseline_email_24"
+                android:drawablePadding="8dp"
+                android:gravity="center_vertical"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:padding="8dp"
+                android:textColor="@color/tepapagreen"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="320dp"
+                android:layout_height="55dp"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/text_bg"
+                android:drawableStart="@drawable/baseline_password_24"
+                android:drawablePadding="8dp"
+                android:gravity="center_vertical"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:padding="8dp"
+                android:textColor="@color/tepapagreen"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/forgotpswd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/forgot_pass"
+                android:textColor="@color/tepapagreen"
+                android:textColorLink="@color/claycreek"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/loginbtn"
+                style="@android:style/Widget.Button"
+                android:layout_width="240dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/tepagreen_bkg"
+                android:padding="8dp"
+                android:text="@string/login"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:letterSpacing="0.2"/>
+
+            <TextView
+                android:id="@+id/signupRedirectText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:padding="8dp"
+                android:text="@string/noaccount"
+                android:textColor="@color/tepapagreen"
+                android:textSize="15sp" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>
