@@ -3,7 +3,6 @@ package com.example.pondokdarus;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,20 +20,20 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class GuardianLoginActivity extends AppCompatActivity {
+public class StaffLoginActivity extends AppCompatActivity {
 
     private EditText inputEmail, inputPassword;
     private FirebaseAuth auth;
     private ProgressBar progressBar;
     private Button btnLogin;
     private TextView btnSignup, btnReset;
-    private RadioGroup loginTypeRadioGroup;
-    private RadioButton guardianRadioButton, staffRadioButton;
+    private RadioGroup loginTypeRadioGroup, staffTypeRadioGroup;
+    private RadioButton guardianRadioButton, staffRadioButton, clerkRadioButton, principalRadioButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.guardianlogin);
+        setContentView(R.layout.stafflogin);
 
         // Initialize Firebase auth instance
         auth = FirebaseAuth.getInstance();
@@ -48,20 +47,21 @@ public class GuardianLoginActivity extends AppCompatActivity {
         btnReset = findViewById(R.id.forgotpswd);
         guardianRadioButton = findViewById(R.id.guardianRadioButton);
         staffRadioButton = findViewById(R.id.staffRadioButton);
+        clerkRadioButton = findViewById(R.id.clerkRadioButton);
+        principalRadioButton = findViewById(R.id.principalRadioButton);
 
         // Set click listeners
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(GuardianLoginActivity.this, SignupActivity.class));
+                startActivity(new Intent(StaffLoginActivity.this, SignupActivity.class));
             }
         });
 
-        //reset password
         btnReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(GuardianLoginActivity.this, ResetPasswordActivity.class));
+                startActivity(new Intent(StaffLoginActivity.this, ResetPasswordActivity.class));
             }
         });
 
@@ -71,12 +71,12 @@ public class GuardianLoginActivity extends AppCompatActivity {
                 String email = inputEmail.getText().toString().trim();
                 final String password = inputPassword.getText().toString().trim();
 
-                if (TextUtils.isEmpty(email)) {
+                if (email.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                if (TextUtils.isEmpty(password)) {
+                if (password.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Enter password!", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -85,18 +85,18 @@ public class GuardianLoginActivity extends AppCompatActivity {
 
                 // Authenticate user
                 auth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(GuardianLoginActivity.this, new OnCompleteListener<AuthResult>() {
+                        .addOnCompleteListener(StaffLoginActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 progressBar.setVisibility(View.GONE);
                                 if (task.isSuccessful()) {
                                     // Login successful
-                                    Intent intent = new Intent(GuardianLoginActivity.this, MainActivity.class);
+                                    Intent intent = new Intent(StaffLoginActivity.this, MainActivity.class);
                                     startActivity(intent);
                                     finish();
                                 } else {
                                     // Login failed
-                                    Toast.makeText(GuardianLoginActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(StaffLoginActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
@@ -108,24 +108,51 @@ public class GuardianLoginActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == R.id.guardianRadioButton) {
-                    // Change layout for Guardian
-                    setGuardianLayout();
-                } else if (checkedId == R.id.staffRadioButton) {
-                    // Navigate to StaffLoginActivity
-                    Intent intent = new Intent(GuardianLoginActivity.this, StaffLoginActivity.class);
+                    // Navigate to GuardianLoginActivity
+                    Intent intent = new Intent(StaffLoginActivity.this, GuardianLoginActivity.class);
                     startActivity(intent);
+                } else if (checkedId == R.id.staffRadioButton) {
+                    // Change layout for Staff
+                    setStaffLayout();
+                }
+            }
+        });
+
+        staffTypeRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == R.id.clerkRadioButton) {
+                    // Change layout for Clerk
+                    setClerkLayout();
+                } else if (checkedId == R.id.principalRadioButton) {
+                    // Change layout for Principal
+                    setPrincipalLayout();
                 }
             }
         });
     }
 
-    private void setGuardianLayout() {
-        // Change layout for Guardian selection
-        guardianRadioButton.setTextColor(Color.WHITE); // Example change
-        staffRadioButton.setTextColor(Color.BLACK); // Reset other button
-        guardianRadioButton.setBackgroundResource(R.drawable.selected_background); // Example background change
-        staffRadioButton.setBackgroundResource(R.drawable.default_background); // Reset other button background
+    private void setStaffLayout() {
+        // Change layout for Staff selection
+        staffRadioButton.setTextColor(Color.WHITE); // Example change
+        guardianRadioButton.setTextColor(Color.BLACK); // Reset other button
+        staffRadioButton.setBackgroundResource(R.drawable.selected_background); // Example background change
+        guardianRadioButton.setBackgroundResource(R.drawable.default_background); // Reset other button background
+    }
+
+    private void setClerkLayout() {
+        // Change layout for Clerk selection
+        clerkRadioButton.setTextColor(Color.WHITE); // Example change
+        principalRadioButton.setTextColor(Color.BLACK); // Reset other button
+        clerkRadioButton.setBackgroundResource(R.drawable.selected_background); // Example background change
+        principalRadioButton.setBackgroundResource(R.drawable.default_background); // Reset other button background
+    }
+
+    private void setPrincipalLayout() {
+        // Change layout for Principal selection
+        principalRadioButton.setTextColor(Color.WHITE); // Example change
+        clerkRadioButton.setTextColor(Color.BLACK); // Reset other button
+        principalRadioButton.setBackgroundResource(R.drawable.selected_background); // Example background change
+        clerkRadioButton.setBackgroundResource(R.drawable.default_background); // Reset other button background
     }
 }
-
-
