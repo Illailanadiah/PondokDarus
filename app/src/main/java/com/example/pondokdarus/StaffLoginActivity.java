@@ -11,6 +11,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.graphics.drawable.Drawable;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,6 +31,7 @@ public class StaffLoginActivity extends AppCompatActivity {
     private RadioGroup loginTypeRadioGroup, staffTypeRadioGroup;
     private RadioButton guardianRadioButton, staffRadioButton, clerkRadioButton, principalRadioButton;
 
+    private Drawable defaultBackground, selectedBackground;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +51,10 @@ public class StaffLoginActivity extends AppCompatActivity {
         staffRadioButton = findViewById(R.id.staffRadioButton);
         clerkRadioButton = findViewById(R.id.clerkRadioButton);
         principalRadioButton = findViewById(R.id.principalRadioButton);
+
+        //Load background drawables
+        defaultBackground = getResources().getDrawable(R.drawable.default_background);
+        selectedBackground = getResources().getDrawable(R.drawable.selected_background);
 
         // Set click listeners
         btnSignup.setOnClickListener(new View.OnClickListener() {
@@ -122,14 +128,26 @@ public class StaffLoginActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == R.id.clerkRadioButton) {
-                    // Change layout for Clerk
                     setClerkLayout();
                 } else if (checkedId == R.id.principalRadioButton) {
-                    // Change layout for Principal
                     setPrincipalLayout();
                 }
             }
         });
+
+        setInitialStates();
+    }
+
+    private void setInitialStates(){
+
+        // Set initial states
+        if (loginTypeRadioGroup.getCheckedRadioButtonId() == R.id.guardianRadioButton) {
+            guardianRadioButton.setBackground(selectedBackground);
+            staffRadioButton.setBackground(defaultBackground);
+        } else if (loginTypeRadioGroup.getCheckedRadioButtonId() == R.id.staffRadioButton) {
+            staffRadioButton.setBackground(selectedBackground);
+            guardianRadioButton.setBackground(defaultBackground);
+        }
     }
 
     private void setStaffLayout() {

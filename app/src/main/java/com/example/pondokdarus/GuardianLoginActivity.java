@@ -12,6 +12,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.graphics.drawable.Drawable;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,6 +31,7 @@ public class GuardianLoginActivity extends AppCompatActivity {
     private TextView btnSignup, btnReset;
     private RadioGroup loginTypeRadioGroup;
     private RadioButton guardianRadioButton, staffRadioButton;
+    private Drawable defaultBackground, selectedBackground;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,10 @@ public class GuardianLoginActivity extends AppCompatActivity {
         loginTypeRadioGroup = findViewById(R.id.loginTypeRadioGroup);
         guardianRadioButton = findViewById(R.id.guardianRadioButton);
         staffRadioButton = findViewById(R.id.staffRadioButton);
+
+        //Load background drawables
+        defaultBackground = getResources().getDrawable(R.drawable.default_background);
+        selectedBackground = getResources().getDrawable(R.drawable.selected_background);
 
         // Set click listeners
         btnSignup.setOnClickListener(new View.OnClickListener() {
@@ -104,6 +110,8 @@ public class GuardianLoginActivity extends AppCompatActivity {
             }
         });
 
+
+
         // RadioGroup selection handling
         loginTypeRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -112,12 +120,26 @@ public class GuardianLoginActivity extends AppCompatActivity {
                     // Change layout for Guardian
                     setGuardianLayout();
                 } else if (checkedId == R.id.staffRadioButton) {
-                    // Navigate to StaffLoginActivity
+                    // Change layout for Staff and navigate to StaffLoginActivity
+                    setStaffLayout();
                     Intent intent = new Intent(GuardianLoginActivity.this, StaffLoginActivity.class);
                     startActivity(intent);
                 }
             }
         });
+
+        // Set initial states
+        setInitialStates();
+    }
+
+    private void setInitialStates() {
+        if (loginTypeRadioGroup.getCheckedRadioButtonId() == R.id.guardianRadioButton) {
+            guardianRadioButton.setBackground(selectedBackground);
+            staffRadioButton.setBackground(defaultBackground);
+        } else if (loginTypeRadioGroup.getCheckedRadioButtonId() == R.id.staffRadioButton) {
+            staffRadioButton.setBackground(selectedBackground);
+            guardianRadioButton.setBackground(defaultBackground);
+        }
     }
 
     private void setGuardianLayout() {
@@ -126,6 +148,18 @@ public class GuardianLoginActivity extends AppCompatActivity {
         staffRadioButton.setTextColor(Color.BLACK); // Reset other button
         guardianRadioButton.setBackgroundResource(R.drawable.selected_background); // Example background change
         staffRadioButton.setBackgroundResource(R.drawable.default_background); // Reset other button background
+    }
+
+    private void setStaffLayout() {
+        // Change layout for Staff selection
+        staffRadioButton.setTextColor(Color.WHITE); // Example change
+        guardianRadioButton.setTextColor(Color.BLACK); // Reset other button
+        staffRadioButton.setBackgroundResource(R.drawable.selected_background); // Example background change
+        guardianRadioButton.setBackgroundResource(R.drawable.default_background); // Reset other button background
+
+        // Navigate to StaffLoginActivity
+        Intent intent = new Intent(GuardianLoginActivity.this, StaffLoginActivity.class);
+        startActivity(intent);
     }
 }
 

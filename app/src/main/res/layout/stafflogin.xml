@@ -28,25 +28,26 @@
             tools:ignore="UselessParent">
 
 
-            <LinearLayout
+
+            <RadioGroup
+                android:id="@+id/loginTypeRadioGroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:gravity="center"
-                >
+                android:gravity="center">
 
                 <RadioButton
                     android:id="@+id/guardianRadioButton"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/guardian"
-                    android:textSize="16sp"
-                    android:gravity="center"
-                    android:background="@drawable/selected_background"
+                    android:background="@drawable/default_background"
                     android:button="@null"
+                    android:gravity="center"
                     android:padding="16dp"
-                    android:textColor="@color/satin"/>
+                    android:text="@string/guardian"
+                    android:textColor="@color/tepapagreen"
+                    android:textSize="16sp" />
 
                 <RadioButton
                     android:id="@+id/staffRadioButton"
@@ -56,12 +57,12 @@
                     android:text="@string/staff"
                     android:textSize="16sp"
                     android:gravity="center"
-                    android:background="@drawable/padding_bg"
+                    android:background="@drawable/selected_background"
                     android:button="@null"
                     android:padding="16dp"
-                    android:textColor="@color/tepapagreen"/>
+                    android:textColor="@color/satin"/>
 
-            </LinearLayout>
+            </RadioGroup>
 
             <EditText
                 android:id="@+id/email"
@@ -118,41 +119,42 @@
                 android:textColor="@color/white"
                 android:textSize="20sp" />
 
-            <LinearLayout
 
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:layout_marginTop="15dp">
-
-                <RadioButton
-                    android:id="@+id/clerkRadioButton"
-                    android:layout_width="0dp"
+                <RadioGroup
+                    android:id="@+id/positionRadioGroup"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/outlinebtn"
-                    android:button="@null"
-                    android:gravity="center"
-                    android:padding="16dp"
-                    android:text="@string/CLERK"
-                    android:textColor="@color/tepapagreen"
-                    android:textSize="16sp" />
+                    android:orientation="horizontal"
+                    android:gravity="center">
 
-                <RadioButton
-                    android:id="@+id/principalRadioButton"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/outlinebtn"
-                    android:button="@null"
-                    android:gravity="center"
-                    android:padding="16dp"
-                    android:text="@string/PRINCIPAL"
-                    android:textColor="@color/tepapagreen"
-                    android:textSize="16sp" />
+                    <RadioButton
+                        android:id="@+id/clerkRadioButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/outlinebtn"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:padding="16dp"
+                        android:text="@string/CLERK"
+                        android:textColor="@color/tepapagreen"
+                        android:textSize="16sp" />
 
-            </LinearLayout>
+                    <RadioButton
+                        android:id="@+id/principalRadioButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/outlinebtn"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:padding="16dp"
+                        android:text="@string/PRINCIPAL"
+                        android:textColor="@color/tepapagreen"
+                        android:textSize="16sp" />
+
+                </RadioGroup>
+
 
 
             <TextView

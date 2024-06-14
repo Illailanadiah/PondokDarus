@@ -24,20 +24,14 @@
             android:paddingHorizontal="20dp"
             tools:ignore="UselessParent">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center"
-                >
+
             <RadioGroup
                 android:id="@+id/loginTypeRadioGroup"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center">
 
-            </RadioGroup>
                 <RadioButton
                     android:id="@+id/guardianRadioButton"
                     android:layout_width="0dp"
@@ -46,7 +40,7 @@
                     android:text="@string/guardian"
                     android:textSize="16sp"
                     android:gravity="center"
-                    android:background="@drawable/padding_bg"
+                    android:background="@drawable/default_background"
                     android:button="@null"
                     android:padding="16dp"
                     android:textColor="@color/tepapagreen"/>
@@ -64,7 +58,9 @@
                     android:padding="16dp"
                     android:textColor="@color/satin"/>
 
-            </LinearLayout>
+            </RadioGroup>
+
+
 
             <EditText
                 android:id="@+id/email"
