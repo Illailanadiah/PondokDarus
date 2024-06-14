@@ -46,6 +46,7 @@ public class GuardianLoginActivity extends AppCompatActivity {
         btnLogin = findViewById(R.id.loginbtn);
         btnSignup = findViewById(R.id.signupRedirectText);
         btnReset = findViewById(R.id.forgotpswd);
+        loginTypeRadioGroup = findViewById(R.id.loginTypeRadioGroup);
         guardianRadioButton = findViewById(R.id.guardianRadioButton);
         staffRadioButton = findViewById(R.id.staffRadioButton);
 

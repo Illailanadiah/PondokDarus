@@ -30,7 +30,14 @@
                 android:orientation="horizontal"
                 android:gravity="center"
                 >
+            <RadioGroup
+                android:id="@+id/loginTypeRadioGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
 
+            </RadioGroup>
                 <RadioButton
                     android:id="@+id/guardianRadioButton"
                     android:layout_width="0dp"
