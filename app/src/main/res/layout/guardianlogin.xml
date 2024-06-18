@@ -40,10 +40,10 @@
                     android:text="@string/guardian"
                     android:textSize="16sp"
                     android:gravity="center"
-                    android:background="@drawable/default_background"
+                    android:background="@drawable/selected_background"
                     android:button="@null"
                     android:padding="16dp"
-                    android:textColor="@color/tepapagreen"/>
+                    android:textColor="@color/satin"/>
 
                 <RadioButton
                     android:id="@+id/staffRadioButton"
@@ -53,10 +53,10 @@
                     android:text="@string/staff"
                     android:textSize="16sp"
                     android:gravity="center"
-                    android:background="@drawable/selected_background"
+                    android:background="@drawable/default_background"
                     android:button="@null"
                     android:padding="16dp"
-                    android:textColor="@color/satin"/>
+                    android:textColor="@color/tepapagreen"/>
 
             </RadioGroup>
 
@@ -93,17 +93,7 @@
                 android:textColor="@color/tepapagreen"
                 android:textSize="15sp" />
 
-            <TextView
-                android:id="@+id/forgotpswd"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:gravity="center"
-                android:padding="5dp"
-                android:text="@string/forgot_pass"
-                android:textColor="@color/tepapagreen"
-                android:textColorLink="@color/claycreek"
-                android:textSize="15sp" />
+
 
             <Button
                 android:id="@+id/loginbtn"

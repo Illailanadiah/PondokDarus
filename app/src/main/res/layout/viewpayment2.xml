@@ -8,7 +8,7 @@
     android:background="@drawable/background2"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".SignupActivity">
+    tools:context=".GuardianSignupActivity">
 
 
 <LinearLayout
