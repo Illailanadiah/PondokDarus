@@ -3,6 +3,7 @@ package com.example.pondokdarus;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,25 +21,30 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
-public class StaffLoginActivity extends AppCompatActivity {
+public class ClerkLoginActivity extends AppCompatActivity {
 
     private EditText inputEmail, inputPassword;
     private FirebaseAuth auth;
+    private FirebaseFirestore db;
     private ProgressBar progressBar;
     private Button btnLogin;
     private TextView btnSignup, btnReset;
-    private RadioGroup loginTypeRadioGroup, staffTypeRadioGroup;
+    private RadioGroup loginTypeRadioGroup, positionRadioGroup;
     private RadioButton guardianRadioButton, staffRadioButton, clerkRadioButton, principalRadioButton;
 
     private Drawable defaultBackground, selectedBackground;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.stafflogin);
+        setContentView(R.layout.clerklogin);
 
-        // Initialize Firebase auth instance
+        // Initialize Firebase auth and Firestore instances
         auth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
 
         // Bind UI elements
         inputEmail = findViewById(R.id.email);
@@ -51,8 +57,10 @@ public class StaffLoginActivity extends AppCompatActivity {
         staffRadioButton = findViewById(R.id.staffRadioButton);
         clerkRadioButton = findViewById(R.id.clerkRadioButton);
         principalRadioButton = findViewById(R.id.principalRadioButton);
+        loginTypeRadioGroup = findViewById(R.id.loginTypeRadioGroup);
+        positionRadioGroup = findViewById(R.id.positionRadioGroup);
 
-        //Load background drawables
+        // Load background drawables
         defaultBackground = getResources().getDrawable(R.drawable.default_background);
         selectedBackground = getResources().getDrawable(R.drawable.selected_background);
 
@@ -60,14 +68,14 @@ public class StaffLoginActivity extends AppCompatActivity {
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(StaffLoginActivity.this, SignupActivity.class));
+                startActivity(new Intent(ClerkLoginActivity.this, GuardianSignupActivity.class));
             }
         });
 
         btnReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(StaffLoginActivity.this, ResetPasswordActivity.class));
+                startActivity(new Intent(ClerkLoginActivity.this, ResetPasswordActivity.class));
             }
         });
 
@@ -77,12 +85,12 @@ public class StaffLoginActivity extends AppCompatActivity {
                 String email = inputEmail.getText().toString().trim();
                 final String password = inputPassword.getText().toString().trim();
 
-                if (email.isEmpty()) {
+                if (TextUtils.isEmpty(email)) {
                     Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                if (password.isEmpty()) {
+                if (TextUtils.isEmpty(password)) {
                     Toast.makeText(getApplicationContext(), "Enter password!", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -91,18 +99,16 @@ public class StaffLoginActivity extends AppCompatActivity {
 
                 // Authenticate user
                 auth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(StaffLoginActivity.this, new OnCompleteListener<AuthResult>() {
+                        .addOnCompleteListener(ClerkLoginActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                progressBar.setVisibility(View.GONE);
                                 if (task.isSuccessful()) {
-                                    // Login successful
-                                    Intent intent = new Intent(StaffLoginActivity.this, MainActivity.class);
-                                    startActivity(intent);
-                                    finish();
+                                    // Check user role
+                                    checkUserRole(auth.getCurrentUser().getUid());
                                 } else {
+                                    progressBar.setVisibility(View.GONE);
                                     // Login failed
-                                    Toast.makeText(StaffLoginActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(ClerkLoginActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
@@ -115,7 +121,7 @@ public class StaffLoginActivity extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == R.id.guardianRadioButton) {
                     // Navigate to GuardianLoginActivity
-                    Intent intent = new Intent(StaffLoginActivity.this, GuardianLoginActivity.class);
+                    Intent intent = new Intent(ClerkLoginActivity.this, GuardianLoginActivity.class);
                     startActivity(intent);
                 } else if (checkedId == R.id.staffRadioButton) {
                     // Change layout for Staff
@@ -124,7 +130,7 @@ public class StaffLoginActivity extends AppCompatActivity {
             }
         });
 
-        staffTypeRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        positionRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == R.id.clerkRadioButton) {
@@ -138,8 +144,47 @@ public class StaffLoginActivity extends AppCompatActivity {
         setInitialStates();
     }
 
-    private void setInitialStates(){
+    private void checkUserRole(String userId) {
+        db.collection("users").document(userId).get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        progressBar.setVisibility(View.GONE);
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            if (document.exists()) {
+                                String role = document.getString("user_role");
+                                if (isRoleMatching(role)) {
+                                    // Login successful and role matches
+                                    Intent intent = new Intent(ClerkLoginActivity.this, MainActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                } else {
+                                    // User role does not match
+                                    Toast.makeText(ClerkLoginActivity.this, "Your role does not match the selected option.", Toast.LENGTH_SHORT).show();
+                                    auth.signOut();
+                                }
+                            } else {
+                                Toast.makeText(ClerkLoginActivity.this, "No such user found.", Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                            Toast.makeText(ClerkLoginActivity.this, "Failed to retrieve user role.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
 
+    private boolean isRoleMatching(String role) {
+        int selectedRoleId = positionRadioGroup.getCheckedRadioButtonId();
+        if (selectedRoleId == R.id.clerkRadioButton && "clerk".equals(role)) {
+            return true;
+        } else if (selectedRoleId == R.id.principalRadioButton && "principal".equals(role)) {
+            return true;
+        }
+        return false;
+    }
+
+    private void setInitialStates() {
         // Set initial states
         if (loginTypeRadioGroup.getCheckedRadioButtonId() == R.id.guardianRadioButton) {
             guardianRadioButton.setBackground(selectedBackground);

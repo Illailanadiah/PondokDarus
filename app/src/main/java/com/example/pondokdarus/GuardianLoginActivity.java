@@ -21,11 +21,14 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class GuardianLoginActivity extends AppCompatActivity {
 
     private EditText inputEmail, inputPassword;
     private FirebaseAuth auth;
+    private FirebaseFirestore db;
     private ProgressBar progressBar;
     private Button btnLogin;
     private TextView btnSignup, btnReset;
@@ -38,8 +41,9 @@ public class GuardianLoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.guardianlogin);
 
-        // Initialize Firebase auth instance
+        // Initialize Firebase auth and Firestore instances
         auth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
 
         // Bind UI elements
         inputEmail = findViewById(R.id.email);
@@ -60,7 +64,7 @@ public class GuardianLoginActivity extends AppCompatActivity {
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(GuardianLoginActivity.this, SignupActivity.class));
+                startActivity(new Intent(GuardianLoginActivity.this, GuardianSignupActivity.class));
             }
         });
 
@@ -79,6 +83,7 @@ public class GuardianLoginActivity extends AppCompatActivity {
                 final String password = inputPassword.getText().toString().trim();
 
                 if (TextUtils.isEmpty(email)) {
+                    // may need to change these texts
                     Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -95,13 +100,11 @@ public class GuardianLoginActivity extends AppCompatActivity {
                         .addOnCompleteListener(GuardianLoginActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                progressBar.setVisibility(View.GONE);
                                 if (task.isSuccessful()) {
-                                    // Login successful
-                                    Intent intent = new Intent(GuardianLoginActivity.this, MainActivity.class);
-                                    startActivity(intent);
-                                    finish();
+                                    // Check user role
+                                    checkUserRole(auth.getCurrentUser().getUid());
                                 } else {
+                                    progressBar.setVisibility(View.GONE);
                                     // Login failed
                                     Toast.makeText(GuardianLoginActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
                                 }
@@ -109,8 +112,6 @@ public class GuardianLoginActivity extends AppCompatActivity {
                         });
             }
         });
-
-
 
         // RadioGroup selection handling
         loginTypeRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -122,7 +123,7 @@ public class GuardianLoginActivity extends AppCompatActivity {
                 } else if (checkedId == R.id.staffRadioButton) {
                     // Change layout for Staff and navigate to StaffLoginActivity
                     setStaffLayout();
-                    Intent intent = new Intent(GuardianLoginActivity.this, StaffLoginActivity.class);
+                    Intent intent = new Intent(GuardianLoginActivity.this, ClerkLoginActivity.class);
                     startActivity(intent);
                 }
             }
@@ -130,6 +131,36 @@ public class GuardianLoginActivity extends AppCompatActivity {
 
         // Set initial states
         setInitialStates();
+    }
+
+    private void checkUserRole(String userId) {
+        db.collection("users").document(userId).get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        progressBar.setVisibility(View.GONE);
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            if (document.exists()) {
+                                String role = document.getString("user_role");
+                                if ("guardian".equals(role)) {
+                                    // Login successful and role is guardian
+                                    Intent intent = new Intent(GuardianLoginActivity.this, MainActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                } else {
+                                    // User is not a guardian
+                                    Toast.makeText(GuardianLoginActivity.this, "You are not registered as a guardian.", Toast.LENGTH_SHORT).show();
+                                    auth.signOut();
+                                }
+                            } else {
+                                Toast.makeText(GuardianLoginActivity.this, "No such user found.", Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                            Toast.makeText(GuardianLoginActivity.this, "Failed to retrieve user role.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
     }
 
     private void setInitialStates() {
@@ -158,9 +189,7 @@ public class GuardianLoginActivity extends AppCompatActivity {
         guardianRadioButton.setBackgroundResource(R.drawable.default_background); // Reset other button background
 
         // Navigate to StaffLoginActivity
-        Intent intent = new Intent(GuardianLoginActivity.this, StaffLoginActivity.class);
+        Intent intent = new Intent(GuardianLoginActivity.this, ClerkLoginActivity.class);
         startActivity(intent);
     }
 }
-
-

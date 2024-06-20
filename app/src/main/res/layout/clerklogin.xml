@@ -8,14 +8,12 @@
     android:background="@drawable/loginbg"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".StaffLoginActivity">
-
+    tools:context=".ClerkLoginActivity">
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="198dp"
-        >
+        android:layout_marginTop="198dp">
 
         <LinearLayout
             android:id="@+id/layoutlogin2"
@@ -26,8 +24,6 @@
             android:orientation="vertical"
             android:paddingHorizontal="20dp"
             tools:ignore="UselessParent">
-
-
 
             <RadioGroup
                 android:id="@+id/loginTypeRadioGroup"
@@ -41,7 +37,6 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@drawable/default_background"
                     android:button="@null"
                     android:gravity="center"
                     android:padding="16dp"
@@ -54,14 +49,43 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/staff"
-                    android:textSize="16sp"
-                    android:gravity="center"
-                    android:background="@drawable/selected_background"
                     android:button="@null"
+                    android:gravity="center"
                     android:padding="16dp"
-                    android:textColor="@color/satin"/>
+                    android:text="@string/staff"
+                    android:background="@drawable/selected_background"
+                    android:textColor="@color/satin"
+                    android:textSize="16sp" />
+            </RadioGroup>
 
+            <RadioGroup
+                android:id="@+id/positionRadioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <RadioButton
+                    android:id="@+id/clerkRadioButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="16dp"
+                    android:text="@string/CLERK"
+                    android:textColor="@color/tepapagreen"
+                    android:textSize="16sp" />
+
+                <RadioButton
+                    android:id="@+id/principalRadioButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="16dp"
+                    android:text="@string/PRINCIPAL"
+                    android:textColor="@color/tepapagreen"
+                    android:textSize="16sp" />
             </RadioGroup>
 
             <EditText
@@ -95,18 +119,6 @@
                 android:textColor="@color/tepapagreen"
                 android:textSize="15sp" />
 
-            <TextView
-                android:id="@+id/forgotpswd"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:padding="5dp"
-                android:text="@string/forgot_pass"
-                android:textColor="@color/tepapagreen"
-                android:textColorLink="@color/claycreek"
-                android:textSize="15sp" />
-
             <Button
                 android:id="@+id/loginbtn"
                 style="@android:style/Widget.Button"
@@ -118,44 +130,6 @@
                 android:text="@string/login"
                 android:textColor="@color/white"
                 android:textSize="20sp" />
-
-
-                <RadioGroup
-                    android:id="@+id/positionRadioGroup"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center">
-
-                    <RadioButton
-                        android:id="@+id/clerkRadioButton"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@drawable/outlinebtn"
-                        android:button="@null"
-                        android:gravity="center"
-                        android:padding="16dp"
-                        android:text="@string/CLERK"
-                        android:textColor="@color/tepapagreen"
-                        android:textSize="16sp" />
-
-                    <RadioButton
-                        android:id="@+id/principalRadioButton"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@drawable/outlinebtn"
-                        android:button="@null"
-                        android:gravity="center"
-                        android:padding="16dp"
-                        android:text="@string/PRINCIPAL"
-                        android:textColor="@color/tepapagreen"
-                        android:textSize="16sp" />
-
-                </RadioGroup>
-
-
 
             <TextView
                 android:id="@+id/signupRedirectText"
@@ -176,10 +150,6 @@
                 android:layout_gravity="center"
                 android:visibility="gone" />
 
-
         </LinearLayout>
-
     </LinearLayout>
-
-
 </LinearLayout>
