@@ -8,47 +8,23 @@
     android:background="@drawable/background2"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".GuardianSignupActivity">
+    >
 
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="15dp"
-    android:orientation="horizontal">
+    <include layout="@layout/appbar"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="20dp"
-        android:drawablePadding="8dp"
-        android:drawableLeft="@drawable/baseline_arrow_back_ios_new_24"
-        android:gravity="center"/>
 
     <TextView
-        android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="30dp"
-        android:gravity="center"
-        android:text="SALAM FINANCE"
+        android:text="@string/payment_head"
+        android:layout_marginTop="35dp"
+        android:layout_marginBottom="15dp"
+        android:textSize="35sp"
         android:textColor="@color/tepapagreen"
-        android:textSize="24sp"
-        android:textStyle="bold" />
-
-</LinearLayout>
-
-
-    <TextView
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:text="PAYMENT"
-              android:layout_marginTop="15dp"
-              android:layout_marginBottom="15dp"
-              android:textSize="35sp"
-              android:letterSpacing="0.2"
-              android:textColor="@color/tepapagreen"
-              android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:gravity="center"
+        android:letterSpacing="0.2"/>
 
 
 
@@ -74,10 +50,9 @@
 
                     <CheckBox
                         android:id="@+id/headercheck"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
                         android:gravity="center"
-                        android:drawableStart="@drawable/baseline_check_box_outline_blank_24"
                         android:layout_marginStart="15dp"
                         android:layout_marginEnd="15dp"/>
 
@@ -89,7 +64,7 @@
                         android:layout_marginStart="10dp"
                         android:layout_marginEnd="15dp"
                         android:layout_gravity="center_horizontal"
-                        android:text="@string/BILL_NAME"
+                        android:text="@string/bill_head"
                         android:textAppearance="@style/header"
                         android:gravity="center_horizontal"
                         />
@@ -102,7 +77,7 @@
                         android:layout_gravity="center_horizontal"
                         android:layout_marginStart="10dp"
                         android:layout_marginEnd="15dp"
-                        android:text="@string/AMOUNT"
+                        android:text="@string/amount_head"
                         android:textAppearance="@style/header"
                         android:gravity="center_horizontal"
                         />
@@ -114,8 +89,8 @@
                         android:layout_marginTop="20dp"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginStart="10dp"
-                        android:layout_marginEnd="15dp"
-                        android:text="@string/DETAILS"
+                        android:layout_marginEnd="10dp"
+                        android:text="@string/detail_head"
                         android:textAppearance="@style/header"
                         android:gravity="center_horizontal"
                         />
@@ -128,10 +103,9 @@
                     android:orientation="horizontal">
 
                     <CheckBox
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
                         android:gravity="center"
-                        android:drawableStart="@drawable/baseline_check_box_outline_blank_24"
                         android:layout_marginStart="15dp"
                         android:layout_marginEnd="15dp"/>
 
@@ -142,8 +116,8 @@
                         android:layout_marginStart="15dp"
                         android:layout_marginEnd="15dp"
                         android:layout_gravity="center_horizontal"
-                        android:text="@string/bill_name"
-                        android:textAppearance="@style/detail"
+                        android:text="@string/billname"
+                        style="@style/detail"
                         android:gravity="center_horizontal"
                         />
 
@@ -152,9 +126,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginStart="40dp"
-                        android:layout_marginEnd="40dp"
-                        android:text="@string/paid"
+                        android:layout_marginStart="25dp"
+                        android:layout_marginEnd="25dp"
+                        android:text="@string/amount"
                         android:textAppearance="@style/paid"
                         android:gravity="center_horizontal"
                         />
@@ -162,322 +136,17 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginStart="15dp"
+                        android:layout_marginTop="20dp"
                         android:layout_marginEnd="15dp"
-                        android:text="@string/view"
-                        android:textAppearance="@style/header"
                         android:gravity="center_horizontal"
-                        />
+                        android:text="@string/view"
+                        style="@style/header" />
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
 
-                    <CheckBox
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:drawableStart="@drawable/baseline_check_box_outline_blank_24"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginEnd="15dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginEnd="15dp"
-                        android:layout_gravity="center_horizontal"
-                        android:text="@string/bill_name"
-                        android:textAppearance="@style/detail"
-                        android:gravity="center_horizontal"
-                        />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginStart="40dp"
-                        android:layout_marginEnd="40dp"
-                        android:text="@string/paid"
-                        android:textAppearance="@style/paid"
-                        android:gravity="center_horizontal"
-                        />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginEnd="15dp"
-                        android:text="@string/view"
-                        android:textAppearance="@style/header"
-                        android:gravity="center_horizontal"
-                        />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <CheckBox
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:drawableStart="@drawable/baseline_check_box_outline_blank_24"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginEnd="15dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginEnd="15dp"
-                        android:layout_gravity="center_horizontal"
-                        android:text="@string/bill_name"
-                        android:textAppearance="@style/detail"
-                        android:gravity="center_horizontal"
-                        />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginStart="40dp"
-                        android:layout_marginEnd="40dp"
-                        android:text="@string/paid"
-                        android:textAppearance="@style/paid"
-                        android:gravity="center_horizontal"
-                        />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginEnd="15dp"
-                        android:text="@string/view"
-                        android:textAppearance="@style/header"
-                        android:gravity="center_horizontal"
-                        />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <CheckBox
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:drawableStart="@drawable/baseline_check_box_outline_blank_24"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginEnd="15dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginEnd="15dp"
-                        android:layout_gravity="center_horizontal"
-                        android:text="@string/bill_name"
-                        android:textAppearance="@style/detail"
-                        android:gravity="center_horizontal"
-                        />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginStart="40dp"
-                        android:layout_marginEnd="40dp"
-                        android:text="@string/paid"
-                        android:textAppearance="@style/paid"
-                        android:gravity="center_horizontal"
-                        />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginEnd="15dp"
-                        android:text="@string/view"
-                        android:textAppearance="@style/header"
-                        android:gravity="center_horizontal"
-                        />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <CheckBox
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:drawableStart="@drawable/baseline_check_box_outline_blank_24"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginEnd="15dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginEnd="15dp"
-                        android:layout_gravity="center_horizontal"
-                        android:text="@string/bill_name"
-                        android:textAppearance="@style/detail"
-                        android:gravity="center_horizontal"
-                        />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginStart="40dp"
-                        android:layout_marginEnd="40dp"
-                        android:text="@string/paid"
-                        android:textAppearance="@style/paid"
-                        android:gravity="center_horizontal"
-                        />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginEnd="15dp"
-                        android:text="@string/view"
-                        android:textAppearance="@style/header"
-                        android:gravity="center_horizontal"
-                        />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <CheckBox
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:drawableStart="@drawable/baseline_check_box_outline_blank_24"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginEnd="15dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginEnd="15dp"
-                        android:layout_gravity="center_horizontal"
-                        android:text="@string/bill_name"
-                        android:textAppearance="@style/detail"
-                        android:gravity="center_horizontal"
-                        />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginStart="40dp"
-                        android:layout_marginEnd="40dp"
-                        android:text="@string/paid"
-                        android:textAppearance="@style/paid"
-                        android:gravity="center_horizontal"
-                        />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginEnd="15dp"
-                        android:text="@string/view"
-                        android:textAppearance="@style/header"
-                        android:gravity="center_horizontal"
-                        />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <CheckBox
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:drawableStart="@drawable/baseline_check_box_outline_blank_24"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginEnd="15dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginEnd="15dp"
-                        android:layout_gravity="center_horizontal"
-                        android:text="@string/bill_name"
-                        android:textAppearance="@style/detail"
-                        android:gravity="center_horizontal"
-                        />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginStart="40dp"
-                        android:layout_marginEnd="40dp"
-                        android:text="@string/paid"
-                        android:textAppearance="@style/paid"
-                        android:gravity="center_horizontal"
-                        />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginEnd="15dp"
-                        android:text="@string/view"
-                        android:textAppearance="@style/header"
-                        android:gravity="center_horizontal"
-                        />
-
-                </LinearLayout>
 
 
             </LinearLayout>

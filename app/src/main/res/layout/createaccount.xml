@@ -5,54 +5,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background2"
-    android:gravity="center"
     android:orientation="vertical"
-    tools:context=".GuardianSignupActivity">
+    tools:context=".SignUpActivity$CreateAccountActivity">
 
+    <include layout="@layout/appbar"/>
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="15dp"
-    android:orientation="horizontal">
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_marginStart="20dp"
-        android:drawablePadding="8dp"
-        android:drawableStart="@drawable/baseline_arrow_back_ios_new_24"
-        android:gravity="center"/>
 
     <TextView
-        android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="30dp"
-        android:gravity="center"
-        android:text="@string/salamfinance"
-        android:textColor="@color/tepapagreen"
-        android:textSize="24sp"
-        android:textStyle="bold" />
-
-</LinearLayout>
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="@string/signup"
-        android:letterSpacing="0.2"
-        android:textColor="@color/tepapagreen"
+        android:text="@string/signup_head"
+        android:layout_marginTop="35dp"
+        android:layout_marginBottom="15dp"
         android:textSize="35sp"
-        android:textStyle="bold" />
+        android:textColor="@color/tepapagreen"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:letterSpacing="0.2"/>
+
 
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="600dp"
+        android:layout_height="match_parent"
         android:background="@drawable/paddingtopcorner_bg"
         android:gravity="center_horizontal"
         android:orientation="vertical"
@@ -63,11 +39,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             android:letterSpacing="0.2"
-            android:text="@string/createacc"
+            android:text="@string/createacc_head"
             android:textAlignment="center"
             android:textColor="@color/tepapagreen"
             android:textSize="28sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            />
 
         <EditText
             android:id="@+id/email"
@@ -109,9 +86,21 @@
             android:background="@drawable/tepagreen_bkg"
             android:letterSpacing="0.2"
             android:padding="8dp"
-            android:text="@string/signup"
+            android:text="@string/signup_btn"
             android:textColor="@color/white"
             android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/signin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="@string/signin"
+            android:textColor="@color/tepapagreen"
+            android:textColorLink="@color/claycreek"
+            android:textSize="15sp" />
 
 
     </LinearLayout>

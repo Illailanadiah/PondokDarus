@@ -12,6 +12,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="198dp"
+        android:gravity="center"
+        android:orientation="vertical"
         >
 
         <LinearLayout
@@ -22,7 +24,7 @@
             android:orientation="vertical"
             android:background="@drawable/padding_bg"
             android:paddingHorizontal="20dp"
-            tools:ignore="UselessParent">
+           >
 
 
             <RadioGroup
@@ -37,7 +39,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/guardian"
+                    android:text="@string/guardian_log"
                     android:textSize="16sp"
                     android:gravity="center"
                     android:background="@drawable/selected_background"
@@ -50,7 +52,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/staff"
+                    android:text="@string/staff_log"
                     android:textSize="16sp"
                     android:gravity="center"
                     android:background="@drawable/default_background"
@@ -93,7 +95,17 @@
                 android:textColor="@color/tepapagreen"
                 android:textSize="15sp" />
 
-
+            <TextView
+                android:id="@+id/forgotpswd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/forgotpass"
+                android:textColor="@color/tepapagreen"
+                android:textColorLink="@color/claycreek"
+                android:textSize="15sp" />
 
             <Button
                 android:id="@+id/loginbtn"
@@ -103,7 +115,7 @@
                 android:layout_marginTop="15dp"
                 android:background="@drawable/tepagreen_bkg"
                 android:padding="8dp"
-                android:text="@string/login"
+                android:text="@string/login_btn"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:letterSpacing="0.2"/>
@@ -114,8 +126,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="50dp"
+                android:layout_marginBottom="8dp"
                 android:padding="8dp"
-                android:text="@string/noaccount"
+                android:text="@string/signup"
                 android:textColor="@color/tepapagreen"
                 android:textSize="15sp" />
 

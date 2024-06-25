@@ -1,43 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">PondokDarus</string>
+
+    <!-- App bar -->
     <string name="salamfinance">SALAM FINANCE</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="forgot_pass">Forgot Password</string>
-    <string name="password">Password</string>
+    <!-- Strings related to Login -->
+    <string-array name="radiobtn_role">
+        <!-- Radio button  -->
+        <item>GURADIAN</item>
+        <item>STAFF</item>
+
+    </string-array>
+
+    <string name="guardian_log">GUARDIAN</string>
+    <string name="staff_log">STAFF</string>
+
+    <string-array name="radiobtn_position">
+        <!-- Radio button  -->
+        <item>Clerk</item>
+        <item>Principal</item>
+
+    </string-array>
+
+    <string name="clerk_log">Clerk</string>
+    <string name="principal_log">Principal</string>
+
+
+    <string name="forgotpass">Forgot Password</string>
+    <string name="signup">"Don't have account ? <u>Sign Up</u></string>
+
+    <!-- Login & Sign Up -->
     <string name="email">Email Address</string>
-    <string name="guardian">GUARDIAN</string>
-    <string name="staff">STAFF</string>
-    <string name="CLERK">CLERK</string>
-    <string name="PRINCIPAL">PRINCIPAL</string>
-    <string name="clerk">Clerk</string>
-    <string name="principal">Principal</string>
-    <string name="login">LOGIN</string>
-    <string name="signup">SIGN UP</string>
-    <string name="next">NEXT</string>
-    <string name="noaccount">"Don't have account? Signup"</string>
-    <string name="haveaccount">Already have an account? Sign in</string>
-    <string name="createacc">CREATE\nACCOUNT</string>
-    <string name="emanage">e-MANAGE</string>
-    <string name="hiHawa">Hi Hawa</string>
-    <string name="clerkname">Hawa Binti Adam</string>
-    <string name="clerkid">RG40-1243</string>
-    <string name="welcome">"Welcome Back!"</string>
-    <string name="fullname">Full name</string>
-    <string name="icnum">I/C number</string>
+    <string name="password">Password</string>
+
+    <!-- Buttons -->
+    <string name="login_btn">LOGIN</string>
+    <string name="signup_btn">SIGN UP</string>
+    <string name="pay_btn">PAY</string>
+    <string name="pdf_btn">Get PDF Report</string>
+    <string name="next_btn">NEXT</string>
+
+    <!-- Main Buttons -->
+    <string name="payment_btn">PAYMENT</string>
+    <string name="profile_btn">PROFILE</string>
+    <string name="manage_btn">e-MANAGE</string>
+    <string name="report_btn">e-REPORT</string>
+    <string name="contact_btn">CONTACT US</string>
+
+
+    <!-- Strings related to Sign Up and profile -->
+
+    <string name="name">Full Name</string>
+    <string name="ic_num">I/C number</string>
+    <string name="DOB">dd/mm/yy</string>
+    <string name="phoneNum">Phone number</string>
     <string name="staffid">Staff ID</string>
-    <string name="phonenum">Phone number</string>
-    <string name="confirmation">I agree that all the information are correct</string>
-    <string name="contactus">CONTACT US</string>
-    <!-- date -->
-    <string name="dd_mm_yy">DD/MM/YY</string>
-    <string name="bill_name">bill name</string>
-    <string name="BILL_NAME">BILL NAME</string>
-    <string name="AMOUNT">AMOUNT</string>
-    <string name="END_DATE">END DATE</string>
-    <string name="DETAILS">DETAILS</string>
+    <string name="agreement">I agree that all the informations are correct</string>
+    <string name="signin">"Already have an account ? <u>Sign in</u></string>
+
+    <!-- header sign up -->
+
+    <string name="stud_head">STUDENT</string>
+    <string name="guardian_head">GUARDIAN</string>
+    <string name="clerk_head">CLERK</string>
+    <string name="principal_head">PRINCIPAL</string>
+    <string name="createacc_head">CREATE \nACCOUNT</string>
+    <string name="signup_head">SIGN UP</string>
+
+    <!-- Dashboard -->
+
+    <string-array name="dashboard">
+        <item>SALAM FINANCE</item>
+        <item>e-MANAGE</item>
+        <item>EDIT PROFILE</item>
+    </string-array>
+
+    <!-- Page Header -->
+    <string-array name="page_header">
+        <item>SIGN UP</item>
+        <item>PAYMENT</item>
+        <item>GRADE LIST</item>
+        <item>REPORT</item>
+    </string-array>
+
+    <!-- Grade list -->
+    <array name="grade_list">
+
+        <item>FROM 1</item>
+        <item>FROM 2</item>
+        <item>FROM 3</item>
+        <item>FROM 4</item>
+        <item>FROM 5</item>
+
+    </array>
+
+    <!-- Payment Page -->
+
+
+    <!-- Payment radio button -->
+    <string-array name="radiobtn_payment">
+
+        <item>TO BE PAID</item>
+        <item>PAID</item>
+
+    </string-array>
+
+    <!-- payment header -->
+    <string name="bill_head">BILL NAME</string>
+    <string name="endDate_head">END DATE</string>
+    <string name="amount_head">AMOUNT</string>
+    <string name="no_head">NO.</string>
+    <string name="detail_head">DETAILS</string>
+    <string name="payment_head">PAYMENT</string>
+
+    <!-- Payment Details -->
+    <string name="billname">Bill name</string>
+    <string name="date">DD/MM/YY</string>
     <string name="amount">RM 0.00</string>
-    
-    <string name="to_be_paid">TO BE PAID</string>
-    <string name="paid">PAID</string>
     <string name="view"><u>VIEW</u></string>
+
+    <!-- Strings related to profile -->
+    <string name="guardian_profile">"GUARDIAN'S DETAIL"</string>
+    <string name="student_profile">"STUDENT'S DETAIL"</string>
+
+    <!-- receipt details -->
+
+
+    <!-- Strings related to icons on app bar -->
+    <string name="logout_btn">log out</string>
+    <string name="back_btn">back</string>
+
+
+
+    <!-- main page details -->
+    <string name="hi">Hi</string>
+    <string name="welcome">Welcome back!</string>
+    <!--position-->
+    <string name="clerk_role">Clerk</string>
+    <string name="principal_role">Principal</string>
+
+
 </resources>

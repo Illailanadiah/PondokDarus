@@ -10,44 +10,24 @@
     android:orientation="vertical"
     tools:context=".GuardianLoginActivity">
 
-    <LinearLayout
+    <include layout="@layout/appbar"/>
+
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:orientation="horizontal">
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
-            android:drawablePadding="8dp"
-            android:drawableLeft="@drawable/baseline_arrow_back_ios_new_24"
-            android:gravity="center"/>
-
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="30dp"
-            android:gravity="center"
-            android:text="SALAM FINANCE"
-            android:textColor="@color/tepapagreen"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-    </LinearLayout>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SIGN UP"
-        android:layout_marginTop="30dp"
+        android:text="@string/signup_head"
+        android:layout_marginTop="35dp"
+        android:layout_marginBottom="15dp"
         android:textSize="35sp"
-        android:letterSpacing="0.2"
         android:textColor="@color/tepapagreen"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:gravity="center"
+        android:letterSpacing="0.2"/>
 
 
-        <LinearLayout
+
+    <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -114,7 +94,7 @@
                 android:textSize="15sp" />
 
             <Button
-                android:id="@+id/loginbtn"
+                android:id="@+id/nextbtn"
                 style="@android:style/Widget.Button"
                 android:layout_width="230dp"
                 android:layout_height="60dp"

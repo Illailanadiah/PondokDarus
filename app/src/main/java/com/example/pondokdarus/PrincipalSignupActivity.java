@@ -17,7 +17,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,7 +27,6 @@ public class PrincipalSignupActivity extends AppCompatActivity {
     private CheckBox agreementCheckBox;
     private Button btnNext;
     private FirebaseAuth auth;
-    private FirebaseFirestore firestore;
     private ProgressBar progressBar;
 
     @Override
@@ -38,7 +36,6 @@ public class PrincipalSignupActivity extends AppCompatActivity {
 
         // Initialize Firebase Auth and Firestore
         auth = FirebaseAuth.getInstance();
-        firestore = FirebaseFirestore.getInstance();
 
         // Bind UI elements
         inputFullName = findViewById(R.id.fullname);
@@ -78,7 +75,7 @@ public class PrincipalSignupActivity extends AppCompatActivity {
                 progressBar.setVisibility(View.VISIBLE);
 
                 // Navigate to CreateAccountActivity
-                Intent intent = new Intent(PrincipalSignupActivity.this, CreateAccountActivity.class);
+                Intent intent = new Intent(PrincipalSignupActivity.this, SignUpActivity.CreateAccountActivity.class);
                 intent.putExtra("fullName", fullName);
                 intent.putExtra("icNum", icNum);
                 intent.putExtra("staffId", staffId);
