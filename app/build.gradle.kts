@@ -1,9 +1,8 @@
-import com.android.build.gradle.BaseExtension
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 
 plugins {
     id("com.android.application")
-    id("org.jetbrains.kotlin.android") // Corrected the plugin ID for Kotlin Android
+    id("org.jetbrains.kotlin.android")
     id("com.google.gms.google-services")
 }
 
@@ -13,13 +12,13 @@ android {
 
     defaultConfig {
         applicationId = "com.example.pondokdarus"
-        minSdk = 34
         minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
     }
 
     buildTypes {
@@ -40,19 +39,18 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
 }
 
 dependencies {
 
     implementation("androidx.appcompat:appcompat:1.7.0")
-    implementation ("com.google.android.material:material:1.3.0")
-    implementation("com.google.android.material:material:1.12.0")
+    implementation ("com.google.android.material:material:1.12.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.cardview:cardview:1.0.0")
-    implementation("com.google.firebase:firebase-database:21.0.0")
 
     // Firebase BOM
-    implementation(platform("com.google.firebase:firebase-bom:33.1.0"))
+    implementation(platform("com.google.firebase:firebase-bom:33.1.1"))
 
     // Firebase Analytics
     implementation("com.google.firebase:firebase-analytics-ktx")
@@ -64,9 +62,14 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-    implementation(platform("com.google.firebase:firebase-bom:33.1.0"))
-    implementation("com.google.firebase:firebase-auth")
 }
 
-// Apply the Google services plugin at the bottom
-apply(plugin = "com.google.gms.google-services")
+afterEvaluate {
+    tasks.named("mergeDebugResources") {
+        // Method 2: Declare an explicit dependency on ':app:processDebugGoogleServices' from ':app:mergeDebugResources' using Task#dependsOn
+        dependsOn(tasks.named("processDebugGoogleServices"))
+
+        // Method 3: Declare an explicit dependency on ':app:processDebugGoogleServices' from ':app:mergeDebugResources' using Task#mustRunAfter
+        mustRunAfter(tasks.named("processDebugGoogleServices"))
+    }
+}

@@ -94,7 +94,7 @@
                 android:textSize="15sp" />
 
             <Button
-                android:id="@+id/nextbtn"
+                android:id="@+id/studentNextButton"
                 style="@android:style/Widget.Button"
                 android:layout_width="230dp"
                 android:layout_height="60dp"

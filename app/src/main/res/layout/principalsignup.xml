@@ -94,7 +94,7 @@
 
 
             <Button
-                android:id="@+id/loginbtn"
+                android:id="@+id/principalNextButton"
                 style="@android:style/Widget.Button"
                 android:layout_width="230dp"
                 android:layout_height="60dp"

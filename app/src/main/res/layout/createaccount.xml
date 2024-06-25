@@ -78,7 +78,7 @@
 
 
         <Button
-            android:id="@+id/signupbtn"
+            android:id="@+id/createAccountButton"
             style="@android:style/Widget.Button"
             android:layout_width="250dp"
             android:layout_height="65dp"
