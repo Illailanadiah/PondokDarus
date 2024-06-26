@@ -18,8 +18,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/payment_head"
-        android:layout_marginTop="35dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="25dp"
         android:textSize="35sp"
         android:textColor="@color/tepapagreen"
         android:textStyle="bold"
@@ -37,11 +37,9 @@
             android:orientation="vertical"
             android:padding="24dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="70dp">
+
+            <!-- Selection button  -->
+            <!-- "TO BE PAID (viewpayment.xml) , "PAID" (viewpayment2.xml)-->
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -61,11 +59,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginEnd="15dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="5dp"
                         android:layout_gravity="center_horizontal"
                         android:text="@string/bill_head"
-                        android:textAppearance="@style/header"
+                        android:textSize="16sp"
+                        android:textColor="@color/tepapagreen"
+                        android:textStyle="bold"
                         android:gravity="center_horizontal"
                         />
 
@@ -75,10 +75,12 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginEnd="15dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="5dp"
                         android:text="@string/amount_head"
-                        android:textAppearance="@style/header"
+                        android:textSize="16sp"
+                        android:textColor="@color/tepapagreen"
+                        android:textStyle="bold"
                         android:gravity="center_horizontal"
                         />
 
@@ -88,10 +90,12 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginEnd="10dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="5dp"
                         android:text="@string/detail_head"
-                        android:textAppearance="@style/header"
+                        android:textSize="16sp"
+                        android:textColor="@color/tepapagreen"
+                        android:textStyle="bold"
                         android:gravity="center_horizontal"
                         />
 
@@ -113,11 +117,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginEnd="15dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="5dp"
                         android:layout_gravity="center_horizontal"
                         android:text="@string/billname"
-                        style="@style/detail"
+                        android:textSize="16sp"
                         android:gravity="center_horizontal"
                         />
 
@@ -126,23 +130,29 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginStart="25dp"
-                        android:layout_marginEnd="25dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="5dp"
                         android:text="@string/amount"
-                        android:textAppearance="@style/paid"
+                        android:textColor="#4FAF6A"
                         android:gravity="center_horizontal"
+                        android:textStyle="bold"
+                        android:textSize="16sp"
                         />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="5dp"
                         android:layout_marginEnd="15dp"
                         android:gravity="center_horizontal"
                         android:text="@string/view"
-                        style="@style/header" />
+                        android:textStyle="bold"
+                        android:textSize="16sp"
+                        android:textColor="@color/tepapagreen"
+
+                         />
 
                 </LinearLayout>
 
@@ -152,5 +162,5 @@
             </LinearLayout>
 
         </LinearLayout>
-</LinearLayout>
+
 

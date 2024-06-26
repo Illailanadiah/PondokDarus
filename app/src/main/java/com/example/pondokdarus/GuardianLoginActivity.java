@@ -6,77 +6,88 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
+
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class GuardianLoginActivity extends AppCompatActivity {
 
-    private EditText inputEmail, inputPassword;
-    private Button loginbtn;
+    private EditText emailEditText, passwordEditText;
+    private Button loginButton;
     private ProgressBar progressBar;
+    private FirebaseAuth mAuth;
     private RadioGroup loginTypeRadioGroup;
-    private FirebaseAuth auth;
+    private RadioButton guardianRadioButton, staffRadioButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.guardianlogin);
 
-        // Initialize Firebase Auth
-        auth = FirebaseAuth.getInstance();
-
-        inputEmail = findViewById(R.id.email);
-        inputPassword = findViewById(R.id.password);
-        loginbtn = findViewById(R.id.loginbtn);
+        emailEditText = findViewById(R.id.email);
+        passwordEditText = findViewById(R.id.password);
+        loginButton = findViewById(R.id.loginbtn);
         progressBar = findViewById(R.id.progressBar);
         loginTypeRadioGroup = findViewById(R.id.loginTypeRadioGroup);
+        guardianRadioButton = findViewById(R.id.guardianRadioButton);
+        staffRadioButton = findViewById(R.id.staffRadioButton);
 
-        loginbtn.setOnClickListener(new View.OnClickListener() {
+        mAuth = FirebaseAuth.getInstance();
+
+        loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = inputEmail.getText().toString().trim();
-                String password = inputPassword.getText().toString().trim();
-
-                if (email.isEmpty()) {
-                    Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                if (password.isEmpty()) {
-                    Toast.makeText(getApplicationContext(), "Enter password!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                progressBar.setVisibility(View.VISIBLE);
-
-                // Authenticate user
-                auth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(GuardianLoginActivity.this, new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                progressBar.setVisibility(View.GONE);
-                                if (task.isSuccessful()) {
-                                    int selectedId = loginTypeRadioGroup.getCheckedRadioButtonId();
-                                    if (selectedId == R.id.staffRadioButton) {
-                                        Intent intent = new Intent(GuardianLoginActivity.this, StaffLoginActivity.class);
-                                        startActivity(intent);
-                                    } else {
-                                        // Handle guardian login
-                                        Intent intent = new Intent(GuardianLoginActivity.this, GuardianHomePage.class);
-                                        startActivity(intent);
-                                    }
-                                } else {
-                                    Toast.makeText(GuardianLoginActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
+                loginUser();
             }
         });
+
+        guardianRadioButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(GuardianLoginActivity.this, GuardianLoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        staffRadioButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(GuardianLoginActivity.this, StaffLoginActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void loginUser() {
+        String email = emailEditText.getText().toString().trim();
+        String password = passwordEditText.getText().toString().trim();
+
+        if (email.isEmpty() || password.isEmpty()) {
+            Toast.makeText(GuardianLoginActivity.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        progressBar.setVisibility(View.VISIBLE);
+
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, task -> {
+                    progressBar.setVisibility(View.GONE);
+                    if (task.isSuccessful()) {
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        Toast.makeText(GuardianLoginActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
+                        // Redirect to Guardian Home Page
+                        Intent intent = new Intent(GuardianLoginActivity.this, GuardianHomePage.class);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        Toast.makeText(GuardianLoginActivity.this, "Authentication failed", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 }
