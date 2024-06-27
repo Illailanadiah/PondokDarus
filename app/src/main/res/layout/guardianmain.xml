@@ -10,14 +10,14 @@
 
     <!-- Tool bar -->
     <include
-        layout="@layout/appbar"/>
+        layout="@layout/toolbar_main"/>
 
     <!-- Contact Button -->
     <Button
         android:id="@+id/contact_btn"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/salamBar"
+        android:layout_below="@id/toolbar_main"
         android:layout_marginTop="185dp"
         android:layout_centerHorizontal="true"
         android:background="@drawable/brown_bkg"

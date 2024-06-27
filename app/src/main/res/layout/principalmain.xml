@@ -5,7 +5,7 @@
     android:background="@drawable/salamfinance_bg"
     tools:context=".MainActivity">
 
-    <include layout="@layout/appbar"/>
+    <include layout="@layout/toolbar_main"/>
 
     <LinearLayout
         android:id="@+id/contentLayout"
