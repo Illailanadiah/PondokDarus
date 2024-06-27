@@ -10,9 +10,7 @@
     android:orientation="vertical"
     >
 
-
-    <include layout="@layout/appbar"/>
-
+    <include layout="@layout/toolbar_general"/>
 
     <TextView
         android:layout_width="match_parent"

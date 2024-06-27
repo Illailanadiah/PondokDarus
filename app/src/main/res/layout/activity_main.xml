@@ -15,17 +15,40 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
-    <Button
-        android:id="@+id/mainbtn"
-        android:layout_width="250dp"
+    <TextView
+        android:id="@+id/salamText"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/salamLogo"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
-        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:text="LOGIN AS :"
+        android:textStyle="bold"
+        android:textColor="@color/tepapagreen"
+        android:textSize="20sp"/>
+
+    <Button
+        android:id="@+id/guardian_login"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/salamText"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="25dp"
         android:background="@drawable/tepagreen_bkg"
         android:padding="20dp"
-        android:text="@string/login_btn"
+        android:text="GUARDIAN"
+        android:textColor="@color/satin"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/staff_login"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/guardian_login"
+        android:layout_centerInParent="true"
+        android:background="@drawable/tepagreen_bkg"
+        android:padding="20dp"
+        android:text="STAFF"
         android:textColor="@color/satin"
         android:textSize="20sp" />
 

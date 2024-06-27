@@ -8,7 +8,7 @@
     android:orientation="vertical"
     tools:context=".SignUpActivity$CreateAccountActivity">
 
-    <include layout="@layout/appbar"/>
+    <include layout="@layout/toolbar_general" />
 
 
     <TextView

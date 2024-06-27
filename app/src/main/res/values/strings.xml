@@ -138,5 +138,8 @@
     <string name="clerk_role">Clerk</string>
     <string name="principal_role">Principal</string>
 
+    <!-- Contact Us details -->
+    <string name="contactheader">CONTACT US</string>
+
 
 </resources>

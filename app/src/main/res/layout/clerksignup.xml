@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background2"
-    tools:context=".SignUpActivity$ClerkSignUpActivity">
+    tools:context=".SignUpActivity">
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,7 +15,7 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <include layout="@layout/appbar"/>
+        <include layout="@layout/toolbar_general" />
 
         <TextView
             android:layout_width="match_parent"

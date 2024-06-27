@@ -21,41 +21,16 @@
            >
 
 
-            <RadioGroup
-                android:id="@+id/loginTypeRadioGroup"
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:orientation="horizontal"
-                android:gravity="center">
+                android:text="@string/guardian_log"
+                android:textSize="25sp"
+                android:layout_marginTop="20dp"
+                android:letterSpacing="0.2"
+                android:textColor="@color/tepapagreen"
+                android:textStyle="bold"/>
 
-                <RadioButton
-                    android:id="@+id/guardianRadioButton"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/guardian_log"
-                    android:textSize="16sp"
-                    android:gravity="center"
-                    android:background="@drawable/selected_background"
-                    android:button="@null"
-                    android:padding="16dp"
-                    android:textColor="@color/satin"/>
-
-                <RadioButton
-                    android:id="@+id/staffRadioButton"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/staff_log"
-                    android:textSize="16sp"
-                    android:gravity="center"
-                    android:background="@drawable/default_background"
-                    android:button="@null"
-                    android:padding="16dp"
-                    android:textColor="@color/tepapagreen"/>
-
-            </RadioGroup>
 
 
 

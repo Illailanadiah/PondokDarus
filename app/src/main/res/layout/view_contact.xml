@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background2"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar_general"/>
+
+    <LinearLayout
+        android:id="@+id/contact_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/contact_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/contactustop_bg"
+            android:padding="10dp"
+            android:text="@string/contactheader"
+            android:textColor="@color/satin"
+            android:textStyle="bold"
+            android:textSize="25sp" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/contact_container"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/contactus_bg"
+            android:padding="20dp"
+            >
+
+            <ImageView
+                android:id="@+id/contact_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:padding="20dp"
+                android:src="@drawable/baseline_phone_24"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+            <TextView
+                android:id="@+id/contact_number"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:text="019-993 5858"
+                android:textColor="@color/satin"
+                android:textSize="12sp"
+                android:gravity="center_horizontal"
+                app:layout_constraintBottom_toBottomOf="@id/contact_phone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/contact_phone"
+                app:layout_constraintTop_toTopOf="@id/contact_phone" />
+
+            <ImageView
+                android:id="@+id/contact_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:padding="20dp"
+                android:src="@drawable/baseline_home_24"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/contact_phone"
+                android:layout_marginTop="20dp"/>
+
+            <TextView
+                android:id="@+id/address_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:text="263, TAMAN PURNAMA, \n20400 Kuala Terengganu, Terengganu"
+                android:textColor="@color/satin"
+                android:maxLines="2"
+                android:textSize="12sp"
+                android:gravity="center_horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/contact_add"
+                app:layout_constraintTop_toTopOf="@id/contact_add" />
+
+            <ImageView
+                android:id="@+id/contact_fb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:padding="20dp"
+                android:src="@drawable/facebook"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/contact_add"
+                android:layout_marginTop="20dp"/>
+
+            <TextView
+                android:id="@+id/facebook_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:text="Pondok Darussalam Kuala Ibai"
+                android:textColor="@color/satin"
+                android:textSize="12sp"
+                android:gravity="center_horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/contact_fb"
+                app:layout_constraintTop_toTopOf="@id/contact_fb" />
+
+            <ImageView
+                android:id="@+id/contact_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:padding="20dp"
+                android:src="@drawable/_contact"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/contact_fb"
+                android:layout_marginTop="20dp"/>
+
+            <TextView
+                android:id="@+id/email_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:text="Pondok Darussalam Kuala Ibai"
+                android:textColor="@color/satin"
+                android:textSize="12sp"
+                android:gravity="center_horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/contact_email"
+                app:layout_constraintTop_toTopOf="@id/contact_email" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</RelativeLayout>

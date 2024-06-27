@@ -10,7 +10,7 @@
     android:orientation="vertical"
     tools:context=".GuardianLoginActivity">
 
-    <include layout="@layout/appbar"/>
+    <include layout="@layout/toolbar_general"/>
 
 
     <TextView
