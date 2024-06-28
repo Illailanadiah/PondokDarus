@@ -8,8 +8,6 @@ import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 public class StaffLoginActivity extends AppCompatActivity {
@@ -18,7 +16,7 @@ public class StaffLoginActivity extends AppCompatActivity {
     private EditText passwordEditText;
     private Button loginButton;
     private TextView forgotPasswordTextView;
-    private TextView signupRedirectText;
+    private TextView signupRedirectTextView;
     private ProgressBar progressBar;
     private RadioGroup positionRadioGroup;
     private RadioButton clerkRadioButton;
@@ -33,7 +31,7 @@ public class StaffLoginActivity extends AppCompatActivity {
         passwordEditText = findViewById(R.id.password);
         loginButton = findViewById(R.id.loginbtn);
         forgotPasswordTextView = findViewById(R.id.forgotpswd);
-        signupRedirectText = findViewById(R.id.signupRedirectText);
+        signupRedirectTextView = findViewById(R.id.signupRedirectText);
         progressBar = findViewById(R.id.progressBar);
         positionRadioGroup = findViewById(R.id.positionRadioGroup);
         clerkRadioButton = findViewById(R.id.clerkRadioButton);
@@ -42,41 +40,35 @@ public class StaffLoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = emailEditText.getText().toString();
-                String password = passwordEditText.getText().toString();
-                int selectedPositionId = positionRadioGroup.getCheckedRadioButtonId();
-
-                // Add your login logic here based on the selected position
-
-                // Show a loading indicator
+                // Handle login logic here
                 progressBar.setVisibility(View.VISIBLE);
-
-                // Simulate a network call
-                new android.os.Handler().postDelayed(
-                        new Runnable() {
-                            public void run() {
-                                progressBar.setVisibility(View.GONE);
-                                Toast.makeText(StaffLoginActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
-                                // Navigate to another activity if needed
-                            }
-                        },
-                        3000);
+                // Add your login logic here
             }
         });
 
         forgotPasswordTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Handle forgot password click
-                Toast.makeText(StaffLoginActivity.this, "Forgot password clicked", Toast.LENGTH_SHORT).show();
+                // Handle forgot password logic here
             }
         });
 
-        signupRedirectText.setOnClickListener(new View.OnClickListener() {
+        signupRedirectTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Handle signup redirect click
-                Toast.makeText(StaffLoginActivity.this, "Sign up clicked", Toast.LENGTH_SHORT).show();
+                // Handle signup redirection here
+            }
+        });
+
+        positionRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                // Handle radio button selection change
+                if (checkedId == R.id.clerkRadioButton) {
+                    // Handle Clerk selected
+                } else if (checkedId == R.id.principalRadioButton) {
+                    // Handle Principal selected
+                }
             }
         });
     }
