@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/loginbg"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".StaffLoginActivity">
+
+    <LinearLayout
+        android:id="@+id/layoutlogin2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/padding_bg"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingHorizontal="20dp"
+        android:layout_marginTop="198dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/staff_log"
+            android:textSize="25sp"
+            android:layout_marginTop="20dp"
+            android:letterSpacing="0.2"
+            android:textColor="@color/tepapagreen"
+            android:textStyle="bold"/>
+
+
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="320dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="20dp"
+            android:autofillHints="no"
+            android:background="@drawable/text_bg"
+            android:drawableStart="@drawable/baseline_email_24"
+            android:drawablePadding="8dp"
+            android:gravity="center_vertical"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:padding="8dp"
+            android:textColor="@color/tepapagreen"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="320dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/text_bg"
+            android:drawableStart="@drawable/baseline_password_24"
+            android:drawablePadding="8dp"
+            android:gravity="center_vertical"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:padding="8dp"
+            android:textColor="@color/tepapagreen"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/forgotpswd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="@string/forgotpass"
+            android:textColor="@color/tepapagreen"
+            android:textColorLink="@color/claycreek"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/loginbtn"
+            style="@android:style/Widget.Button"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/tepagreen_bkg"
+            android:padding="8dp"
+            android:text="@string/login_btn"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+
+        <RadioGroup
+            android:id="@+id/positionRadioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <RadioButton
+                android:id="@+id/clerkRadioButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/outlinebtn"
+                android:button="@null"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="@string/clerk_log"
+                android:textColor="@color/tepapagreen"
+                android:textSize="16sp" />
+
+            <RadioButton
+                android:id="@+id/principalRadioButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/outlinebtn"
+                android:button="@null"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="@string/principal_log"
+                android:textColor="@color/tepapagreen"
+                android:textSize="16sp" />
+
+        </RadioGroup>
+
+
+
+        <TextView
+            android:id="@+id/signupRedirectText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="8dp"
+            android:padding="8dp"
+            android:text="@string/signup"
+            android:textColor="@color/tepapagreen"
+            android:textSize="15sp" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+
+
+    </LinearLayout>
+
+</LinearLayout>
+
+

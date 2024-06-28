@@ -16,8 +16,16 @@
     <color name="lightbrown">#C3C2AF</color>
     <color name="red">#D42F2F</color>
     <color name="cream">#C3C2AF</color>
-    <color name="colorPrimary">#8B846F</color>
+    <color name="brown">#8B846F</color>
+    <color name="colorPrimary">#BBC2AD</color>
     <color name="colorPrimaryDark">#1F4137</color>
     <color name="colorAccent">#E9E8D9</color>
     <color name="transparent">#33FFFFFF</color>
+
+    <!-- tab color -->
+
+        <color name="tab_selected">#E9E8D9</color>
+        <color name="tab_unselected">#C3C2AF</color>
+
+
 </resources>

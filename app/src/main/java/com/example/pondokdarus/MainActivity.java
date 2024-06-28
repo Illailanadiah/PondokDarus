@@ -9,19 +9,29 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button mainButton;
+    private Button guardianLoginButton;
+    private Button staffLoginButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mainButton = findViewById(R.id.mainbtn);
+        guardianLoginButton = findViewById(R.id.guardian_login);
+        staffLoginButton = findViewById(R.id.staff_login);
 
-        mainButton.setOnClickListener(new View.OnClickListener() {
+        guardianLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, GuardianLoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        staffLoginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, StaffLoginActivity.class);
                 startActivity(intent);
             }
         });

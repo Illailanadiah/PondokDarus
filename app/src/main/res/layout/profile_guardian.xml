@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background2"
+    android:gravity="center"
+    android:orientation="vertical"
+    >
+
+    <include layout="@layout/toolbar_general"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/payment_head"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="25dp"
+        android:textSize="35sp"
+        android:letterSpacing="0.2"
+        android:textColor="@color/tepapagreen"
+        android:textStyle="bold"
+        android:gravity="center"/>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <!-- Guardian's details -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/guardian_profile"
+                android:background="@drawable/profiletitle_bkg"
+                android:padding="10dp"
+                style="@style/profiletitle"
+                />
+
+            <!-- Guardian's details container -->
+            <LinearLayout
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/profiledetails_bkg"
+                android:padding="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/guardian_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/name"
+                    android:layout_margin="8dp"
+                    style="@style/profiledetail"
+                    />
+                <TextView
+                    android:id="@+id/guardian_ic_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ic_num"
+                    android:layout_margin="8dp"
+                    style="@style/profiledetail"
+                    />
+                <TextView
+                    android:id="@+id/guardian_phone_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/phoneNum"
+                    android:layout_margin="8dp"
+                    style="@style/profiledetail"
+                    />
+                <TextView
+                    android:id="@+id/guardian_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/email"
+                    android:layout_margin="8dp"
+                    style="@style/profiledetail"
+                    />
+                <TextView
+                    android:id="@+id/guardian_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/password"
+                    android:layout_margin="8dp"
+                    style="@style/profiledetail"
+                    />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Student's details -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="40dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/student_profile"
+                android:background="@drawable/profiletitle_bkg"
+                android:padding="10dp"
+                style="@style/profiletitle"
+                />
+
+            <!-- Student's details container -->
+            <LinearLayout
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/profiledetails_bkg"
+                android:padding="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/student_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/name"
+                    android:layout_margin="8dp"
+                    style="@style/profiledetail"
+                    />
+                <TextView
+                    android:id="@+id/student_ic_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ic_num"
+                    android:layout_margin="8dp"
+                    style="@style/profiledetail"
+                    />
+                <TextView
+                    android:id="@+id/student_phone_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/phoneNum"
+                    android:layout_margin="8dp"
+                    style="@style/profiledetail"
+                    />
+                <TextView
+                    android:id="@+id/student_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/email"
+                    android:layout_margin="8dp"
+                    style="@style/profiledetail"
+                    />
+                <TextView
+                    android:id="@+id/student_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/password"
+                    android:layout_margin="8dp"
+                    style="@style/profiledetail"
+                    />
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

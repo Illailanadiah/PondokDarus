@@ -82,7 +82,7 @@
                 android:textSize="15sp" />
 
             <Button
-                android:id="@+id/studentNextButton"
+                android:id="@+id/studenteditButton"
                 style="@android:style/Widget.Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

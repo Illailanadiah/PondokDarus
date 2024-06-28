@@ -13,7 +13,7 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.profile);
+        setContentView(R.layout.profile_guardian);
 
         // Initialize Guardian's profile views
         guardianNameTextView = findViewById(R.id.guardian_name);

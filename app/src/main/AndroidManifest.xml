@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PondokDarus">
-        >
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -21,7 +21,6 @@
         </activity>
         <activity android:name=".GuardianLoginActivity"/>
         <activity android:name=".SignUpActivity"/>
-        <activity android:name=".GuardianHomePage"/>
         <activity android:name=".StaffLoginActivity"/>
         <activity android:name=".PrincipalSignupActivity"/>
         <meta-data

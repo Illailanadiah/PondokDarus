@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background2"
+    tools:context=".EmanageDetailsActivity">
+
+    <include layout="@layout/toolbar_general"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@layout/toolbar_general"
+        android:paddingHorizontal="16dp"
+        android:background="@drawable/emanage_bg"
+        android:layout_marginTop="100dp"
+        >
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="35dp"
+            android:text="PAYMENT DETAILS \nFORM"
+            android:textSize="22sp"
+            android:textColor="@color/tepapagreen"
+            android:fontFamily="@font/poppins_semibold"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/bill_name_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:text="Bill name"
+            android:textColor="@color/tepapagreen" />
+
+        <EditText
+            android:id="@+id/bill_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/bill_name_hint"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="20dp"
+            android:hint="@string/billname"
+            android:textColorHint="@color/softbrown"
+            android:background="@drawable/edittext_bg"
+            android:padding="16dp"/>
+
+        <TextView
+            android:id="@+id/bill_details_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/bill_name"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:text="Bill details"
+            android:textColor="@color/tepapagreen" />
+
+        <EditText
+            android:id="@+id/bill_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/bill_details_hint"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="20dp"
+            android:textColorHint="@color/softbrown"
+            android:hint="bill details"
+            android:background="@drawable/edittext_bg"
+            android:padding="16dp"/>
+
+        <LinearLayout
+            android:id="@+id/amount_end_date_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/bill_details"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="20dp">
+
+                <TextView
+                    android:id="@+id/amount_hint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Amount"
+                    android:textColor="@color/tepapagreen" />
+
+                <EditText
+                    android:id="@+id/amount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:hint="@string/amount"
+                    android:textColorHint="@color/softbrown"
+                    android:background="@drawable/edittext_bg"
+                    android:padding="16dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/end_date_hint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="End date"
+                    android:textColor="@color/tepapagreen" />
+
+                <EditText
+                    android:id="@+id/end_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/edittext_bg"
+                    android:padding="16dp"
+                    android:drawablePadding="16dp"
+                    android:hint="@string/date"
+                    android:textColorHint="@color/softbrown"
+                    android:autofillHints="date"
+                    android:drawableEnd="@drawable/baseline_calendar_month_24"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/emanageSaveButton"
+            style="@android:style/Widget.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/amount_end_date_container"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/tepagreen_bkg"
+            android:drawablePadding="10dp"
+            android:drawableLeft="@drawable/baseline_save_alt_24"
+            android:padding="20dp"
+            android:text="SAVE"
+            android:textColor="@color/satin"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

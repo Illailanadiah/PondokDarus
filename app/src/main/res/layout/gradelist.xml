@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background2"
+    tools:context=".GradelistActivity"
+    >
+
+  <include layout="@layout/toolbar_general"/>
+
+    <Button
+        android:id="@+id/button_form1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar_general"
+        android:layout_marginTop="230dp"
+        android:layout_centerHorizontal="true"
+        android:text="FORM 1"
+        android:background="@drawable/gradelist_bg"
+        android:textColor="@color/satin"
+        android:textSize="18sp"
+        android:padding="20dp"/>
+
+    <Button
+        android:id="@+id/button_form2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/button_form1"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:text="FORM 2"
+        android:background="@drawable/gradelist_bg"
+        android:textColor="@color/satin"
+        android:textSize="18sp"
+        android:padding="20dp"/>
+
+    <Button
+        android:id="@+id/button_form3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/button_form2"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:text="FORM 3"
+        android:background="@drawable/gradelist_bg"
+        android:textColor="@color/satin"
+        android:textSize="18sp"
+        android:padding="20dp"/>
+
+    <Button
+        android:id="@+id/button_form4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/button_form3"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:text="FORM 4"
+        android:background="@drawable/gradelist_bg"
+        android:textColor="@color/satin"
+        android:textSize="18sp"
+        android:padding="20dp"/>
+
+    <Button
+        android:id="@+id/button_form5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/button_form4"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:text="FORM 5"
+        android:background="@drawable/gradelist_bg"
+        android:textColor="@color/satin"
+        android:textSize="18sp"
+        android:padding="20dp"/>
+</RelativeLayout>
