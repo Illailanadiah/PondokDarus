@@ -11,8 +11,7 @@
         android:id="@+id/salamLogo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/salamlogo"
-        android:layout_alignParentTop="true"
+        android:src="@drawable/salam_logo"
         android:layout_centerHorizontal="true" />
 
     <TextView
@@ -43,7 +42,7 @@
         android:id="@+id/staff_login"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="15dp"
         android:layout_below="@+id/guardian_login"
         android:layout_centerInParent="true"
         android:background="@drawable/tepagreen_bkg"

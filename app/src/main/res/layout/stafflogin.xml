@@ -1,34 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/loginbg"
-    android:gravity="center"
-    android:orientation="vertical"
     tools:context=".StaffLoginActivity">
 
+    <include layout="@layout/toolbar_login"/>
+
     <LinearLayout
-        android:id="@+id/layoutlogin2"
+        android:id="@+id/layout_stafflog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar_general"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="270dp"
         android:background="@drawable/padding_bg"
-        android:gravity="center_horizontal"
         android:orientation="vertical"
-        android:paddingHorizontal="20dp"
-        android:layout_marginTop="198dp">
+        android:padding="20dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/staff_log"
-            android:textSize="25sp"
-            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
             android:letterSpacing="0.2"
+            android:text="@string/staff_log"
             android:textColor="@color/tepapagreen"
-            android:textStyle="bold"/>
-
+            android:textSize="25sp"
+            android:textStyle="bold" />
 
 
         <EditText
@@ -66,7 +67,7 @@
             android:id="@+id/forgotpswd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="8dp"
             android:gravity="center"
             android:padding="5dp"
             android:text="@string/forgotpass"
@@ -79,7 +80,7 @@
             style="@android:style/Widget.Button"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="16dp"
             android:background="@drawable/tepagreen_bkg"
             android:padding="8dp"
             android:text="@string/login_btn"
@@ -91,20 +92,21 @@
             android:id="@+id/positionRadioGroup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <RadioButton
                 android:id="@+id/clerkRadioButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@drawable/outlinebtn"
+                android:background="@drawable/radiobtn_bg"
                 android:button="@null"
                 android:gravity="center"
                 android:padding="16dp"
                 android:text="@string/clerk_log"
-                android:textColor="@color/tepapagreen"
+                android:textColor="@color/radiobtn_textcolor"
                 android:textSize="16sp" />
 
             <RadioButton
@@ -112,16 +114,15 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@drawable/outlinebtn"
+                android:background="@drawable/radiobtn_bg"
                 android:button="@null"
                 android:gravity="center"
                 android:padding="16dp"
                 android:text="@string/principal_log"
-                android:textColor="@color/tepapagreen"
+                android:textColor="@color/radiobtn_textcolor"
                 android:textSize="16sp" />
 
         </RadioGroup>
-
 
 
         <TextView
@@ -129,7 +130,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"
             android:padding="8dp"
             android:text="@string/signup"
@@ -146,6 +147,6 @@
 
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>
 
 
