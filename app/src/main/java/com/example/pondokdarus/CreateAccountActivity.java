@@ -84,7 +84,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                             Toast.makeText(CreateAccountActivity.this, "Account created", Toast.LENGTH_SHORT).show();
 
                             // Optionally, navigate to another activity
-                            // Intent intent = new Intent(CreateAccountActivity.this, NextActivity.class);
+                             Intent intent = new Intent(CreateAccountActivity.this, GuardianLoginActivity.class);
                             // startActivity(intent);
                         }
                     } else {

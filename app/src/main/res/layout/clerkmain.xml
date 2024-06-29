@@ -32,7 +32,7 @@
                     android:id="@+id/welcomeMessage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
+                    android:layout_marginStart="20dp"
                     android:text="@string/hi"
                     android:textColor="#2C4D3E"
                     android:textStyle="bold"
@@ -52,7 +52,7 @@
                 android:id="@+id/welcomeSubMessage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
+                android:layout_marginStart="20dp"
                 android:text="@string/welcome"
                 android:textColor="#2C4D3E"
                 android:textStyle="bold"
@@ -126,7 +126,7 @@
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
-        <!-- Report button -->
+        <!-- Manage button -->
         <Button
             android:id="@+id/payment_btn"
             android:layout_width="300dp"

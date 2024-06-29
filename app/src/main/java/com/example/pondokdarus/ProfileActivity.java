@@ -1,6 +1,9 @@
 package com.example.pondokdarus;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,7 +12,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     private TextView guardianNameTextView, guardianICNumTextView, guardianPhoneNumTextView, guardianEmailTextView, guardianPasswordTextView;
     private TextView studentNameTextView, studentICNumTextView, studentPhoneNumTextView, studentEmailTextView, studentPasswordTextView;
-
+    private ImageView backButton,editButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +32,11 @@ public class ProfileActivity extends AppCompatActivity {
         studentEmailTextView = findViewById(R.id.student_email);
         studentPasswordTextView = findViewById(R.id.student_password);
 
+        //button appbar
+        backButton = findViewById(R.id.back_icon);
+        editButton = findViewById(R.id.edit_icon);
+
+
         // Populate Guardian's profile
         guardianNameTextView.setText("John Doe");
         guardianICNumTextView.setText("IC: 123456789");
@@ -42,5 +50,25 @@ public class ProfileActivity extends AppCompatActivity {
         studentPhoneNumTextView.setText("Phone: 098-7654321");
         studentEmailTextView.setText("Email: janedoe@example.com");
         studentPasswordTextView.setText("Password: ********");
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProfileActivity.this, GuardianMainActivity.class);
+                startActivity(intent);
+                finish();
+
+            }
+        });
+
+        editButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProfileActivity.this, GuardianEditProfileActivity.class);
+                startActivity(intent);
+                finish();
+
+            }
+        });
     }
 }

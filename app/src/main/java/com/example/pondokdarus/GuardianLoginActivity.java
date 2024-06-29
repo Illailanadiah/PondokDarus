@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,6 +23,7 @@ public class GuardianLoginActivity extends AppCompatActivity {
     private TextView signupRedirectTextView;
     private ProgressBar progressBar;
     private FirebaseAuth mAuth;
+    private ImageView backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,7 @@ public class GuardianLoginActivity extends AppCompatActivity {
         forgotPasswordTextView = findViewById(R.id.forgotpswd);
         signupRedirectTextView = findViewById(R.id.signupRedirectText);
         progressBar = findViewById(R.id.progressBar);
+        backButton = findViewById(R.id.back_icon);
 
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
@@ -90,6 +93,16 @@ public class GuardianLoginActivity extends AppCompatActivity {
                 Intent intent = new Intent(GuardianLoginActivity.this, StudentSignUpActivity.class);
                 startActivity(intent);
                 finish();
+            }
+        });
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(GuardianLoginActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+
             }
         });
     }

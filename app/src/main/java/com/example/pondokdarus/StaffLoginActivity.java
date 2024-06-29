@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -26,6 +27,7 @@ public class StaffLoginActivity extends AppCompatActivity {
     private RadioButton clerkRadioButton;
     private RadioButton principalRadioButton;
     private FirebaseAuth mAuth;
+    private ImageView backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,7 @@ public class StaffLoginActivity extends AppCompatActivity {
         positionRadioGroup = findViewById(R.id.positionRadioGroup);
         clerkRadioButton = findViewById(R.id.clerkRadioButton);
         principalRadioButton = findViewById(R.id.principalRadioButton);
+        backButton = findViewById(R.id.back_icon);
 
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
@@ -103,7 +106,9 @@ public class StaffLoginActivity extends AppCompatActivity {
         signupRedirectTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Handle signup redirection here
+                Intent intent = new Intent(StaffLoginActivity.this, StaffSignUpActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
 
@@ -116,6 +121,16 @@ public class StaffLoginActivity extends AppCompatActivity {
                 } else if (checkedId == R.id.principalRadioButton) {
                     // Handle Principal selected
                 }
+            }
+        });
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(StaffLoginActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+
             }
         });
     }
