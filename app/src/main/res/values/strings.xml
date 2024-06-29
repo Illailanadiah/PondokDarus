@@ -83,7 +83,7 @@
     </string-array>
 
     <!-- Grade list -->
-    <array name="grade_list">
+    <string-array name="grade_list">
 
         <item>FROM 1</item>
         <item>FROM 2</item>
@@ -91,7 +91,7 @@
         <item>FROM 4</item>
         <item>FROM 5</item>
 
-    </array>
+    </string-array>
 
     <!-- Payment Page -->
 

@@ -18,7 +18,7 @@ public class StaffLoginActivity extends AppCompatActivity {
 
     private EditText emailEditText;
     private EditText passwordEditText;
-    private Button loginButton;
+    private Button staffloginButton;
     private TextView forgotPasswordTextView;
     private TextView signupRedirectTextView;
     private ProgressBar progressBar;
@@ -34,7 +34,7 @@ public class StaffLoginActivity extends AppCompatActivity {
 
         emailEditText = findViewById(R.id.email);
         passwordEditText = findViewById(R.id.password);
-        loginButton = findViewById(R.id.loginbtn);
+        staffloginButton = findViewById(R.id.staffloginbtn);
         forgotPasswordTextView = findViewById(R.id.forgotpswd);
         signupRedirectTextView = findViewById(R.id.signupRedirectText);
         progressBar = findViewById(R.id.progressBar);
@@ -45,7 +45,7 @@ public class StaffLoginActivity extends AppCompatActivity {
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
 
-        loginButton.setOnClickListener(new View.OnClickListener() {
+        staffloginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String email = emailEditText.getText().toString().trim();

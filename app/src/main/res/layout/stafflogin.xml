@@ -76,7 +76,7 @@
             android:textSize="15sp" />
 
         <Button
-            android:id="@+id/loginbtn"
+            android:id="@+id/staffloginbtn"
             style="@android:style/Widget.Button"
             android:layout_width="match_parent"
             android:layout_height="60dp"

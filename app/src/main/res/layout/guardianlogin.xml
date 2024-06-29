@@ -79,7 +79,7 @@
                 android:textSize="15sp" />
 
             <Button
-                android:id="@+id/loginbtn"
+                android:id="@+id/guardianloginbtn"
                 style="@android:style/Widget.Button"
                 android:layout_gravity="center"
                 android:layout_width="240dp"

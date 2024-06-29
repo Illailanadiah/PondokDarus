@@ -1,10 +1,13 @@
 package com.example.pondokdarus;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class PrincipalMainActivity extends AppCompatActivity {
@@ -17,6 +20,7 @@ public class PrincipalMainActivity extends AppCompatActivity {
     private TextView principalId;
     private TextView principalRole;
     private Button manageButton;
+    private ImageView logoutIcon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +40,16 @@ public class PrincipalMainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Handle manage button click
+            }
+        });
+
+        logoutIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(PrincipalMainActivity.this, "Logout clicked", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(PrincipalMainActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }

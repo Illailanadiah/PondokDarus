@@ -20,12 +20,21 @@
             </intent-filter>
         </activity>
         <activity android:name=".GuardianLoginActivity"/>
-        <activity android:name=".SignUpActivity"/>
+        <activity android:name=".GuardianMainActivity"/>
         <activity android:name=".StaffLoginActivity"/>
-        <activity android:name=".PrincipalSignupActivity"/>
+        <activity android:name=".PrincipalMainActivity"/>
+        <activity android:name=".ClerkMainActivity"/>
+        <activity android:name=".ViewContactActivity"/>
+        <activity android:name=".PaymentActivity"/>
+        <activity android:name=".ProfileActivity"/>
+        <activity android:name=".StudentSignUpActivity"/>
+        <activity android:name=".GuardianSignUpActivity"/>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
     </application>
 
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

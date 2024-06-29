@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background2"
     android:gravity="center"
     android:orientation="vertical"
-    >
+    tools:context=".PaymentActivity">
 
     <include layout="@layout/toolbar_general"/>
 
@@ -25,7 +25,7 @@
 
 
         <LinearLayout
-            android:id="@+id/linearLayout"
+            android:id="@+id/tobepaid_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/paddingtopcorner_bg"
@@ -37,10 +37,49 @@
             <!-- Selection button  -->
             <!-- "TO BE PAID (viewpayment.xml) , "PAID" (viewpayment2.xml)-->
 
-            <LinearLayout
+            <RadioGroup
+                android:id="@+id/paymentRadioGroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
                 android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/tobePaid_RadioButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobtn_bg"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:padding="16dp"
+                    android:text="TO BE PAID"
+                    android:textColor="@color/radiobtn_textcolor"
+                    android:textSize="16sp" />
+
+                <RadioButton
+                    android:id="@+id/paid_RadioButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobtn_bg"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:padding="16dp"
+                    android:text="PAID"
+                    android:textColor="@color/radiobtn_textcolor"
+                    android:textSize="16sp" />
+
+            </RadioGroup>
+
+            <!--integrate to firebase-->
+            <LinearLayout
+                android:id="@+id/header_tobepaid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
 
                 <CheckBox
                     android:id="@+id/headercheck"
@@ -74,7 +113,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginStart="5dp"
                     android:layout_marginEnd="5dp"
-                    android:text="@string/amount_head"
+                    android:text="@string/endDate_head"
                     android:textSize="16sp"
                     android:textColor="@color/tepapagreen"
                     android:textStyle="bold"
@@ -89,7 +128,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginStart="5dp"
                     android:layout_marginEnd="5dp"
-                    android:text="@string/detail_head"
+                    android:text="@string/amount_head"
                     android:textSize="16sp"
                     android:textColor="@color/tepapagreen"
                     android:textStyle="bold"
@@ -100,6 +139,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/bill_item_tobepaid"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -113,6 +153,7 @@
                     android:layout_marginEnd="5dp"/>
 
                 <TextView
+                    android:id="@+id/billname_unpaid"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
@@ -124,7 +165,9 @@
                     android:gravity="center_horizontal"
                     />
 
+                <!-- integrate to date format [dd/mm/yy] -->
                 <TextView
+                    android:id="@+id/date_unpaid"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
@@ -138,6 +181,7 @@
                     />
 
                 <TextView
+                    android:id="@+id/amount_unpaid"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"

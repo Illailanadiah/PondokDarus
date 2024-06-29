@@ -8,7 +8,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -17,7 +17,7 @@ public class GuardianLoginActivity extends AppCompatActivity {
 
     private EditText emailEditText;
     private EditText passwordEditText;
-    private Button loginButton;
+    private Button guardianloginButton;
     private TextView forgotPasswordTextView;
     private TextView signupRedirectTextView;
     private ProgressBar progressBar;
@@ -30,7 +30,7 @@ public class GuardianLoginActivity extends AppCompatActivity {
 
         emailEditText = findViewById(R.id.email);
         passwordEditText = findViewById(R.id.password);
-        loginButton = findViewById(R.id.loginbtn);
+        guardianloginButton = findViewById(R.id.guardianloginbtn);
         forgotPasswordTextView = findViewById(R.id.forgotpswd);
         signupRedirectTextView = findViewById(R.id.signupRedirectText);
         progressBar = findViewById(R.id.progressBar);
@@ -38,7 +38,7 @@ public class GuardianLoginActivity extends AppCompatActivity {
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
 
-        loginButton.setOnClickListener(new View.OnClickListener() {
+        guardianloginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String email = emailEditText.getText().toString().trim();
@@ -87,7 +87,9 @@ public class GuardianLoginActivity extends AppCompatActivity {
         signupRedirectTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Handle signup redirection here
+                Intent intent = new Intent(GuardianLoginActivity.this, StudentSignUpActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }
