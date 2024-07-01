@@ -83,7 +83,7 @@
     </string-array>
 
     <!-- Grade list -->
-    <string-array name="grade_list">
+    <string-array name="form_list">
 
         <item>FROM 1</item>
         <item>FROM 2</item>
@@ -141,5 +141,5 @@
     <!-- Contact Us details -->
     <string name="contactheader">CONTACT US</string>
 
-
+    <string name="profile_head">PROFILE</string>
 </resources>

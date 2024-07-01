@@ -9,14 +9,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 
 public class CreateAccountActivity extends AppCompatActivity {
@@ -83,9 +81,9 @@ public class CreateAccountActivity extends AppCompatActivity {
 
                             Toast.makeText(CreateAccountActivity.this, "Account created", Toast.LENGTH_SHORT).show();
 
-                            // Optionally, navigate to another activity
-                             Intent intent = new Intent(CreateAccountActivity.this, GuardianLoginActivity.class);
-                            // startActivity(intent);
+                            // Navigate to ProfileActivity
+                            Intent intent = new Intent(CreateAccountActivity.this, ProfileActivity.class);
+                            startActivity(intent);
                         }
                     } else {
                         if (task.getException() instanceof FirebaseAuthUserCollisionException) {

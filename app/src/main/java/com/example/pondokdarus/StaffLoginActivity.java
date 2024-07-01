@@ -106,7 +106,7 @@ public class StaffLoginActivity extends AppCompatActivity {
         signupRedirectTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(StaffLoginActivity.this, StaffSignUpActivity.class);
+                Intent intent = new Intent(StaffLoginActivity.this, ClerkSignUpActivity.class);
                 startActivity(intent);
                 finish();
             }

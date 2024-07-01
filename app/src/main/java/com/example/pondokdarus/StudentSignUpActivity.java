@@ -2,7 +2,6 @@ package com.example.pondokdarus;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -29,7 +28,7 @@ public class StudentSignUpActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.studentsignup); // Ensure this is the correct layout file name
+        setContentView(R.layout.studentsignup);
 
         // Initialize Firebase Auth and Database
         mAuth = FirebaseAuth.getInstance();
@@ -39,12 +38,12 @@ public class StudentSignUpActivity extends AppCompatActivity {
         fullnameEditText = findViewById(R.id.fullname);
         icNumEditText = findViewById(R.id.ic_num);
         dobEditText = findViewById(R.id.DOB);
-        gradeSpinner = findViewById(R.id.grade_spinner);
+        gradeSpinner = findViewById(R.id.form_spinner);
         studentNextButton = findViewById(R.id.studentNextButton);
 
         // Set up the grade spinner with custom layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.grade_list, R.layout.spinner_item);
+                R.array.form_list, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         gradeSpinner.setAdapter(adapter);
 
@@ -62,7 +61,7 @@ public class StudentSignUpActivity extends AppCompatActivity {
         String dob = dobEditText.getText().toString().trim();
         String grade = gradeSpinner.getSelectedItem().toString();
 
-        if (TextUtils.isEmpty(fullname) || TextUtils.isEmpty(icNum) || TextUtils.isEmpty(dob) || TextUtils.isEmpty(grade)) {
+        if (fullname.isEmpty() || icNum.isEmpty() || dob.isEmpty() || grade.isEmpty()) {
             Toast.makeText(this, "Please fill out all fields", Toast.LENGTH_SHORT).show();
             return;
         }

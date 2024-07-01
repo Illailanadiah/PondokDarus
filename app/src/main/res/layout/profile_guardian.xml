@@ -13,7 +13,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/payment_head"
+        android:text="@string/profile_head"
         android:layout_marginTop="25dp"
         android:layout_marginBottom="25dp"
         android:textSize="35sp"
@@ -138,29 +138,22 @@
                     style="@style/profiledetail"
                     />
                 <TextView
-                    android:id="@+id/student_phone_num"
+                    android:id="@+id/student_DOB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/phoneNum"
+                    android:text="@string/DOB"
                     android:layout_margin="8dp"
                     style="@style/profiledetail"
                     />
                 <TextView
-                    android:id="@+id/student_email"
+                    android:id="@+id/student_Form"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/email"
+                    android:text="Form"
                     android:layout_margin="8dp"
                     style="@style/profiledetail"
                     />
-                <TextView
-                    android:id="@+id/student_password"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/password"
-                    android:layout_margin="8dp"
-                    style="@style/profiledetail"
-                    />
+
 
             </LinearLayout>
         </LinearLayout>

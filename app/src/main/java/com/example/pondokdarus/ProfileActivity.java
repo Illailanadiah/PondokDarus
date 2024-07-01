@@ -5,18 +5,36 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class ProfileActivity extends AppCompatActivity {
 
     private TextView guardianNameTextView, guardianICNumTextView, guardianPhoneNumTextView, guardianEmailTextView, guardianPasswordTextView;
-    private TextView studentNameTextView, studentICNumTextView, studentPhoneNumTextView, studentEmailTextView, studentPasswordTextView;
-    private ImageView backButton,editButton;
+    private TextView studentNameTextView, studentICNumTextView, studentDOBTextView, studentFormTextView;
+    private ImageView backButton, editButton;
+
+    private FirebaseAuth mAuth;
+    private DatabaseReference mDatabase;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile_guardian);
+
+        // Initialize Firebase Auth and Database
+        mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
 
         // Initialize Guardian's profile views
         guardianNameTextView = findViewById(R.id.guardian_name);
@@ -28,28 +46,15 @@ public class ProfileActivity extends AppCompatActivity {
         // Initialize Student's profile views
         studentNameTextView = findViewById(R.id.student_name);
         studentICNumTextView = findViewById(R.id.student_ic_num);
-        studentPhoneNumTextView = findViewById(R.id.student_phone_num);
-        studentEmailTextView = findViewById(R.id.student_email);
-        studentPasswordTextView = findViewById(R.id.student_password);
+        studentDOBTextView = findViewById(R.id.student_DOB);
+        studentFormTextView = findViewById(R.id.student_Form);
 
-        //button appbar
+        // Button appbar
         backButton = findViewById(R.id.back_icon);
         editButton = findViewById(R.id.edit_icon);
 
-
-        // Populate Guardian's profile
-        guardianNameTextView.setText("John Doe");
-        guardianICNumTextView.setText("IC: 123456789");
-        guardianPhoneNumTextView.setText("Phone: 012-3456789");
-        guardianEmailTextView.setText("Email: johndoe@example.com");
-        guardianPasswordTextView.setText("Password: ********");
-
-        // Populate Student's profile
-        studentNameTextView.setText("Jane Doe");
-        studentICNumTextView.setText("IC: 987654321");
-        studentPhoneNumTextView.setText("Phone: 098-7654321");
-        studentEmailTextView.setText("Email: janedoe@example.com");
-        studentPasswordTextView.setText("Password: ********");
+        // Populate profiles from Firebase
+        populateProfiles();
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,7 +62,6 @@ public class ProfileActivity extends AppCompatActivity {
                 Intent intent = new Intent(ProfileActivity.this, GuardianMainActivity.class);
                 startActivity(intent);
                 finish();
-
             }
         });
 
@@ -67,8 +71,67 @@ public class ProfileActivity extends AppCompatActivity {
                 Intent intent = new Intent(ProfileActivity.this, GuardianEditProfileActivity.class);
                 startActivity(intent);
                 finish();
-
             }
         });
+    }
+
+    private void populateProfiles() {
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            String uid = currentUser.getUid();
+            DatabaseReference userRef = mDatabase.child("users").child(uid);
+
+            // Populate Guardian's profile
+            userRef.child("guardian").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        String fullname = dataSnapshot.child("fullname").getValue(String.class);
+                        String icNum = dataSnapshot.child("ic_num").getValue(String.class);
+                        String phoneNum = dataSnapshot.child("phone_num").getValue(String.class);
+                        String email = currentUser.getEmail();
+                        // String password = ""; // Handle password display securely if needed
+
+                        guardianNameTextView.setText(fullname);
+                        guardianICNumTextView.setText("IC: " + icNum);
+                        guardianPhoneNumTextView.setText("Phone: " + phoneNum);
+                        guardianEmailTextView.setText("Email: " + email);
+                        guardianPasswordTextView.setText("Password: ********");
+                    } else {
+                        Toast.makeText(ProfileActivity.this, "Guardian profile not found", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    Toast.makeText(ProfileActivity.this, "Failed to load guardian profile", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            // Populate Student's profile
+            userRef.child("student").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        String fullname = dataSnapshot.child("fullname").getValue(String.class);
+                        String icNum = dataSnapshot.child("ic_num").getValue(String.class);
+                        String dob = dataSnapshot.child("dob").getValue(String.class);
+                        String form = dataSnapshot.child("grade").getValue(String.class);
+
+                        studentNameTextView.setText(fullname);
+                        studentICNumTextView.setText("IC: " + icNum);
+                        studentDOBTextView.setText("DOB: " + dob);
+                        studentFormTextView.setText("Form: " + form);
+                    } else {
+                        Toast.makeText(ProfileActivity.this, "Student profile not found", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    Toast.makeText(ProfileActivity.this, "Failed to load student profile", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
 }

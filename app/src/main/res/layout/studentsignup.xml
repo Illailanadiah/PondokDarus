@@ -79,9 +79,9 @@
             android:textSize="15sp" />
 
         <Spinner
-            android:id="@+id/grade_spinner"
-            android:layout_width="340dp"
-            android:layout_height="55dp"
+            android:id="@+id/form_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:background="@drawable/text_bg"
             android:gravity="center_vertical"

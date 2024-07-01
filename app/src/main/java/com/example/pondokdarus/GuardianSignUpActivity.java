@@ -10,7 +10,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -45,11 +44,18 @@ public class GuardianSignUpActivity extends AppCompatActivity {
         guardianNextButton = findViewById(R.id.guardianNextButton);
         backButton = findViewById(R.id.back_icon);
 
-
         guardianNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 saveGuardianInfo();
+            }
+        });
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(GuardianSignUpActivity.this, MainActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -82,18 +88,9 @@ public class GuardianSignUpActivity extends AppCompatActivity {
 
             Toast.makeText(this, "Guardian information saved", Toast.LENGTH_SHORT).show();
 
-            // Navigate to the next activity if needed
-             Intent intent = new Intent(GuardianSignUpActivity.this, CreateAccountActivity.class);
-             startActivity(intent);
-
+            // Navigate to CreateAccountActivity
+            Intent intent = new Intent(GuardianSignUpActivity.this, CreateAccountActivity.class);
+            startActivity(intent);
         }
-
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(GuardianSignUpActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 }

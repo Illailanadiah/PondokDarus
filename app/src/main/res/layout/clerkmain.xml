@@ -12,7 +12,7 @@
         android:id="@+id/contentLayout"
         android:layout_width="match_parent"
         android:layout_height="750dp"
-        android:layout_marginTop="230dp"
+        android:layout_marginTop="240dp"
         android:background="@drawable/paddingtopcorner_bg"
         android:gravity="center_horizontal"
         android:orientation="vertical"

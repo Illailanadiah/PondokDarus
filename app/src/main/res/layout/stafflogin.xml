@@ -31,6 +31,42 @@
             android:textSize="25sp"
             android:textStyle="bold" />
 
+        <RadioGroup
+            android:id="@+id/positionRadioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:background="@drawable/radiogroup_outlined_bg"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/clerkRadioButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/radiobtn_bg"
+                android:button="@null"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="@string/clerk_log"
+                android:textColor="@color/radiobtn_textcolor"
+                android:textSize="16sp" />
+
+            <RadioButton
+                android:id="@+id/principalRadioButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/radiobtn_bg"
+                android:button="@null"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="@string/principal_log"
+                android:textColor="@color/radiobtn_textcolor"
+                android:textSize="16sp" />
+
+        </RadioGroup>
 
         <EditText
             android:id="@+id/email"
@@ -88,41 +124,7 @@
             android:textSize="20sp" />
 
 
-        <RadioGroup
-            android:id="@+id/positionRadioGroup"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:gravity="center"
-            android:orientation="horizontal">
 
-            <RadioButton
-                android:id="@+id/clerkRadioButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobtn_bg"
-                android:button="@null"
-                android:gravity="center"
-                android:padding="16dp"
-                android:text="@string/clerk_log"
-                android:textColor="@color/radiobtn_textcolor"
-                android:textSize="16sp" />
-
-            <RadioButton
-                android:id="@+id/principalRadioButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobtn_bg"
-                android:button="@null"
-                android:gravity="center"
-                android:padding="16dp"
-                android:text="@string/principal_log"
-                android:textColor="@color/radiobtn_textcolor"
-                android:textSize="16sp" />
-
-        </RadioGroup>
 
 
         <TextView
