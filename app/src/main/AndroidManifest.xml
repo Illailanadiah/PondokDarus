@@ -32,10 +32,7 @@
         <activity android:name=".CreateAccountActivity"/>
         <activity android:name=".StudentEditProfileActivity"/>
         <activity android:name=".GuardianEditProfileActivity"/>
-        <activity android:name=".PrincipalSignUpActivity"/>
         <activity android:name=".ClerkSignUpActivity"/>
-        <activity android:name=".StaffSignUpActivity"/>
-
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
@@ -43,4 +40,5 @@
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 </manifest>

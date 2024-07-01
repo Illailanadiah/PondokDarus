@@ -2,7 +2,9 @@ package com.example.pondokdarus;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -44,6 +46,9 @@ public class GuardianSignUpActivity extends AppCompatActivity {
         guardianNextButton = findViewById(R.id.guardianNextButton);
         backButton = findViewById(R.id.back_icon);
 
+        icNumEditText.addTextChangedListener(icNumTextWatcher);
+        phoneNumEditText.addTextChangedListener(phoneNumTextWatcher);
+
         guardianNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,10 +59,77 @@ public class GuardianSignUpActivity extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(GuardianSignUpActivity.this, MainActivity.class);
+                Intent intent = new Intent(GuardianSignUpActivity.this, StudentSignUpActivity.class);
                 startActivity(intent);
             }
         });
+    }
+
+    private final TextWatcher icNumTextWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            // Not used
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            // Not used
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            formatICNum(s);
+        }
+    };
+
+    private final TextWatcher phoneNumTextWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            // Not used
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            // Not used
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            formatPhoneNumber(s);
+        }
+    };
+
+    private void formatICNum(Editable s) {
+        String input = s.toString().replaceAll("\\D", "");
+        StringBuilder formatted = new StringBuilder();
+        if (input.length() > 4) {
+            formatted.append(input.substring(0, 4)).append("-");
+            input = input.substring(4);
+        }
+        if (input.length() > 2) {
+            formatted.append(input.substring(0, 2)).append("-");
+            input = input.substring(2);
+        }
+        formatted.append(input);
+        icNumEditText.removeTextChangedListener(icNumTextWatcher);
+        icNumEditText.setText(formatted.toString());
+        icNumEditText.setSelection(formatted.length());
+        icNumEditText.addTextChangedListener(icNumTextWatcher);
+    }
+
+    private void formatPhoneNumber(Editable s) {
+        String input = s.toString().replaceAll("[^\\d]", ""); // Remove non-digits
+
+        if (input.length() >= 3) {
+            input = input.substring(0, 3) + "-" + input.substring(3);
+        }
+
+
+        // Set formatted text, preserving cursor position
+        phoneNumEditText.removeTextChangedListener(phoneNumTextWatcher);
+        phoneNumEditText.setText(input);
+        phoneNumEditText.setSelection(input.length());
+        phoneNumEditText.addTextChangedListener(phoneNumTextWatcher);
     }
 
     private void saveGuardianInfo() {

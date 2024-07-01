@@ -45,7 +45,7 @@
         <EditText
             android:id="@+id/fullname"
             android:layout_width="340dp"
-            android:layout_height="55dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:background="@drawable/text_bg"
             android:gravity="center_vertical"
@@ -54,10 +54,11 @@
             android:textColor="@color/tepapagreen"
             android:textSize="15sp" />
 
+        <!-- format text : ****-**-**** -->
         <EditText
             android:id="@+id/ic_num"
             android:layout_width="340dp"
-            android:layout_height="55dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:background="@drawable/text_bg"
             android:gravity="center_vertical"
@@ -66,10 +67,11 @@
             android:textColor="@color/tepapagreen"
             android:textSize="15sp" />
 
+        <!-- format text: dd/mm/yyyy -->
         <EditText
             android:id="@+id/DOB"
             android:layout_width="340dp"
-            android:layout_height="55dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:background="@drawable/text_bg"
             android:gravity="center_vertical"

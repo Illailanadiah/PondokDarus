@@ -50,10 +50,10 @@
     <!-- Strings related to Sign Up and profile -->
 
     <string name="name">Full Name</string>
-    <string name="ic_num">I/C number</string>
-    <string name="DOB">dd/mm/yy</string>
-    <string name="phoneNum">Phone number</string>
-    <string name="staffid">Staff ID</string>
+    <string name="ic_num">eg: 030219-09-4532</string>
+    <string name="DOB">eg: dd/mm/yy</string>
+    <string name="phoneNum">eg: 012-3456789</string>
+    <string name="staffid">eg: RG-0001</string>
     <string name="agreement">I agree that all the informations are correct</string>
     <string name="signin">"Already have an account ? <u>Sign in</u></string>
 
