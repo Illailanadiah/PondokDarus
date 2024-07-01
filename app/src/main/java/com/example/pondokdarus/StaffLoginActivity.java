@@ -112,25 +112,12 @@ public class StaffLoginActivity extends AppCompatActivity {
             }
         });
 
-        positionRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                // Handle radio button selection change
-                if (checkedId == R.id.clerkRadioButton) {
-                    // Handle Clerk selected
-                } else if (checkedId == R.id.principalRadioButton) {
-                    // Handle Principal selected
-                }
-            }
-        });
-
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(StaffLoginActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
-
             }
         });
     }

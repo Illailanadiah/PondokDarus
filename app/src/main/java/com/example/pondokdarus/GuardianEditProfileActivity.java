@@ -32,12 +32,12 @@ public class GuardianEditProfileActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        fullnameEditText = findViewById(R.id.fullname_edit);
-        icNumEditText = findViewById(R.id.ic_num_edit);
-        phoneNumEditText = findViewById(R.id.phonenum_edit);
+        fullnameEditText = findViewById(R.id.fullname);
+        icNumEditText = findViewById(R.id.ic_num);
+        phoneNumEditText = findViewById(R.id.phonenum);
         emailEditText = findViewById(R.id.email_edit);
         passwordEditText = findViewById(R.id.password_edit);
-        saveButton = findViewById(R.id.studentNextButton);
+        saveButton = findViewById(R.id.guardianNextButton);
         backButton = findViewById(R.id.back_icon);
 
         saveButton.setOnClickListener(new View.OnClickListener() {

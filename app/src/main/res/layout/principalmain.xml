@@ -36,6 +36,7 @@
                     android:textColor="#2C4D3E"
                     android:textStyle="bold"
                     android:textSize="25sp" />
+
                 <TextView
                     android:id="@+id/welcomeMessageName"
                     android:layout_width="wrap_content"
@@ -46,8 +47,6 @@
                     android:textStyle="bold"
                     android:textSize="25sp" />
             </LinearLayout>
-
-
 
             <TextView
                 android:id="@+id/welcomeSubMessage"
@@ -60,96 +59,86 @@
                 android:textSize="20sp" />
         </LinearLayout>
 
-
-        <!-- layout principal's profile -->
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:layout_marginTop="8dp"
-    >
-
-
-    <ImageView
-        android:id="@+id/principalImage"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/profilebkg"
-        android:padding="16dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/profile" />
-
-    <TextView
-        android:id="@+id/principalName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/name"
-        android:textColor="#2C4D3E"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        android:letterSpacing="0.1" />
-
-
-    <TextView
-        android:id="@+id/principalId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="8dp"
-        android:text="@string/staffid"
-        android:textColor="#2C4D3E"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        android:letterSpacing="0.1"
-        />
-
-    <TextView
-        android:id="@+id/principalRole"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/principal_role"
-        android:textColor="#2C4D3E"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        android:letterSpacing="0.1"/>
-
-</LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/paddingtopcorner_bg"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
-
-        <!-- Report button -->
-        <Button
-            android:id="@+id/payment_btn"
-            android:layout_width="300dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/tepagreen_bkg"
-            android:drawableTop="@drawable/report_money"
-            android:drawablePadding="10dp"
-            android:fontFamily="@font/poppins_semibold"
+            android:orientation="vertical"
+            android:layout_marginTop="8dp"
+            >
+
+            <ImageView
+                android:id="@+id/principalImage"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/profilebkg"
+                android:padding="16dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/profile" />
+
+            <TextView
+                android:id="@+id/principalName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/name"
+                android:textColor="#2C4D3E"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.1" />
+
+            <TextView
+                android:id="@+id/principalId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:text="@string/staffid"
+                android:textColor="#2C4D3E"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.1"
+                />
+
+            <TextView
+                android:id="@+id/principalRole"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/principal_role"
+                android:textColor="#2C4D3E"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.1"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/paddingtopcorner_bg"
             android:gravity="center_horizontal"
-            android:letterSpacing="0.2"
-            android:padding="25dp"
-            android:text="@string/report_btn"
-            android:textColor="@color/satin"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:orientation="vertical">
 
-
-    </LinearLayout>
-
-
+            <Button
+                android:id="@+id/payment_btn"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/tepagreen_bkg"
+                android:drawableTop="@drawable/report_money"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center_horizontal"
+                android:letterSpacing="0.2"
+                android:padding="25dp"
+                android:text="@string/report_btn"
+                android:textColor="@color/satin"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

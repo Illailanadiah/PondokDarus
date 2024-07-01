@@ -16,32 +16,31 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class StudentSignUpActivity extends AppCompatActivity {
 
-    private EditText fullnameEditText, icNumEditText, dobEditText;
+    private EditText fullnameEditText, icNumEditText;
     private Spinner formSpinner;
     private Button studentNextButton;
+    private ImageView backButton;
 
     private FirebaseAuth mAuth;
-    private DatabaseReference mDatabase;
-    private ImageView backButton;
+    private FirebaseFirestore mFirestore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.studentsignup);
 
-        // Initialize Firebase Auth and Database
+        // Initialize Firebase Auth and Firestore
         mAuth = FirebaseAuth.getInstance();
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mFirestore = FirebaseFirestore.getInstance();
 
         // Initialize views
         fullnameEditText = findViewById(R.id.fullname);
         icNumEditText = findViewById(R.id.ic_num);
-        dobEditText = findViewById(R.id.DOB);
         formSpinner = findViewById(R.id.form_spinner);
         studentNextButton = findViewById(R.id.studentNextButton);
         backButton = findViewById(R.id.back_icon);
@@ -53,7 +52,6 @@ public class StudentSignUpActivity extends AppCompatActivity {
         formSpinner.setAdapter(adapter);
 
         icNumEditText.addTextChangedListener(icNumTextWatcher);
-        dobEditText.addTextChangedListener(dobTextWatcher);
 
         studentNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,7 +63,7 @@ public class StudentSignUpActivity extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(StudentSignUpActivity.this, MainActivity.class);
+                Intent intent = new Intent(StudentSignUpActivity.this, GuardianLoginActivity.class);
                 startActivity(intent);
             }
         });
@@ -88,30 +86,13 @@ public class StudentSignUpActivity extends AppCompatActivity {
         }
     };
 
-    private final TextWatcher dobTextWatcher = new TextWatcher() {
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            // Not used
-        }
-
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-            // Not used
-        }
-
-        @Override
-        public void afterTextChanged(Editable s) {
-            formatDOB(s);
-        }
-    };
-
     private void formatICNum(Editable s) {
         String input = s.toString().replaceAll("\\D", "");
         StringBuilder formatted = new StringBuilder();
 
-        if (input.length() > 4) {
-            formatted.append(input.substring(0, 4)).append("-");
-            input = input.substring(4);
+        if (input.length() > 6) {
+            formatted.append(input.substring(0, 6)).append("-");
+            input = input.substring(6);
         }
         if (input.length() > 2) {
             formatted.append(input.substring(0, 2)).append("-");
@@ -125,33 +106,12 @@ public class StudentSignUpActivity extends AppCompatActivity {
         icNumEditText.addTextChangedListener(icNumTextWatcher);
     }
 
-    private void formatDOB(Editable s) {
-        String input = s.toString().replaceAll("\\D", "");
-        StringBuilder formatted = new StringBuilder();
-
-        if (input.length() >= 2) {
-            formatted.append(input.substring(0, 2)).append("/");
-            input = input.substring(2);
-        }
-        if (input.length() >= 2) {
-            formatted.append(input.substring(0, 2)).append("/");
-            input = input.substring(2);
-        }
-        formatted.append(input);
-
-        dobEditText.removeTextChangedListener(dobTextWatcher);
-        dobEditText.setText(formatted.toString());
-        dobEditText.setSelection(formatted.length());
-        dobEditText.addTextChangedListener(dobTextWatcher);
-    }
-
     private void saveStudentInfo() {
         String fullname = fullnameEditText.getText().toString().trim();
         String icNum = icNumEditText.getText().toString().trim();
-        String dob = dobEditText.getText().toString().trim();
         String form = formSpinner.getSelectedItem().toString();
 
-        if (fullname.isEmpty() || icNum.isEmpty() || dob.isEmpty() || form.isEmpty()) {
+        if (fullname.isEmpty() || icNum.isEmpty() || form.isEmpty()) {
             Toast.makeText(this, "Please fill out all fields", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -159,18 +119,19 @@ public class StudentSignUpActivity extends AppCompatActivity {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
             String uid = currentUser.getUid();
-            DatabaseReference studentRef = mDatabase.child("users").child(uid).child("student");
+            DocumentReference studentRef = mFirestore.collection("students").document(uid);
 
-            studentRef.child("fullname").setValue(fullname);
-            studentRef.child("ic_num").setValue(icNum);
-            studentRef.child("dob").setValue(dob);
-            studentRef.child("form").setValue(form);
+            Student student = new Student(fullname,icNum,form);
 
-            Toast.makeText(this, "Student information saved", Toast.LENGTH_SHORT).show();
-
-            // Navigate to GuardianSignUpActivity
-            Intent intent = new Intent(StudentSignUpActivity.this, GuardianSignUpActivity.class);
-            startActivity(intent);
+            studentRef.set(student).addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    Toast.makeText(StudentSignUpActivity.this, "Student information saved", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(StudentSignUpActivity.this, GuardianSignUpActivity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(StudentSignUpActivity.this, "Failed to save student information", Toast.LENGTH_SHORT).show();
+                }
+            });
         }
     }
 }

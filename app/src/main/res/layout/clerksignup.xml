@@ -32,7 +32,7 @@
         <LinearLayout
             android:id="@+id/clerk_signup_Layout"
             android:layout_width="match_parent"
-            android:layout_height="650dp"
+            android:layout_height="630dp"
             android:background="@drawable/paddingtopcorner_bg"
             android:gravity="center_horizontal"
             android:orientation="vertical"
@@ -74,26 +74,15 @@
                 android:textSize="15sp"
                 />
 
-            <CheckBox
-                android:id="@+id/agreement"
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:layout_marginTop="15dp"
-                android:drawablePadding="8dp"
-                android:text="@string/agreement"
-                android:textSize="14sp"
-                android:textColor="@color/tepapagreen"
-                android:buttonTint="@color/tepapagreen"/>
-
             <Button
-                android:id="@+id/clerkNextButton"
+                android:id="@+id/clerkSignUpButton"
                 style="@android:style/Widget.Button"
                 android:layout_width="230dp"
                 android:layout_height="65dp"
-                android:layout_marginTop="150dp"
+                android:layout_marginTop="180dp"
                 android:background="@drawable/tepagreen_bkg"
                 android:padding="8dp"
-                android:text="@string/next_btn"
+                android:text="@string/signup_btn"
                 android:textColor="@color/white"
                 android:textSize="20sp"/>
         </LinearLayout>

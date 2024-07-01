@@ -5,44 +5,40 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class ClerkSignUpActivity extends AppCompatActivity {
 
-    private EditText fullnameEditText, icNumEditText, staffIdEditText;
-    private CheckBox agreementCheckBox;
-    private Button clerkNextButton;
+    private EditText staffIdEditText;
+    private Button clerkSignUpButton;
 
     private FirebaseAuth mAuth;
-    private DatabaseReference mDatabase;
+    private FirebaseFirestore mFirestore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.clerksignup);
 
-        // Initialize Firebase Auth and Database
+        // Initialize Firebase Auth and Firestore
         mAuth = FirebaseAuth.getInstance();
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mFirestore = FirebaseFirestore.getInstance();
 
         // Initialize views
-        fullnameEditText = findViewById(R.id.fullname);
-        icNumEditText = findViewById(R.id.ic_num);
         staffIdEditText = findViewById(R.id.staffid);
-        agreementCheckBox = findViewById(R.id.agreement);
-        clerkNextButton = findViewById(R.id.clerkNextButton);
+        clerkSignUpButton = findViewById(R.id.clerkSignUpButton);
 
-        clerkNextButton.setOnClickListener(new View.OnClickListener() {
+        clerkSignUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 saveClerkInfo();
@@ -51,35 +47,30 @@ public class ClerkSignUpActivity extends AppCompatActivity {
     }
 
     private void saveClerkInfo() {
-        String fullname = fullnameEditText.getText().toString().trim();
-        String icNum = icNumEditText.getText().toString().trim();
         String staffId = staffIdEditText.getText().toString().trim();
-        boolean isAgreementChecked = agreementCheckBox.isChecked();
 
-        if (TextUtils.isEmpty(fullname) || TextUtils.isEmpty(icNum) || TextUtils.isEmpty(staffId)) {
-            Toast.makeText(this, "Please fill out all fields", Toast.LENGTH_SHORT).show();
+        if (TextUtils.isEmpty(staffId)) {
+            Toast.makeText(this, "Please enter your Staff ID", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        if (!isAgreementChecked) {
-            Toast.makeText(this, "You must agree to the terms", Toast.LENGTH_SHORT).show();
-            return;
-        }
+        String userId = mAuth.getCurrentUser().getUid();
+        DocumentReference clerkRef = mFirestore.collection("clerks").document(userId);
 
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser != null) {
-            String uid = currentUser.getUid();
-            DatabaseReference clerkRef = mDatabase.child("users").child(uid).child("clerk");
+        Clerk clerk = new Clerk(staffId);
 
-            clerkRef.child("fullname").setValue(fullname);
-            clerkRef.child("ic_num").setValue(icNum);
-            clerkRef.child("staff_id").setValue(staffId);
-
-            Toast.makeText(this, "Clerk information saved", Toast.LENGTH_SHORT).show();
-
-
-             Intent intent = new Intent(ClerkSignUpActivity.this, CreateAccountActivity.class);
-             startActivity(intent);
-        }
+        clerkRef.set(clerk).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    Toast.makeText(ClerkSignUpActivity.this, "Clerk information saved", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(ClerkSignUpActivity.this, StaffLoginActivity.class);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    Toast.makeText(ClerkSignUpActivity.this, "Failed to save clerk information", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 }

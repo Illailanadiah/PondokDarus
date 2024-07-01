@@ -51,7 +51,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         signInTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CreateAccountActivity.this, MainActivity.class);
+                Intent intent = new Intent(CreateAccountActivity.this, GuardianMainActivity.class);
                 startActivity(intent);
             }
         });
@@ -82,7 +82,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                             Toast.makeText(CreateAccountActivity.this, "Account created", Toast.LENGTH_SHORT).show();
 
                             // Navigate to ProfileActivity
-                            Intent intent = new Intent(CreateAccountActivity.this, ProfileActivity.class);
+                            Intent intent = new Intent(CreateAccountActivity.this, GuardianLoginActivity.class);
                             startActivity(intent);
                         }
                     } else {

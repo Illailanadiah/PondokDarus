@@ -12,11 +12,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -25,16 +23,16 @@ public class ProfileActivity extends AppCompatActivity {
     private ImageView backButton, editButton;
 
     private FirebaseAuth mAuth;
-    private DatabaseReference mDatabase;
+    private FirebaseFirestore mFirestore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile_guardian);
 
-        // Initialize Firebase Auth and Database
+        // Initialize Firebase Auth and Firestore
         mAuth = FirebaseAuth.getInstance();
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mFirestore = FirebaseFirestore.getInstance();
 
         // Initialize Guardian's profile views
         guardianNameTextView = findViewById(R.id.guardian_name);
@@ -79,18 +77,17 @@ public class ProfileActivity extends AppCompatActivity {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
             String uid = currentUser.getUid();
-            DatabaseReference userRef = mDatabase.child("users").child(uid);
 
             // Populate Guardian's profile
-            userRef.child("guardian").addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    if (dataSnapshot.exists()) {
-                        String fullname = dataSnapshot.child("fullname").getValue(String.class);
-                        String icNum = dataSnapshot.child("ic_num").getValue(String.class);
-                        String phoneNum = dataSnapshot.child("phone_num").getValue(String.class);
+            DocumentReference guardianRef = mFirestore.collection("guardians").document(uid);
+            guardianRef.get().addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        String fullname = document.getString("fullname");
+                        String icNum = document.getString("icNum");
+                        String phoneNum = document.getString("phoneNum");
                         String email = currentUser.getEmail();
-                        // String password = ""; // Handle password display securely if needed
 
                         guardianNameTextView.setText(fullname);
                         guardianICNumTextView.setText("IC: " + icNum);
@@ -100,23 +97,21 @@ public class ProfileActivity extends AppCompatActivity {
                     } else {
                         Toast.makeText(ProfileActivity.this, "Guardian profile not found", Toast.LENGTH_SHORT).show();
                     }
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
+                } else {
                     Toast.makeText(ProfileActivity.this, "Failed to load guardian profile", Toast.LENGTH_SHORT).show();
                 }
             });
 
             // Populate Student's profile
-            userRef.child("student").addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    if (dataSnapshot.exists()) {
-                        String fullname = dataSnapshot.child("fullname").getValue(String.class);
-                        String icNum = dataSnapshot.child("ic_num").getValue(String.class);
-                        String dob = dataSnapshot.child("dob").getValue(String.class);
-                        String form = dataSnapshot.child("grade").getValue(String.class);
+            DocumentReference studentRef = mFirestore.collection("students").document(uid);
+            studentRef.get().addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        String fullname = document.getString("fullname");
+                        String icNum = document.getString("icNum");
+                        String dob = document.getString("dob");
+                        String form = document.getString("form");
 
                         studentNameTextView.setText(fullname);
                         studentICNumTextView.setText("IC: " + icNum);
@@ -125,10 +120,7 @@ public class ProfileActivity extends AppCompatActivity {
                     } else {
                         Toast.makeText(ProfileActivity.this, "Student profile not found", Toast.LENGTH_SHORT).show();
                     }
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
+                } else {
                     Toast.makeText(ProfileActivity.this, "Failed to load student profile", Toast.LENGTH_SHORT).show();
                 }
             });
