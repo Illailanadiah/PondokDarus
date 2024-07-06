@@ -25,6 +25,7 @@ public class PaymentActivity extends AppCompatActivity {
     private RadioGroup paymentRadioGroup;
     private RadioButton tobePaidRadioButton, paidRadioButton;
     private Button payButton;
+    private LinearLayout headerToBePaid, headerPaid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,8 @@ public class PaymentActivity extends AppCompatActivity {
         tobePaidRadioButton = findViewById(R.id.tobePaid_RadioButton);
         paidRadioButton = findViewById(R.id.paid_RadioButton);
         payButton = findViewById(R.id.paybtn);
+        headerToBePaid = findViewById(R.id.header_tobepaid);
+        headerPaid = findViewById(R.id.header_paid);
 
         paymentRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -46,11 +49,15 @@ public class PaymentActivity extends AppCompatActivity {
                 if (checkedId == R.id.tobePaid_RadioButton) {
                     loadToBePaidBills();
                     toBePaidLayout.setVisibility(View.VISIBLE);
+                    headerToBePaid.setVisibility(View.VISIBLE);
                     paidLayout.setVisibility(View.GONE);
+                    headerPaid.setVisibility(View.GONE);
                 } else if (checkedId == R.id.paid_RadioButton) {
                     loadPaidBills();
                     toBePaidLayout.setVisibility(View.GONE);
+                    headerToBePaid.setVisibility(View.GONE);
                     paidLayout.setVisibility(View.VISIBLE);
+                    headerPaid.setVisibility(View.VISIBLE);
                 }
             }
         });
@@ -61,6 +68,9 @@ public class PaymentActivity extends AppCompatActivity {
                 // Handle pay button click
             }
         });
+
+        // Set the tobePaidRadioButton as checked by default
+        tobePaidRadioButton.setChecked(true);
 
         // Load default view
         loadToBePaidBills();
@@ -78,6 +88,8 @@ public class PaymentActivity extends AppCompatActivity {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 addBillItemToLayout(document, toBePaidLayout);
                             }
+                            toBePaidLayout.setVisibility(View.VISIBLE);
+                            headerToBePaid.setVisibility(View.VISIBLE);
                         }
                     }
                 });
@@ -95,6 +107,8 @@ public class PaymentActivity extends AppCompatActivity {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 addBillItemToLayout(document, paidLayout);
                             }
+                            paidLayout.setVisibility(View.VISIBLE);
+                            headerPaid.setVisibility(View.VISIBLE);
                         }
                     }
                 });

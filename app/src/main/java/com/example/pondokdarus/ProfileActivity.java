@@ -109,12 +109,10 @@ public class ProfileActivity extends AppCompatActivity {
                     if (document.exists()) {
                         String fullname = document.getString("fullname");
                         String icNum = document.getString("icNum");
-                        String dob = document.getString("dob");
                         String form = document.getString("form");
 
                         studentNameTextView.setText(fullname);
                         studentICNumTextView.setText("IC: " + icNum);
-                        studentDOBTextView.setText("DOB: " + dob);
                         studentFormTextView.setText("Form: " + form);
                     } else {
                         Toast.makeText(ProfileActivity.this, "Student profile not found", Toast.LENGTH_SHORT).show();

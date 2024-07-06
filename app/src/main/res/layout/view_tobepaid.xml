@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:background="@drawable/background2"
     android:gravity="center"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".PaymentActivity">
 
     <include layout="@layout/toolbar_general"/>
 

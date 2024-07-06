@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:background="@drawable/background2"
     android:gravity="center"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".PaymentActivity">
 
     <include layout="@layout/toolbar_general"/>
 
@@ -66,6 +67,7 @@
         </RadioGroup>
 
         <LinearLayout
+            android:id="@+id/header_paid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -129,6 +131,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/bill_item_paid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">

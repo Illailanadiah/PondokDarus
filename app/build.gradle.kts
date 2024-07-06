@@ -70,6 +70,8 @@ dependencies {
     implementation ("com.squareup.okhttp3:okhttp:4.4.0")
     implementation ("com.google.code.gson:gson:2.11.0")
     implementation ("com.stripe:stripeterminal:3.7.1")
+    implementation ("com.android.volley:volley:1.2.0")
+
 
 
     testImplementation("junit:junit:4.13.2")
