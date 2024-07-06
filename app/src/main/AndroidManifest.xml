@@ -30,9 +30,13 @@
         <activity android:name=".StudentSignUpActivity"/>
         <activity android:name=".GuardianSignUpActivity"/>
         <activity android:name=".CreateAccountActivity"/>
-        <activity android:name=".StudentEditProfileActivity"/>
         <activity android:name=".GuardianEditProfileActivity"/>
         <activity android:name=".ClerkSignUpActivity"/>
+        <activity android:name=".FormListActivity"/>
+        <activity android:name=".FormActivity"/>
+        <activity android:name=".EmanageListActivity"/>
+        <activity android:name=".EmanageDetailsActivity"/>
+        <activity android:name=".EmanageEditActivity"/>
 
 
         <meta-data

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background2"
-    tools:context=".EmanageListActivity">
+    tools:context=".EmanageEditActivity">
 
     <include layout="@layout/toolbar_general"/>
 
@@ -60,9 +60,23 @@
 
         <!-- List items will be added dynamically -->
 
-
+       <!-- <Button
+            android:id="@+id/editSaveButton"
+            style="@android:style/Widget.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="180dp"
+            android:background="@drawable/tepagreen_bkg"
+            android:drawableLeft="@drawable/baseline_save_alt_24"
+            android:drawablePadding="10dp"
+            android:gravity="center_horizontal"
+            android:padding="20dp"
+            android:text="SAVE"
+            android:textColor="@color/satin"
+            android:textSize="20sp" /> -->
 
     </LinearLayout>
+
     <ImageView
         android:id="@+id/delete_icon"
         android:layout_width="wrap_content"

@@ -58,8 +58,8 @@ public class ClerkMainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Handle manage button click
                 // Example: Navigate to the payment management activity
-                //Intent intent = new Intent(ClerkMainActivity.this, PaymentManagementActivity.class);
-                //startActivity(intent);
+                Intent intent = new Intent(ClerkMainActivity.this,FormListActivity.class);
+                startActivity(intent);
             }
         });
 

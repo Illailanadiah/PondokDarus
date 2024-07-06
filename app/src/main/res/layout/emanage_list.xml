@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:fontFamily="@font/poppins_semibold"
-            android:text="FORM 1"
+            android:text="FORM"
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -39,26 +39,32 @@
             android:textSize="14sp" />
 
         <ImageView
-            android:id="@+id/add_icon"
+            android:id="@+id/edit_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:contentDescription="Add"
             android:src="@drawable/baseline_edit_note_24" />
-    </RelativeLayout>
 
+
+    </RelativeLayout>
 
 
     <LinearLayout
         android:id="@+id/list_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/instructions"
+        android:layout_below="@id/title_container"
         android:orientation="vertical"
         android:background="@drawable/emanage_bg">
 
-    <!-- List items will be added dynamically -->
 
-</LinearLayout>
+
+
+        <!-- EmanageEditActivity will be added dynamically -->
+
+    </LinearLayout>
+
+
     </RelativeLayout>
