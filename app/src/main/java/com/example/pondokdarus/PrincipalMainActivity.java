@@ -1,9 +1,6 @@
 package com.example.pondokdarus;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,65 +12,36 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.squareup.picasso.Picasso;
 
 public class PrincipalMainActivity extends AppCompatActivity {
 
-    private TextView welcomeMessage;
-    private TextView welcomeMessageName;
-    private TextView welcomeSubMessage;
+    private TextView welcomeMessageName, principalName, principalId, principalRole;
     private ImageView principalImage;
-    private TextView principalName;
-    private TextView principalId;
-    private TextView principalRole;
-    private Button manageButton;
-    private ImageView logoutIcon;
-
     private FirebaseAuth mAuth;
     private FirebaseFirestore mFirestore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.principalmain);
+        setContentView(R.layout.principalmain); // Ensure this matches your layout file name
 
         // Initialize Firebase Auth and Firestore
         mAuth = FirebaseAuth.getInstance();
         mFirestore = FirebaseFirestore.getInstance();
 
-        welcomeMessage = findViewById(R.id.welcomeMessage);
+        // Initialize views
         welcomeMessageName = findViewById(R.id.welcomeMessageName);
-        welcomeSubMessage = findViewById(R.id.welcomeSubMessage);
-        principalImage = findViewById(R.id.principalImage);
         principalName = findViewById(R.id.principalName);
         principalId = findViewById(R.id.principalId);
         principalRole = findViewById(R.id.principalRole);
-        manageButton = findViewById(R.id.payment_btn);
-        logoutIcon = findViewById(R.id.logout_icon);
+        principalImage = findViewById(R.id.principalImage);
 
-        // Load data from Firestore
-        loadDataFromFirestore();
-
-        manageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Handle manage button click
-                // Example: Navigate to the report management activity
-            }
-        });
-
-        logoutIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(PrincipalMainActivity.this, "Logout clicked", Toast.LENGTH_SHORT).show();
-                mAuth.signOut();
-                Intent intent = new Intent(PrincipalMainActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+        // Populate Principal's profile from Firebase
+        populatePrincipalProfile();
     }
 
-    private void loadDataFromFirestore() {
+    private void populatePrincipalProfile() {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
             String uid = currentUser.getUid();
@@ -83,19 +51,21 @@ public class PrincipalMainActivity extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
-                        String principalNameStr = document.getString("name");
-                        String principalIdStr = document.getString("principalId");
-                        String principalRoleStr = document.getString("principalRole");
+                        Principal principal = document.toObject(Principal.class);
+                        if (principal != null) {
+                            welcomeMessageName.setText(principal.getName());
+                            principalName.setText(principal.getName());
+                            principalId.setText(principal.getId());
+                            principalRole.setText(principal.getRole());
 
-                        welcomeMessageName.setText(principalNameStr);
-                        principalName.setText(principalNameStr);
-                        principalId.setText("ID: " + principalIdStr);
-                        principalRole.setText(principalRoleStr);
+                            // Load image using Picasso or any other image loading library
+                            Picasso.get().load(principal.getImageUrl()).into(principalImage);
+                        }
                     } else {
-                        Toast.makeText(PrincipalMainActivity.this, "Profile not found", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(PrincipalMainActivity.this, "Principal profile not found", Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(PrincipalMainActivity.this, "Failed to load profile", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PrincipalMainActivity.this, "Failed to load principal profile", Toast.LENGTH_SHORT).show();
                 }
             });
         }

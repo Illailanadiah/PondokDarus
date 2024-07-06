@@ -72,6 +72,8 @@ dependencies {
     implementation ("com.stripe:stripeterminal:3.7.1")
     implementation ("com.android.volley:volley:1.2.0")
 
+    implementation ("com.google.firebase:firebase-storage:20.0.0")
+    implementation ("com.squareup.picasso:picasso:2.71828")
 
 
     testImplementation("junit:junit:4.13.2")

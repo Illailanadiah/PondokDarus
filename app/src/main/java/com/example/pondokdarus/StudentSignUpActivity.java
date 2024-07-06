@@ -45,6 +45,16 @@ public class StudentSignUpActivity extends AppCompatActivity {
         studentNextButton = findViewById(R.id.studentNextButton);
         backButton = findViewById(R.id.back_icon);
 
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(StudentSignUpActivity.this, GuardianLoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+
         // Set up the form spinner with custom layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.form_list, android.R.layout.simple_spinner_item);

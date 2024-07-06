@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +26,7 @@ public class CreateAccountActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
+    private ImageView backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,17 @@ public class CreateAccountActivity extends AppCompatActivity {
         passwordEditText = findViewById(R.id.password);
         createAccountButton = findViewById(R.id.createAccountButton);
         signInTextView = findViewById(R.id.signin);
+        backButton = findViewById(R.id.back_icon);
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CreateAccountActivity.this, GuardianSignUpActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
 
         createAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override

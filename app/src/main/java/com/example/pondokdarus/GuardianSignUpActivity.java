@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,6 +27,7 @@ public class GuardianSignUpActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private FirebaseFirestore mFirestore;
+    private ImageView backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,17 @@ public class GuardianSignUpActivity extends AppCompatActivity {
         phoneNumEditText = findViewById(R.id.phonenum);
         agreementCheckBox = findViewById(R.id.agreement);
         guardianNextButton = findViewById(R.id.guardianNextButton);
+        backButton = findViewById(R.id.back_icon);
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(GuardianSignUpActivity.this, StudentSignUpActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
 
         icNumEditText.addTextChangedListener(icNumTextWatcher);
         phoneNumEditText.addTextChangedListener(phoneNumTextWatcher);
