@@ -49,11 +49,12 @@
             android:background="@drawable/text_bg"
             android:gravity="center_vertical"
             android:hint="@string/name"
+            android:inputType="text"
+            android:maxLength="100"
             android:padding="16dp"
             android:textColor="@color/tepapagreen"
             android:textSize="15sp" />
 
-        <!-- format text : ****-**-**** -->
         <EditText
             android:id="@+id/ic_num"
             android:layout_width="340dp"
@@ -68,7 +69,6 @@
             android:textColor="@color/tepapagreen"
             android:textSize="15sp" />
 
-        <!-- auto format text : 01*-******* -->
         <EditText
             android:id="@+id/phonenum"
             android:layout_width="340dp"
@@ -77,6 +77,8 @@
             android:background="@drawable/text_bg"
             android:gravity="center_vertical"
             android:hint="@string/phoneNum"
+            android:inputType="phone"
+            android:maxLength="11"
             android:padding="20dp"
             android:textColor="@color/tepapagreen"
             android:textSize="15sp" />
@@ -97,7 +99,7 @@
             style="@android:style/Widget.Button"
             android:layout_width="230dp"
             android:layout_height="60dp"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="50dp"
             android:background="@drawable/tepagreen_bkg"
             android:padding="8dp"
             android:text="@string/next_btn"

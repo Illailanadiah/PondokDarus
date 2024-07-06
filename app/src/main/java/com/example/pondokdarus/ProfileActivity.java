@@ -35,16 +35,15 @@ public class ProfileActivity extends AppCompatActivity {
         mFirestore = FirebaseFirestore.getInstance();
 
         // Initialize Guardian's profile views
-        guardianNameTextView = findViewById(R.id.guardian_name);
-        guardianICNumTextView = findViewById(R.id.guardian_ic_num);
-        guardianPhoneNumTextView = findViewById(R.id.guardian_phone_num);
-        guardianEmailTextView = findViewById(R.id.guardian_email);
-        guardianPasswordTextView = findViewById(R.id.guardian_password);
+        guardianNameTextView = findViewById(R.id.fullname);
+        guardianICNumTextView = findViewById(R.id.ic_num);
+        guardianPhoneNumTextView = findViewById(R.id.phonenum);
+        guardianEmailTextView = findViewById(R.id.email);
+        guardianPasswordTextView = findViewById(R.id.password);
 
         // Initialize Student's profile views
-        studentNameTextView = findViewById(R.id.student_name);
-        studentICNumTextView = findViewById(R.id.student_ic_num);
-        studentDOBTextView = findViewById(R.id.student_DOB);
+        studentNameTextView = findViewById(R.id.stud_fullname);
+        studentICNumTextView = findViewById(R.id.stud_ic_num);
         studentFormTextView = findViewById(R.id.student_Form);
 
         // Button appbar

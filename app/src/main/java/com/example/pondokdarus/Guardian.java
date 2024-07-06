@@ -1,20 +1,21 @@
 package com.example.pondokdarus;
 
 public class Guardian {
+
     private String fullname;
     private String icNum;
     private String phoneNum;
-    private boolean agreement;
+    private boolean agreementChecked;
 
     public Guardian() {
-        // Default constructor required for calls to DataSnapshot.getValue(User.class)
+        // Default constructor required for calls to DataSnapshot.getValue(Guardian.class)
     }
 
-    public Guardian(String fullname, String icNum, String phoneNum, boolean agreement) {
+    public Guardian(String fullname, String icNum, String phoneNum, boolean agreementChecked) {
         this.fullname = fullname;
         this.icNum = icNum;
         this.phoneNum = phoneNum;
-        this.agreement = agreement;
+        this.agreementChecked = agreementChecked;
     }
 
     public String getFullname() {
@@ -41,11 +42,11 @@ public class Guardian {
         this.phoneNum = phoneNum;
     }
 
-    public boolean isAgreement() {
-        return agreement;
+    public boolean isAgreementChecked() {
+        return agreementChecked;
     }
 
-    public void setAgreement(boolean agreement) {
-        this.agreement = agreement;
+    public void setAgreementChecked(boolean agreementChecked) {
+        this.agreementChecked = agreementChecked;
     }
 }

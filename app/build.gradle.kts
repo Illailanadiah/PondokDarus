@@ -60,6 +60,17 @@ dependencies {
     implementation("com.google.firebase:firebase-database-ktx")
     implementation("com.google.firebase:firebase-database:21.0.0")
     implementation("com.google.firebase:firebase-firestore:25.0.0")
+    implementation("com.google.firebase:firebase-storage:21.0.0")
+
+    //stripe integration
+    implementation ("com.stripe:stripe-java:26.0.0")
+    // Stripe Android SDK
+    implementation ("com.stripe:stripe-android:20.48.0")
+    // sor network call
+    implementation ("com.squareup.okhttp3:okhttp:4.4.0")
+    implementation ("com.google.code.gson:gson:2.11.0")
+    implementation ("com.stripe:stripeterminal:3.7.1")
+
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.0")

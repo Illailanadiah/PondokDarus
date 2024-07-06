@@ -24,23 +24,23 @@ public class StudentSignUpActivity extends AppCompatActivity {
     private EditText fullnameEditText, icNumEditText;
     private Spinner formSpinner;
     private Button studentNextButton;
-    private ImageView backButton;
 
     private FirebaseAuth mAuth;
     private FirebaseFirestore mFirestore;
+    private ImageView backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.studentsignup);
+        setContentView(R.layout.studentsignup);  // Ensure this matches the name of your layout file
 
         // Initialize Firebase Auth and Firestore
         mAuth = FirebaseAuth.getInstance();
         mFirestore = FirebaseFirestore.getInstance();
 
         // Initialize views
-        fullnameEditText = findViewById(R.id.fullname);
-        icNumEditText = findViewById(R.id.ic_num);
+        fullnameEditText = findViewById(R.id.stud_fullname);
+        icNumEditText = findViewById(R.id.stud_ic_num);
         formSpinner = findViewById(R.id.form_spinner);
         studentNextButton = findViewById(R.id.studentNextButton);
         backButton = findViewById(R.id.back_icon);
@@ -53,21 +53,16 @@ public class StudentSignUpActivity extends AppCompatActivity {
 
         icNumEditText.addTextChangedListener(icNumTextWatcher);
 
+
         studentNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Save student information to Firestore
                 saveStudentInfo();
             }
         });
-
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(StudentSignUpActivity.this, GuardianLoginActivity.class);
-                startActivity(intent);
-            }
-        });
     }
+
 
     private final TextWatcher icNumTextWatcher = new TextWatcher() {
         @Override
@@ -121,7 +116,7 @@ public class StudentSignUpActivity extends AppCompatActivity {
             String uid = currentUser.getUid();
             DocumentReference studentRef = mFirestore.collection("students").document(uid);
 
-            Student student = new Student(fullname,icNum,form);
+            Student student = new Student(fullname, icNum, form);
 
             studentRef.set(student).addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
@@ -134,4 +129,6 @@ public class StudentSignUpActivity extends AppCompatActivity {
             });
         }
     }
+
+
 }

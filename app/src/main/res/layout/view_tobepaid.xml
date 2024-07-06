@@ -5,215 +5,189 @@
     android:layout_height="match_parent"
     android:background="@drawable/background2"
     android:gravity="center"
-    android:orientation="vertical"
-    tools:context=".PaymentActivity">
+    android:orientation="vertical">
 
     <include layout="@layout/toolbar_general"/>
 
-
     <TextView
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:text="@string/payment_head"
-              android:layout_marginTop="25dp"
-              android:layout_marginBottom="25dp"
-              android:textSize="35sp"
-              android:letterSpacing="0.2"
-              android:textColor="@color/tepapagreen"
-              android:textStyle="bold"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/payment_head"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="25dp"
+        android:textSize="35sp"
+        android:letterSpacing="0.2"
+        android:textColor="@color/tepapagreen"
+        android:textStyle="bold"/>
 
+    <LinearLayout
+        android:id="@+id/tobepaid_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/paddingtopcorner_bg"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="24dp">
 
+        <RadioGroup
+            android:id="@+id/paymentRadioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/tobePaid_RadioButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/radiobtn_bg"
+                android:button="@null"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="TO BE PAID"
+                android:textColor="@color/radiobtn_textcolor"
+                android:textSize="16sp" />
+
+            <RadioButton
+                android:id="@+id/paid_RadioButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/radiobtn_bg"
+                android:button="@null"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="PAID"
+                android:textColor="@color/radiobtn_textcolor"
+                android:textSize="16sp" />
+
+        </RadioGroup>
 
         <LinearLayout
-            android:id="@+id/tobepaid_layout"
+            android:id="@+id/header_tobepaid"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/paddingtopcorner_bg"
-            android:gravity="center_horizontal"
-            android:orientation="vertical"
-            android:padding="24dp">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
 
-
-            <!-- Selection button  -->
-            <!-- "TO BE PAID (viewpayment.xml) , "PAID" (viewpayment2.xml)-->
-
-            <RadioGroup
-                android:id="@+id/paymentRadioGroup"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+            <CheckBox
+                android:id="@+id/headercheck"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"/>
 
-                <RadioButton
-                    android:id="@+id/tobePaid_RadioButton"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/radiobtn_bg"
-                    android:button="@null"
-                    android:gravity="center"
-                    android:padding="16dp"
-                    android:text="TO BE PAID"
-                    android:textColor="@color/radiobtn_textcolor"
-                    android:textSize="16sp" />
-
-                <RadioButton
-                    android:id="@+id/paid_RadioButton"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/radiobtn_bg"
-                    android:button="@null"
-                    android:gravity="center"
-                    android:padding="16dp"
-                    android:text="PAID"
-                    android:textColor="@color/radiobtn_textcolor"
-                    android:textSize="16sp" />
-
-            </RadioGroup>
-
-            <!--integrate to firebase-->
-            <LinearLayout
-                android:id="@+id/header_tobepaid"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/headerbill"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/bill_head"
+                android:textSize="16sp"
+                android:textColor="@color/tepapagreen"
+                android:textStyle="bold"
+                android:gravity="center_horizontal" />
 
-                <CheckBox
-                    android:id="@+id/headercheck"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:gravity="center"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginEnd="5dp"/>
-
-
-                <TextView
-                    android:id="@+id/headerbill"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginEnd="5dp"
-                    android:layout_gravity="center_horizontal"
-                    android:text="@string/bill_head"
-                    android:textSize="16sp"
-                    android:textColor="@color/tepapagreen"
-                    android:textStyle="bold"
-                    android:gravity="center_horizontal"
-                    />
-
-                <TextView
-                    android:id="@+id/headerdate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginEnd="5dp"
-                    android:text="@string/endDate_head"
-                    android:textSize="16sp"
-                    android:textColor="@color/tepapagreen"
-                    android:textStyle="bold"
-                    android:gravity="center_horizontal"
-                    />
-
-                <TextView
-                    android:id="@+id/headeramount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginEnd="5dp"
-                    android:text="@string/amount_head"
-                    android:textSize="16sp"
-                    android:textColor="@color/tepapagreen"
-                    android:textStyle="bold"
-                    android:gravity="center_horizontal"
-                    />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/bill_item_tobepaid"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/headerdate"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:text="@string/endDate_head"
+                android:textSize="16sp"
+                android:textColor="@color/tepapagreen"
+                android:textStyle="bold"
+                android:gravity="center_horizontal" />
 
-                <CheckBox
-                    android:id="@+id/checkbox"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:gravity="center"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginEnd="5dp"/>
+            <TextView
+                android:id="@+id/headeramount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:text="@string/amount_head"
+                android:textSize="16sp"
+                android:textColor="@color/tepapagreen"
+                android:textStyle="bold"
+                android:gravity="center_horizontal" />
+        </LinearLayout>
 
-                <TextView
-                    android:id="@+id/billname_unpaid"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginEnd="5dp"
-                    android:layout_gravity="center_horizontal"
-                    android:text="@string/billname"
-                    android:textSize="16sp"
-                    android:gravity="center_horizontal"
-                    />
+        <LinearLayout
+            android:id="@+id/bill_item_tobepaid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-                <!-- integrate to date format [dd/mm/yy] -->
-                <TextView
-                    android:id="@+id/date_unpaid"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginEnd="5dp"
-                    android:text="@string/date"
-                    android:textColor="@color/tepapagreen"
-                    android:textSize="16sp"
-                    android:gravity="center_horizontal"
-                    />
+            <CheckBox
+                android:id="@+id/checkbox"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:gravity="center"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"/>
 
-                <TextView
-                    android:id="@+id/amount_unpaid"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginEnd="5dp"
-                    android:text="@string/amount"
-                    android:textColor="#D42F2F"
-                    android:textSize="16sp"
-                    android:gravity="center_horizontal"
-                    />
+            <TextView
+                android:id="@+id/billname_unpaid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/billname"
+                android:textSize="16sp"
+                android:gravity="center_horizontal" />
 
-            </LinearLayout>
+            <TextView
+                android:id="@+id/date_unpaid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:text="@string/date"
+                android:textColor="@color/tepapagreen"
+                android:textSize="16sp"
+                android:gravity="center_horizontal" />
 
-            <Button
-                android:id="@+id/paybtn"
-                style="@android:style/Widget.Button"
-                android:layout_width="230dp"
-                android:layout_height="60dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginBottom="80dp"
-                android:background="@drawable/tepagreen_bkg"
-                android:padding="8dp"
-                android:text="PAY"
-                android:textColor="@color/white"
-                android:textSize="20sp" />
+            <TextView
+                android:id="@+id/amount_unpaid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:text="@string/amount"
+                android:maxLength="10"
+                android:textColor="#D42F2F"
+                android:textSize="16sp"
+                android:gravity="center_horizontal" />
+        </LinearLayout>
 
-
-
-            </LinearLayout>
-
-
+        <Button
+            android:id="@+id/paybtn"
+            style="@android:style/Widget.Button"
+            android:layout_width="230dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="80dp"
+            android:background="@drawable/tepagreen_bkg"
+            android:padding="8dp"
+            android:text="PAY"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+    </LinearLayout>
 </LinearLayout>
-
-

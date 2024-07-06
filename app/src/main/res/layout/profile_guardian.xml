@@ -54,15 +54,16 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/guardian_name"
+                    android:id="@+id/fullname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/name"
                     android:layout_margin="8dp"
+                    android:maxLines="2"
                     style="@style/profiledetail"
                     />
                 <TextView
-                    android:id="@+id/guardian_ic_num"
+                    android:id="@+id/ic_num"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/ic_num"
@@ -70,7 +71,7 @@
                     style="@style/profiledetail"
                     />
                 <TextView
-                    android:id="@+id/guardian_phone_num"
+                    android:id="@+id/phonenum"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/phoneNum"
@@ -78,7 +79,7 @@
                     style="@style/profiledetail"
                     />
                 <TextView
-                    android:id="@+id/guardian_email"
+                    android:id="@+id/email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/email"
@@ -86,7 +87,7 @@
                     style="@style/profiledetail"
                     />
                 <TextView
-                    android:id="@+id/guardian_password"
+                    android:id="@+id/password"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/password"
@@ -122,29 +123,23 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/student_name"
+                    android:id="@+id/stud_fullname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/name"
                     android:layout_margin="8dp"
+                    android:maxLines="2"
                     style="@style/profiledetail"
                     />
                 <TextView
-                    android:id="@+id/student_ic_num"
+                    android:id="@+id/stud_ic_num"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/ic_num"
                     android:layout_margin="8dp"
                     style="@style/profiledetail"
                     />
-                <TextView
-                    android:id="@+id/student_DOB"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/DOB"
-                    android:layout_margin="8dp"
-                    style="@style/profiledetail"
-                    />
+
                 <TextView
                     android:id="@+id/student_Form"
                     android:layout_width="wrap_content"

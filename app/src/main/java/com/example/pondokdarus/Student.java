@@ -1,12 +1,13 @@
 package com.example.pondokdarus;
 
 public class Student {
+
     private String fullname;
     private String icNum;
     private String form;
 
     public Student() {
-        // Default constructor required for calls to DataSnapshot.getValue(User.class)
+        // Default constructor required for calls to DataSnapshot.getValue(Student.class)
     }
 
     public Student(String fullname, String icNum, String form) {
