@@ -5,46 +5,37 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.firestore.FirebaseFirestore;
-import java.util.HashMap;
-import java.util.Map;
 
 public class EmanageEditActivity extends AppCompatActivity {
 
-    private EditText billName, billDetails, amount, endDate;
-    private Button saveButton;
-    private ImageView deleteIcon, addIcon, backIcon;
     private FirebaseFirestore db;
+    private EditText billNameEditText;
+    private EditText billDetailsEditText;
+    private EditText amountEditText;
+    private EditText endDateEditText;
+    private Button saveButton;
     private String documentId;
+    private String selectedForm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.emanage_edit);
 
-        billName = findViewById(R.id.bill_name);
-        billDetails = findViewById(R.id.bill_details);
-        amount = findViewById(R.id.amount);
-        endDate = findViewById(R.id.end_date);
-        saveButton = findViewById(R.id.emanageSaveButton);
-        deleteIcon = findViewById(R.id.delete_icon);
-        addIcon = findViewById(R.id.add_icon);
-        backIcon = findViewById(R.id.back_icon);
-
-        backIcon.setOnClickListener(v -> {
-            Intent intent = new Intent(EmanageEditActivity.this, EmanageListActivity.class);
-            startActivity(intent);
-            finish();
-        });
-
         db = FirebaseFirestore.getInstance();
+        billNameEditText = findViewById(R.id.bill_name);
+        billDetailsEditText = findViewById(R.id.bill_details);
+        amountEditText = findViewById(R.id.amount);
+        endDateEditText = findViewById(R.id.end_date);
+        saveButton = findViewById(R.id.emanageSaveButton);
 
         Intent intent = getIntent();
-        if (intent.hasExtra("DOCUMENT_ID")) {
-            documentId = intent.getStringExtra("DOCUMENT_ID");
+        documentId = intent.getStringExtra("DOCUMENT_ID");
+        selectedForm = intent.getStringExtra("SELECTED_FORM");
+
+        if (documentId != null) {
             loadBillDetails(documentId);
         }
 
@@ -55,94 +46,59 @@ public class EmanageEditActivity extends AppCompatActivity {
                 saveNewDetails();
             }
         });
-
-        deleteIcon.setOnClickListener(v -> {
-            if (documentId != null) {
-                deleteBillDetails(documentId);
-            }
-        });
-
-        addIcon.setOnClickListener(v -> navigateToDetailsActivity());
     }
 
     private void loadBillDetails(String documentId) {
         db.collection("billDetails").document(documentId).get().addOnSuccessListener(documentSnapshot -> {
             if (documentSnapshot.exists()) {
-                billName.setText(documentSnapshot.getString("bill_name"));
-                billDetails.setText(documentSnapshot.getString("bill_details"));
-                amount.setText(documentSnapshot.getString("amount"));
-                endDate.setText(documentSnapshot.getString("end_date"));
+                billNameEditText.setText(documentSnapshot.getString("billName"));
+                billDetailsEditText.setText(documentSnapshot.getString("billDetails"));
+                amountEditText.setText(documentSnapshot.getString("amount"));
+                endDateEditText.setText(documentSnapshot.getString("endDate"));
             } else {
-                Toast.makeText(EmanageEditActivity.this, "Document not found", Toast.LENGTH_SHORT).show();
+                // Handle document not found
             }
         });
     }
 
     private void saveEditedDetails(String documentId) {
-        String billNameStr = billName.getText().toString();
-        String billDetailsStr = billDetails.getText().toString();
-        String amountStr = amount.getText().toString();
-        String endDateStr = endDate.getText().toString();
-
-        if (billNameStr.isEmpty() || billDetailsStr.isEmpty() || amountStr.isEmpty() || endDateStr.isEmpty()) {
-            Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
-            return;
-        }
+        String billName = billNameEditText.getText().toString();
+        String billDetails = billDetailsEditText.getText().toString();
+        String amount = amountEditText.getText().toString();
+        String endDate = endDateEditText.getText().toString();
 
         db.collection("billDetails").document(documentId)
-                .update("bill_name", billNameStr,
-                        "bill_details", billDetailsStr,
-                        "amount", amountStr,
-                        "end_date", endDateStr)
+                .update("billName", billName, "billDetails", billDetails, "amount", amount, "endDate", endDate)
                 .addOnSuccessListener(aVoid -> {
-                    Toast.makeText(EmanageEditActivity.this, "Details updated successfully", Toast.LENGTH_SHORT).show();
-                    navigateToListActivity();
+                    navigateToDetailsActivity();
                 })
-                .addOnFailureListener(e -> Toast.makeText(EmanageEditActivity.this, "Error updating details", Toast.LENGTH_SHORT).show());
+                .addOnFailureListener(e -> {
+                    // Handle failure
+                });
     }
 
     private void saveNewDetails() {
-        String billNameStr = billName.getText().toString();
-        String billDetailsStr = billDetails.getText().toString();
-        String amountStr = amount.getText().toString();
-        String endDateStr = endDate.getText().toString();
+        String billName = billNameEditText.getText().toString();
+        String billDetails = billDetailsEditText.getText().toString();
+        String amount = amountEditText.getText().toString();
+        String endDate = endDateEditText.getText().toString();
 
-        if (billNameStr.isEmpty() || billDetailsStr.isEmpty() || amountStr.isEmpty() || endDateStr.isEmpty()) {
-            Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        Map<String, Object> billDetails = new HashMap<>();
-        billDetails.put("bill_name", billNameStr);
-        billDetails.put("bill_details", billDetailsStr);
-        billDetails.put("amount", amountStr);
-        billDetails.put("end_date", endDateStr);
+        Bill newBill = new Bill(billName, billDetails, amount, endDate, selectedForm);
 
         db.collection("billDetails")
-                .add(billDetails)
+                .add(newBill)
                 .addOnSuccessListener(documentReference -> {
-                    Toast.makeText(EmanageEditActivity.this, "Details saved successfully", Toast.LENGTH_SHORT).show();
-                    navigateToListActivity();
+                    navigateToDetailsActivity();
                 })
-                .addOnFailureListener(e -> Toast.makeText(EmanageEditActivity.this, "Error saving details", Toast.LENGTH_SHORT).show());
-    }
-
-    private void deleteBillDetails(String documentId) {
-        db.collection("billDetails").document(documentId).delete()
-                .addOnSuccessListener(aVoid -> {
-                    Toast.makeText(EmanageEditActivity.this, "Details deleted successfully", Toast.LENGTH_SHORT).show();
-                    navigateToListActivity();
-                })
-                .addOnFailureListener(e -> Toast.makeText(EmanageEditActivity.this, "Error deleting details", Toast.LENGTH_SHORT).show());
-    }
-
-    private void navigateToListActivity() {
-        Intent intent = new Intent(EmanageEditActivity.this, EmanageListActivity.class);
-        startActivity(intent);
+                .addOnFailureListener(e -> {
+                    // Handle failure
+                });
     }
 
     private void navigateToDetailsActivity() {
         Intent intent = new Intent(EmanageEditActivity.this, EmanageDetailsActivity.class);
+        intent.putExtra("SELECTED_FORM", selectedForm);
         startActivity(intent);
+        finish();
     }
 }

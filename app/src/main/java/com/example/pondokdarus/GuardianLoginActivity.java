@@ -25,17 +25,7 @@ public class GuardianLoginActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private ImageView backButton;
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
-            Intent intent = new Intent(GuardianLoginActivity.this, GuardianMainActivity.class);
-            startActivity(intent);
-            finish();
-        }
-    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

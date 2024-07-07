@@ -5,73 +5,66 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class EmanageDetailsActivity extends AppCompatActivity {
 
-    private EditText billName, billDetails, amount, endDate;
-    private Button saveButton;
     private FirebaseFirestore db;
-    private ImageView backIcon;
+    private EditText billNameEditText;
+    private EditText billDetailsEditText;
+    private EditText amountEditText;
+    private EditText endDateEditText;
+    private Button saveButton;
+    private String selectedForm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.emanage_details);
 
-        billName = findViewById(R.id.bill_name);
-        billDetails = findViewById(R.id.bill_details);
-        amount = findViewById(R.id.amount);
-        endDate = findViewById(R.id.end_date);
-        saveButton = findViewById(R.id.emanageSaveButton);
-        backIcon = findViewById(R.id.back_icon);
-
-        backIcon.setOnClickListener(v -> {
-            Intent intent = new Intent(EmanageDetailsActivity.this, ClerkMainActivity.class);
-            startActivity(intent);
-            finish();
-        });
-
-        // Initialize Firestore
         db = FirebaseFirestore.getInstance();
+        billNameEditText = findViewById(R.id.bill_name);
+        billDetailsEditText = findViewById(R.id.bill_details);
+        amountEditText = findViewById(R.id.amount);
+        endDateEditText = findViewById(R.id.end_date);
+        saveButton = findViewById(R.id.emanageSaveButton);
 
-        saveButton.setOnClickListener(v -> saveDetailsToFirestore());
+        Intent intent = getIntent();
+        selectedForm = intent.getStringExtra("SELECTED_FORM");
+
+        saveButton.setOnClickListener(v -> saveNewDetails());
     }
 
-    private void saveDetailsToFirestore() {
-        String billNameStr = billName.getText().toString();
-        String billDetailsStr = billDetails.getText().toString();
-        String amountStr = amount.getText().toString();
-        String endDateStr = endDate.getText().toString();
+    private void saveNewDetails() {
+        String billName = billNameEditText.getText().toString();
+        String billDetails = billDetailsEditText.getText().toString();
+        String amount = amountEditText.getText().toString();
+        String endDate = endDateEditText.getText().toString();
 
-        if (billNameStr.isEmpty() || billDetailsStr.isEmpty() || amountStr.isEmpty() || endDateStr.isEmpty()) {
-            Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
-            return;
-        }
+        Bill newBill = new Bill(billName, billDetails, amount, endDate, selectedForm);
 
-        // Create a new document with a generated ID
-        Map<String, Object> billDetails = new HashMap<>();
-        billDetails.put("bill_name", billNameStr);
-        billDetails.put("bill_details", billDetailsStr);
-        billDetails.put("amount", amountStr);
-        billDetails.put("end_date", endDateStr);
+        // Convert Bill object to Map
+        Map<String, Object> billData = new HashMap<>();
+        billData.put("billName", newBill.getBillName());
+        billData.put("billDetails", newBill.getBillDetails());
+        billData.put("amount", newBill.getAmount());
+        billData.put("endDate", newBill.getEndDate());
+        billData.put("form", newBill.getForm());
 
         db.collection("billDetails")
-                .add(billDetails)
+                .add(billData)
                 .addOnSuccessListener(documentReference -> {
-                    Toast.makeText(EmanageDetailsActivity.this, "Details saved successfully", Toast.LENGTH_SHORT).show();
-                    navigateToListActivity();
+                    Intent intent = new Intent(EmanageDetailsActivity.this, EmanageListActivity.class);
+                    intent.putExtra("SELECTED_FORM", selectedForm);
+                    startActivity(intent);
+                    finish();
                 })
-                .addOnFailureListener(e -> Toast.makeText(EmanageDetailsActivity.this, "Error saving details", Toast.LENGTH_SHORT).show());
-    }
-
-    private void navigateToListActivity() {
-        Intent intent = new Intent(EmanageDetailsActivity.this, EmanageListActivity.class);
-        startActivity(intent);
+                .addOnFailureListener(e -> {
+                    // Handle failure
+                });
     }
 }

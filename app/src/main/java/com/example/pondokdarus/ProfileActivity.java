@@ -2,20 +2,10 @@ package com.example.pondokdarus;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.pondokdarus.R;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -23,17 +13,10 @@ public class ProfileActivity extends AppCompatActivity {
     private TextView studentNameTextView, studentICNumTextView, studentFormTextView;
     private ImageView backButton, editButton;
 
-    private FirebaseAuth mAuth;
-    private FirebaseFirestore mFirestore;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile_guardian);
-
-        // Initialize Firebase Auth and Firestore
-        mAuth = FirebaseAuth.getInstance();
-        mFirestore = FirebaseFirestore.getInstance();
 
         // Initialize Guardian's profile views
         guardianNameTextView = findViewById(R.id.fullname);
@@ -51,85 +34,37 @@ public class ProfileActivity extends AppCompatActivity {
         backButton = findViewById(R.id.back_icon);
         editButton = findViewById(R.id.edit_icon);
 
-        // Populate profiles from Firebase
-        populateProfiles();
+        // Get data from intent
+        Intent profileIntent = getIntent();
+        String guardianFullname = profileIntent.getStringExtra("guardianFullname");
+        String guardianIcNum = profileIntent.getStringExtra("guardianIcNum");
+        String guardianPhoneNum = profileIntent.getStringExtra("guardianPhoneNum");
+        String guardianEmail = profileIntent.getStringExtra("guardianEmail");
+        String studentFullname = profileIntent.getStringExtra("studentFullname");
+        String studentIcNum = profileIntent.getStringExtra("studentIcNum");
+        String studentForm = profileIntent.getStringExtra("studentForm");
 
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ProfileActivity.this, GuardianMainActivity.class);
-                startActivity(intent);
-                finish();
-            }
+        // Set the data to the views
+        guardianNameTextView.setText(guardianFullname);
+        guardianICNumTextView.setText("IC: " + guardianIcNum);
+        guardianPhoneNumTextView.setText("Phone: " + guardianPhoneNum);
+        guardianEmailTextView.setText("Email: " + guardianEmail);
+        guardianPasswordTextView.setText("Password: ********");
+
+        studentNameTextView.setText(studentFullname);
+        studentICNumTextView.setText("IC: " + studentIcNum);
+        studentFormTextView.setText("Form: " + studentForm);
+
+        backButton.setOnClickListener(v -> {
+            Intent backIntent = new Intent(ProfileActivity.this, GuardianMainActivity.class);
+            startActivity(backIntent);
+            finish();
         });
 
-        editButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ProfileActivity.this, GuardianEditProfileActivity.class);
-                startActivity(intent);
-                finish();
-            }
+        editButton.setOnClickListener(v -> {
+            Intent editIntent = new Intent(ProfileActivity.this, GuardianEditProfileActivity.class);
+            startActivity(editIntent);
+            finish();
         });
     }
-
-    private void populateProfiles() {
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser != null) {
-            String uid = currentUser.getUid();
-
-            // Populate Guardian's profile
-            DocumentReference guardianRef = mFirestore.collection("guardians").document(uid);
-            guardianRef.get().addOnCompleteListener(task -> {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document.exists()) {
-                        String fullname = document.getString("fullname");
-                        String icNum = document.getString("icNum");
-                        String phoneNum = document.getString("phoneNum");
-                        String email = currentUser.getEmail();
-
-                        guardianNameTextView.setText(fullname);
-                        guardianICNumTextView.setText("IC: " + icNum);
-                        guardianPhoneNumTextView.setText("Phone: " + phoneNum);
-                        guardianEmailTextView.setText("Email: " + email);
-                        guardianPasswordTextView.setText("Password: ********");
-                    } else {
-                        Toast.makeText(ProfileActivity.this, "Guardian profile not found", Toast.LENGTH_SHORT).show();
-                        Log.d("ProfileActivity", "Guardian profile document does not exist.");
-                    }
-                } else {
-                    Toast.makeText(ProfileActivity.this, "Failed to load guardian profile", Toast.LENGTH_SHORT).show();
-                    Log.e("ProfileActivity", "Error getting guardian profile: ", task.getException());
-                }
-            });
-
-            // Populate Student's profile
-            DocumentReference studentRef = mFirestore.collection("students").document(uid);
-            studentRef.get().addOnCompleteListener(task -> {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document.exists()) {
-                        String fullname = document.getString("fullname");
-                        String icNum = document.getString("icNum");
-                        String form = document.getString("form");
-
-                        studentNameTextView.setText(fullname);
-                        studentICNumTextView.setText("IC: " + icNum);
-                        studentFormTextView.setText("Form: " + form);
-                    } else {
-                        Toast.makeText(ProfileActivity.this, "Student profile not found", Toast.LENGTH_SHORT).show();
-                        Log.d("ProfileActivity", "Student profile document does not exist.");
-                    }
-                } else {
-                    Toast.makeText(ProfileActivity.this, "Failed to load student profile", Toast.LENGTH_SHORT).show();
-                    Log.e("ProfileActivity", "Error getting student profile: ", task.getException());
-                }
-            });
-        } else {
-            Toast.makeText(this, "No authenticated user found", Toast.LENGTH_SHORT).show();
-            Log.e("ProfileActivity", "No authenticated user found.");
-        }
-    }
-
 }

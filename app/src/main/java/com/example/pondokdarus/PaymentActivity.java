@@ -9,16 +9,11 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 public class PaymentActivity extends AppCompatActivity {
 
@@ -29,6 +24,7 @@ public class PaymentActivity extends AppCompatActivity {
     private Button payButton;
     private LinearLayout headerToBePaid, headerPaid;
     private ImageView backButton;
+    private String selectedForm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +42,8 @@ public class PaymentActivity extends AppCompatActivity {
         headerToBePaid = findViewById(R.id.header_tobepaid);
         headerPaid = findViewById(R.id.header_paid);
         backButton = findViewById(R.id.back_icon);
+
+        selectedForm = getIntent().getStringExtra("SELECTED_FORM");
 
         backButton.setOnClickListener(v -> {
             Intent intent = new Intent(PaymentActivity.this, GuardianMainActivity.class);
@@ -83,6 +81,7 @@ public class PaymentActivity extends AppCompatActivity {
     private void loadToBePaidBills() {
         db.collection("bills")
                 .whereEqualTo("status", "to_be_paid")
+                .whereEqualTo("form", selectedForm)
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
@@ -99,6 +98,7 @@ public class PaymentActivity extends AppCompatActivity {
     private void loadPaidBills() {
         db.collection("bills")
                 .whereEqualTo("status", "paid")
+                .whereEqualTo("form", selectedForm)
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
