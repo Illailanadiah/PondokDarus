@@ -46,6 +46,7 @@ public class EmanageListActivity extends AppCompatActivity {
         db.collection("billDetails")
                 .whereEqualTo("form", selectedForm)
                 .get()
+
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         for (QueryDocumentSnapshot document : task.getResult()) {

@@ -34,7 +34,7 @@
         <activity android:name=".ClerkSignUpActivity"/>
         <activity android:name=".FormListActivity"/>
         <activity android:name=".EmanageListActivity"/>
-        <activity android:name=".EmanageDetailsActivity"/>
+        <activity android:name=".EmanageAddActivity"/>
         <activity android:name=".EmanageEditActivity"/>
 
 

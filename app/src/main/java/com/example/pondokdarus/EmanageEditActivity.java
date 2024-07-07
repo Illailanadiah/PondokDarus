@@ -2,7 +2,6 @@ package com.example.pondokdarus;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
@@ -96,7 +95,7 @@ public class EmanageEditActivity extends AppCompatActivity {
     }
 
     private void navigateToDetailsActivity() {
-        Intent intent = new Intent(EmanageEditActivity.this, EmanageDetailsActivity.class);
+        Intent intent = new Intent(EmanageEditActivity.this, EmanageAddActivity.class);
         intent.putExtra("SELECTED_FORM", selectedForm);
         startActivity(intent);
         finish();

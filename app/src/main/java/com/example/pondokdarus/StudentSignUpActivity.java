@@ -54,7 +54,6 @@ public class StudentSignUpActivity extends AppCompatActivity {
             }
         });
 
-
         // Set up the form spinner with custom layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.form_list, android.R.layout.simple_spinner_item);
@@ -62,7 +61,6 @@ public class StudentSignUpActivity extends AppCompatActivity {
         formSpinner.setAdapter(adapter);
 
         icNumEditText.addTextChangedListener(icNumTextWatcher);
-
 
         studentNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,7 +70,6 @@ public class StudentSignUpActivity extends AppCompatActivity {
             }
         });
     }
-
 
     private final TextWatcher icNumTextWatcher = new TextWatcher() {
         @Override
@@ -139,6 +136,4 @@ public class StudentSignUpActivity extends AppCompatActivity {
             });
         }
     }
-
-
 }

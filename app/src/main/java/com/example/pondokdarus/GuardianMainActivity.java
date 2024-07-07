@@ -73,6 +73,7 @@ public class GuardianMainActivity extends AppCompatActivity {
 
         logoutIcon.setOnClickListener(v -> {
             Toast.makeText(GuardianMainActivity.this, "Logout clicked", Toast.LENGTH_SHORT).show();
+            mAuth.signOut();
             Intent logoutIntent = new Intent(GuardianMainActivity.this, MainActivity.class);
             startActivity(logoutIntent);
             finish();

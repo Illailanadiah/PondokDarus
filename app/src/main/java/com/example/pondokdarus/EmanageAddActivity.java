@@ -2,7 +2,6 @@ package com.example.pondokdarus;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,7 +10,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 
-public class EmanageDetailsActivity extends AppCompatActivity {
+public class EmanageAddActivity extends AppCompatActivity {
 
     private FirebaseFirestore db;
     private EditText billNameEditText;
@@ -24,7 +23,7 @@ public class EmanageDetailsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.emanage_details);
+        setContentView(R.layout.emanage_add);
 
         db = FirebaseFirestore.getInstance();
         billNameEditText = findViewById(R.id.bill_name);
@@ -58,7 +57,7 @@ public class EmanageDetailsActivity extends AppCompatActivity {
         db.collection("billDetails")
                 .add(billData)
                 .addOnSuccessListener(documentReference -> {
-                    Intent intent = new Intent(EmanageDetailsActivity.this, EmanageListActivity.class);
+                    Intent intent = new Intent(EmanageAddActivity.this, EmanageListActivity.class);
                     intent.putExtra("SELECTED_FORM", selectedForm);
                     startActivity(intent);
                     finish();
