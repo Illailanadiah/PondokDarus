@@ -66,6 +66,8 @@ dependencies {
     implementation ("com.stripe:stripe-java:26.0.0")
     // Stripe Android SDK
     implementation ("com.stripe:stripe-android:20.48.0")
+    implementation ("com.stripe:stripeterminal:3.7.1")
+
     // sor network call
     implementation ("com.squareup.okhttp3:okhttp:4.4.0")
     implementation ("com.google.code.gson:gson:2.11.0")

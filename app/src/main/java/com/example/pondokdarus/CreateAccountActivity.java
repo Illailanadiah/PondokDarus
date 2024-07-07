@@ -26,17 +26,19 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class CreateAccountActivity extends AppCompatActivity {
 
     private EditText emailEditText, passwordEditText;
     private Button createAccountButton;
     private TextView signInTextView;
-
-    private FirebaseAuth mAuth;
-    private DatabaseReference mDatabase;
     private ImageView backButton;
     private ProgressBar progressBar;
+
+    private FirebaseAuth mAuth;
+    private FirebaseFirestore mFirestore;
+    private DatabaseReference mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         // Initialize Firebase Auth and Database
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
+        mFirestore = FirebaseFirestore.getInstance();
 
         // Initialize views
         emailEditText = findViewById(R.id.email);
@@ -93,24 +96,41 @@ public class CreateAccountActivity extends AppCompatActivity {
             return;
         }
 
+        progressBar.setVisibility(View.VISIBLE);
+
         mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        progressBar.setVisibility(View.VISIBLE);
-                        if (task.isSuccessful()) {
-                            Toast.makeText(CreateAccountActivity.this, " Account created.",
-                                    Toast.LENGTH_SHORT).show();
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        if (user != null) {
+                            String uid = user.getUid();
+                            // Create a new User object
+                            User newUser = new User(email, "Full Name", "IC Number", "Phone Number", true);
 
+                            // Store user data in Firestore
+                            mFirestore.collection("users").document(uid).set(newUser)
+                                    .addOnSuccessListener(aVoid -> Log.d(TAG, "User data added to Firestore"))
+                                    .addOnFailureListener(e -> Log.w(TAG, "Error adding user data to Firestore", e));
 
+                            // Store user data in Realtime Database
+                            mDatabase.child("users").child(uid).setValue(newUser)
+                                    .addOnSuccessListener(aVoid -> Log.d(TAG, "User data added to Realtime Database"))
+                                    .addOnFailureListener(e -> Log.w(TAG, "Error adding user data to Realtime Database", e));
+
+                            // Redirect to main activity
+                            Toast.makeText(CreateAccountActivity.this, "Account created.", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(CreateAccountActivity.this, GuardianMainActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    } else {
+                        if (task.getException() instanceof FirebaseAuthUserCollisionException) {
+                            Toast.makeText(CreateAccountActivity.this, "This email is already in use.", Toast.LENGTH_SHORT).show();
                         } else {
-                            // If sign in fails, display a message to the user.
-                            Toast.makeText(CreateAccountActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-
-                            }
-
-                }
+                            Toast.makeText(CreateAccountActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    progressBar.setVisibility(View.GONE);
                 });
     }
 }

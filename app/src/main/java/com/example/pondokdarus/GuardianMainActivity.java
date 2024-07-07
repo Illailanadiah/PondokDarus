@@ -2,7 +2,6 @@ package com.example.pondokdarus;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -61,7 +60,6 @@ public class GuardianMainActivity extends AppCompatActivity {
 
         profileButton.setOnClickListener(v -> {
             Intent profileIntent = new Intent(GuardianMainActivity.this, ProfileActivity.class);
-            // Pass the fetched data via intent
             profileIntent.putExtra("guardianFullname", guardianFullname);
             profileIntent.putExtra("guardianIcNum", guardianIcNum);
             profileIntent.putExtra("guardianPhoneNum", guardianPhoneNum);
@@ -90,12 +88,26 @@ public class GuardianMainActivity extends AppCompatActivity {
                             guardianFullname = document.getString("fullname");
                             guardianIcNum = document.getString("icNum");
                             guardianPhoneNum = document.getString("phoneNum");
-                            guardianEmail = document.getString("email");
                         } else {
                             Toast.makeText(GuardianMainActivity.this, "Guardian profile not found", Toast.LENGTH_SHORT).show();
                         }
                     } else {
                         Toast.makeText(GuardianMainActivity.this, "Failed to load guardian profile", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+        // Fetch email from "users" collection
+        mFirestore.collection("users").document(uid).get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        DocumentSnapshot document = task.getResult();
+                        if (document.exists()) {
+                            guardianEmail = document.getString("email");
+                        } else {
+                            Toast.makeText(GuardianMainActivity.this, "User email not found", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(GuardianMainActivity.this, "Failed to load user email", Toast.LENGTH_SHORT).show();
                     }
                 });
     }

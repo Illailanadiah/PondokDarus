@@ -1,5 +1,8 @@
 package com.example.pondokdarus;
 
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 public class Guardian {
     private String fullname;
     private String icNum;
@@ -31,5 +34,27 @@ public class Guardian {
 
     public boolean isAgreementChecked() {
         return isAgreementChecked;
+    }
+
+    public static void fetchGuardianData(String guardianId, FirestoreCallback callback) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("guardians").document(guardianId).get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        DocumentSnapshot document = task.getResult();
+                        if (document.exists()) {
+                            Guardian guardian = document.toObject(Guardian.class);
+                            callback.onCallback(guardian);
+                        } else {
+                            callback.onCallback(null);
+                        }
+                    } else {
+                        callback.onCallback(null);
+                    }
+                });
+    }
+
+    public interface FirestoreCallback {
+        void onCallback(Guardian guardian);
     }
 }

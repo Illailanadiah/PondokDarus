@@ -21,7 +21,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class GuardianSignUpActivity extends AppCompatActivity {
 
-    private EditText fullnameEditText, icNumEditText, phoneNumEditText;
+    private EditText fullnameEditText;
+    private EditText icNumEditText, phoneNumEditText; // Changed to EditText
     private CheckBox agreementCheckBox;
     private Button guardianNextButton;
 
@@ -40,31 +41,22 @@ public class GuardianSignUpActivity extends AppCompatActivity {
 
         // Initialize views
         fullnameEditText = findViewById(R.id.fullname);
-        icNumEditText = findViewById(R.id.ic_num);
-        phoneNumEditText = findViewById(R.id.phonenum);
+        icNumEditText = findViewById(R.id.ic_num); // Changed to EditText
+        phoneNumEditText = findViewById(R.id.phonenum); // Changed to EditText
         agreementCheckBox = findViewById(R.id.agreement);
         guardianNextButton = findViewById(R.id.guardianNextButton);
         backButton = findViewById(R.id.back_icon);
 
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(GuardianSignUpActivity.this, StudentSignUpActivity.class);
-                startActivity(intent);
-                finish();
-            }
+        backButton.setOnClickListener(v -> {
+            Intent intent = new Intent(GuardianSignUpActivity.this, StudentSignUpActivity.class);
+            startActivity(intent);
+            finish();
         });
 
+        icNumEditText.addTextChangedListener(icNumTextWatcher); // Use EditText reference
+        phoneNumEditText.addTextChangedListener(phoneNumTextWatcher); // Use EditText reference
 
-        icNumEditText.addTextChangedListener(icNumTextWatcher);
-        phoneNumEditText.addTextChangedListener(phoneNumTextWatcher);
-
-        guardianNextButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                saveGuardianInfo();
-            }
-        });
+        guardianNextButton.setOnClickListener(v -> saveGuardianInfo());
     }
 
     private final TextWatcher icNumTextWatcher = new TextWatcher() {
@@ -113,10 +105,10 @@ public class GuardianSignUpActivity extends AppCompatActivity {
             input = input.substring(2);
         }
         formatted.append(input);
-        icNumEditText.removeTextChangedListener(icNumTextWatcher);
+        icNumEditText.removeTextChangedListener(icNumTextWatcher); // Use EditText reference
         icNumEditText.setText(formatted.toString());
         icNumEditText.setSelection(formatted.length());
-        icNumEditText.addTextChangedListener(icNumTextWatcher);
+        icNumEditText.addTextChangedListener(icNumTextWatcher); // Use EditText reference
     }
 
     private void formatPhoneNumber(Editable s) {
@@ -127,10 +119,10 @@ public class GuardianSignUpActivity extends AppCompatActivity {
         }
 
         // Set formatted text, preserving cursor position
-        phoneNumEditText.removeTextChangedListener(phoneNumTextWatcher);
+        phoneNumEditText.removeTextChangedListener(phoneNumTextWatcher); // Use EditText reference
         phoneNumEditText.setText(input);
         phoneNumEditText.setSelection(input.length());
-        phoneNumEditText.addTextChangedListener(phoneNumTextWatcher);
+        phoneNumEditText.addTextChangedListener(phoneNumTextWatcher); // Use EditText reference
     }
 
     private void saveGuardianInfo() {
