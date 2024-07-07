@@ -16,7 +16,7 @@ public class EmanageListActivity extends AppCompatActivity {
 
     private FirebaseFirestore db;
     private LinearLayout listContainer;
-    private ImageView editIcon;
+    private ImageView editIcon, backIcon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,13 +26,15 @@ public class EmanageListActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         listContainer = findViewById(R.id.list_container);
         editIcon = findViewById(R.id.edit_icon);
+        backIcon = findViewById(R.id.back_icon);
 
-        editIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navigateToDetailsActivity();
-            }
+        backIcon.setOnClickListener(v -> {
+            Intent intent = new Intent(EmanageListActivity.this, FormListActivity.class);
+            startActivity(intent);
+            finish();
         });
+
+        editIcon.setOnClickListener(v -> navigateToDetailsActivity());
 
         loadBillDetails();
     }

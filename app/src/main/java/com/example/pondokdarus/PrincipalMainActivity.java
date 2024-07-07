@@ -1,6 +1,7 @@
 package com.example.pondokdarus;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,6 +17,7 @@ import com.squareup.picasso.Picasso;
 
 public class PrincipalMainActivity extends AppCompatActivity {
 
+    private static final String TAG = "PrincipalMainActivity";
     private TextView welcomeMessageName, principalName, principalId, principalRole;
     private ImageView principalImage;
     private FirebaseAuth mAuth;
@@ -59,15 +61,20 @@ public class PrincipalMainActivity extends AppCompatActivity {
                             principalRole.setText(principal.getRole());
 
                             // Load image using Picasso or any other image loading library
-                            Picasso.get().load(principal.getImageUrl()).into(principalImage);
+                            //Picasso.get().load(principal.getImageUrl()).into(principalImage);
                         }
                     } else {
                         Toast.makeText(PrincipalMainActivity.this, "Principal profile not found", Toast.LENGTH_SHORT).show();
+                        Log.d(TAG, "Principal profile document does not exist.");
                     }
                 } else {
                     Toast.makeText(PrincipalMainActivity.this, "Failed to load principal profile", Toast.LENGTH_SHORT).show();
+                    Log.e(TAG, "Error getting principal profile: ", task.getException());
                 }
             });
+        } else {
+            Toast.makeText(this, "No authenticated user found", Toast.LENGTH_SHORT).show();
+            Log.e(TAG, "No authenticated user found.");
         }
     }
 }

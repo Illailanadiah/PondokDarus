@@ -67,7 +67,7 @@
             android:layout_marginTop="8dp"
             >
             <ImageView
-                android:id="@+id/principalImage"
+                android:id="@+id/clerkImage"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center_horizontal"
@@ -78,7 +78,7 @@
                 android:src="@drawable/profile" />
 
             <TextView
-                android:id="@+id/principalName"
+                android:id="@+id/clerkName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -89,7 +89,7 @@
                 android:letterSpacing="0.1"/>
 
             <TextView
-                android:id="@+id/principalId"
+                android:id="@+id/clerkId"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -102,7 +102,7 @@
                 />
 
             <TextView
-                android:id="@+id/principalRole"
+                android:id="@+id/clerkRole"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"

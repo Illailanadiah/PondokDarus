@@ -16,7 +16,7 @@ public class EmanageEditActivity extends AppCompatActivity {
 
     private EditText billName, billDetails, amount, endDate;
     private Button saveButton;
-    private ImageView deleteIcon,addIcon;
+    private ImageView deleteIcon, addIcon, backIcon;
     private FirebaseFirestore db;
     private String documentId;
 
@@ -32,6 +32,13 @@ public class EmanageEditActivity extends AppCompatActivity {
         saveButton = findViewById(R.id.emanageSaveButton);
         deleteIcon = findViewById(R.id.delete_icon);
         addIcon = findViewById(R.id.add_icon);
+        backIcon = findViewById(R.id.back_icon);
+
+        backIcon.setOnClickListener(v -> {
+            Intent intent = new Intent(EmanageEditActivity.this, EmanageListActivity.class);
+            startActivity(intent);
+            finish();
+        });
 
         db = FirebaseFirestore.getInstance();
 
@@ -41,32 +48,21 @@ public class EmanageEditActivity extends AppCompatActivity {
             loadBillDetails(documentId);
         }
 
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (documentId != null) {
-                    saveEditedDetails(documentId);
-                } else {
-                    saveNewDetails();
-                }
+        saveButton.setOnClickListener(v -> {
+            if (documentId != null) {
+                saveEditedDetails(documentId);
+            } else {
+                saveNewDetails();
             }
         });
 
-        deleteIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (documentId != null) {
-                    deleteBillDetails(documentId);
-                }
+        deleteIcon.setOnClickListener(v -> {
+            if (documentId != null) {
+                deleteBillDetails(documentId);
             }
         });
 
-        addIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navigateToDetailsActivity();
-            }
-        });
+        addIcon.setOnClickListener(v -> navigateToDetailsActivity());
     }
 
     private void loadBillDetails(String documentId) {

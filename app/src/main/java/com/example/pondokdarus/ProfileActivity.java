@@ -2,6 +2,7 @@ package com.example.pondokdarus;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -95,9 +96,11 @@ public class ProfileActivity extends AppCompatActivity {
                         guardianPasswordTextView.setText("Password: ********");
                     } else {
                         Toast.makeText(ProfileActivity.this, "Guardian profile not found", Toast.LENGTH_SHORT).show();
+                        Log.d("ProfileActivity", "Guardian profile document does not exist.");
                     }
                 } else {
                     Toast.makeText(ProfileActivity.this, "Failed to load guardian profile", Toast.LENGTH_SHORT).show();
+                    Log.e("ProfileActivity", "Error getting guardian profile: ", task.getException());
                 }
             });
 
@@ -116,11 +119,17 @@ public class ProfileActivity extends AppCompatActivity {
                         studentFormTextView.setText("Form: " + form);
                     } else {
                         Toast.makeText(ProfileActivity.this, "Student profile not found", Toast.LENGTH_SHORT).show();
+                        Log.d("ProfileActivity", "Student profile document does not exist.");
                     }
                 } else {
                     Toast.makeText(ProfileActivity.this, "Failed to load student profile", Toast.LENGTH_SHORT).show();
+                    Log.e("ProfileActivity", "Error getting student profile: ", task.getException());
                 }
             });
+        } else {
+            Toast.makeText(this, "No authenticated user found", Toast.LENGTH_SHORT).show();
+            Log.e("ProfileActivity", "No authenticated user found.");
         }
     }
+
 }

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -16,6 +17,7 @@ public class EmanageDetailsActivity extends AppCompatActivity {
     private EditText billName, billDetails, amount, endDate;
     private Button saveButton;
     private FirebaseFirestore db;
+    private ImageView backIcon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,16 +29,18 @@ public class EmanageDetailsActivity extends AppCompatActivity {
         amount = findViewById(R.id.amount);
         endDate = findViewById(R.id.end_date);
         saveButton = findViewById(R.id.emanageSaveButton);
+        backIcon = findViewById(R.id.back_icon);
+
+        backIcon.setOnClickListener(v -> {
+            Intent intent = new Intent(EmanageDetailsActivity.this, ClerkMainActivity.class);
+            startActivity(intent);
+            finish();
+        });
 
         // Initialize Firestore
         db = FirebaseFirestore.getInstance();
 
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                saveDetailsToFirestore();
-            }
-        });
+        saveButton.setOnClickListener(v -> saveDetailsToFirestore());
     }
 
     private void saveDetailsToFirestore() {

@@ -6,8 +6,8 @@ public class Principal {
     private String role;
     private String imageUrl;
 
-    // Default constructor required for calls to DataSnapshot.getValue(Principal.class)
     public Principal() {
+        // Default constructor required for calls to DataSnapshot.getValue(Principal.class)
     }
 
     public Principal(String name, String id, String role, String imageUrl) {
@@ -17,34 +17,32 @@ public class Principal {
         this.imageUrl = imageUrl;
     }
 
-    // Getters
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getId() {
         return id;
     }
 
-    public String getRole() {
-        return role;
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    // Setters
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public void setId(String id) {
         this.id = id;
     }
 
+    public String getRole() {
+        return role;
+    }
+
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
     }
 
     public void setImageUrl(String imageUrl) {

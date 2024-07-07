@@ -2,7 +2,7 @@ package com.example.pondokdarus;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -18,13 +18,14 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class ClerkMainActivity extends AppCompatActivity {
 
+    private static final String TAG = "ClerkMainActivity";
     private TextView welcomeMessage;
     private TextView welcomeMessageName;
     private TextView welcomeSubMessage;
-    private ImageView principalImage;
-    private TextView principalName;
-    private TextView principalId;
-    private TextView principalRole;
+    private ImageView clerkImage;
+    private TextView clerkName;
+    private TextView clerkId;
+    private TextView clerkRole;
     private Button manageButton;
     private ImageView logoutIcon;
 
@@ -43,35 +44,29 @@ public class ClerkMainActivity extends AppCompatActivity {
         welcomeMessage = findViewById(R.id.welcomeMessage);
         welcomeMessageName = findViewById(R.id.welcomeMessageName);
         welcomeSubMessage = findViewById(R.id.welcomeSubMessage);
-        principalImage = findViewById(R.id.principalImage);
-        principalName = findViewById(R.id.principalName);
-        principalId = findViewById(R.id.principalId);
-        principalRole = findViewById(R.id.principalRole);
+        clerkImage = findViewById(R.id.principalImage);
+        clerkName = findViewById(R.id.clerkName);
+        clerkId = findViewById(R.id.clerkId);
+        clerkRole = findViewById(R.id.clerkRole);
         manageButton = findViewById(R.id.payment_btn);
         logoutIcon = findViewById(R.id.logout_icon);
 
         // Load data from Firestore
         loadDataFromFirestore();
 
-       manageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Handle manage button click
-                // Example: Navigate to the payment management activity
-                Intent intent = new Intent(ClerkMainActivity.this,FormListActivity.class);
-                startActivity(intent);
-            }
+        manageButton.setOnClickListener(v -> {
+            // Handle manage button click
+            // Example: Navigate to the payment management activity
+            Intent intent = new Intent(ClerkMainActivity.this, FormListActivity.class);
+            startActivity(intent);
         });
 
-        logoutIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(ClerkMainActivity.this, "Logout clicked", Toast.LENGTH_SHORT).show();
-                mAuth.signOut();
-                Intent intent = new Intent(ClerkMainActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
+        logoutIcon.setOnClickListener(v -> {
+            Toast.makeText(ClerkMainActivity.this, "Logout clicked", Toast.LENGTH_SHORT).show();
+            mAuth.signOut();
+            Intent intent = new Intent(ClerkMainActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
         });
     }
 
@@ -85,22 +80,27 @@ public class ClerkMainActivity extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
-                        String clerkName = document.getString("name");
-                        String principalNameStr = document.getString("principalName");
-                        String principalIdStr = document.getString("principalId");
-                        String principalRoleStr = document.getString("principalRole");
+                        String clerkNameWelcome = document.getString("welcomeMessageName");
+                        String clerkNameStr = document.getString("clerkName");
+                        String clerkIdStr = document.getString("clerkId");
+                        String clerkRoleStr = document.getString("clerkRole");
 
-                        welcomeMessageName.setText(clerkName);
-                        principalName.setText(principalNameStr);
-                        principalId.setText("ID: " + principalIdStr);
-                        principalRole.setText(principalRoleStr);
+                        welcomeMessageName.setText(clerkNameWelcome);
+                        clerkName.setText(clerkNameStr);
+                        clerkId.setText(clerkIdStr);
+                        clerkRole.setText(clerkRoleStr);
                     } else {
                         Toast.makeText(ClerkMainActivity.this, "Profile not found", Toast.LENGTH_SHORT).show();
+                        Log.d(TAG, "Profile document does not exist.");
                     }
                 } else {
                     Toast.makeText(ClerkMainActivity.this, "Failed to load profile", Toast.LENGTH_SHORT).show();
+                    Log.e(TAG, "Error getting profile: ", task.getException());
                 }
             });
+        } else {
+            Toast.makeText(this, "No authenticated user found", Toast.LENGTH_SHORT).show();
+            Log.e(TAG, "No authenticated user found.");
         }
     }
 }

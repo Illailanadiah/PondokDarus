@@ -11,7 +11,9 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -48,6 +50,12 @@ public class StaffLoginActivity extends AppCompatActivity {
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
 
+        // Check if user is signed in and update UI accordingly
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            navigateToRoleActivity();
+        }
+
         staffloginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,19 +82,7 @@ public class StaffLoginActivity extends AppCompatActivity {
                             progressBar.setVisibility(View.GONE);
                             if (task.isSuccessful()) {
                                 // Sign in success, navigate based on the selected role
-                                FirebaseUser user = mAuth.getCurrentUser();
-                                int selectedId = positionRadioGroup.getCheckedRadioButtonId();
-                                Intent intent;
-                                if (selectedId == R.id.clerkRadioButton) {
-                                    intent = new Intent(StaffLoginActivity.this, ClerkMainActivity.class);
-                                } else if (selectedId == R.id.principalRadioButton) {
-                                    intent = new Intent(StaffLoginActivity.this, PrincipalMainActivity.class);
-                                } else {
-                                    Toast.makeText(StaffLoginActivity.this, "Please select a role.", Toast.LENGTH_SHORT).show();
-                                    return;
-                                }
-                                startActivity(intent);
-                                finish(); // Close the login activity
+                                navigateToRoleActivity();
                             } else {
                                 // If sign in fails, display a message to the user.
                                 Toast.makeText(StaffLoginActivity.this, "Authentication failed.",
@@ -106,9 +102,9 @@ public class StaffLoginActivity extends AppCompatActivity {
         signupRedirectTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(StaffLoginActivity.this, ClerkSignUpActivity.class);
-                startActivity(intent);
-                finish();
+                // Intent intent = new Intent(StaffLoginActivity.this, ClerkSignUpActivity.class);
+                // startActivity(intent);
+                // finish();
             }
         });
 
@@ -120,5 +116,30 @@ public class StaffLoginActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    private void navigateToRoleActivity() {
+        int selectedId = positionRadioGroup.getCheckedRadioButtonId();
+        Intent intent;
+        if (selectedId == R.id.clerkRadioButton) {
+            intent = new Intent(StaffLoginActivity.this, ClerkMainActivity.class);
+        } else if (selectedId == R.id.principalRadioButton) {
+            intent = new Intent(StaffLoginActivity.this, PrincipalMainActivity.class);
+        } else {
+            Toast.makeText(StaffLoginActivity.this, "Please select a role.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            navigateToRoleActivity();
+        }
     }
 }

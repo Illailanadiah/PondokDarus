@@ -47,40 +47,30 @@ public class PaymentActivity extends AppCompatActivity {
         headerPaid = findViewById(R.id.header_paid);
         backButton = findViewById(R.id.back_icon);
 
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(PaymentActivity.this, GuardianMainActivity.class);
-                startActivity(intent);
-                finish();
+        backButton.setOnClickListener(v -> {
+            Intent intent = new Intent(PaymentActivity.this, GuardianMainActivity.class);
+            startActivity(intent);
+            finish();
+        });
+
+        paymentRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {
+            if (checkedId == R.id.tobePaid_RadioButton) {
+                loadToBePaidBills();
+                toBePaidLayout.setVisibility(View.VISIBLE);
+                headerToBePaid.setVisibility(View.VISIBLE);
+                paidLayout.setVisibility(View.GONE);
+                headerPaid.setVisibility(View.GONE);
+            } else if (checkedId == R.id.paid_RadioButton) {
+                loadPaidBills();
+                toBePaidLayout.setVisibility(View.GONE);
+                headerToBePaid.setVisibility(View.GONE);
+                paidLayout.setVisibility(View.VISIBLE);
+                headerPaid.setVisibility(View.VISIBLE);
             }
         });
 
-
-        paymentRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (checkedId == R.id.tobePaid_RadioButton) {
-                    loadToBePaidBills();
-                    toBePaidLayout.setVisibility(View.VISIBLE);
-                    headerToBePaid.setVisibility(View.VISIBLE);
-                    paidLayout.setVisibility(View.GONE);
-                    headerPaid.setVisibility(View.GONE);
-                } else if (checkedId == R.id.paid_RadioButton) {
-                    loadPaidBills();
-                    toBePaidLayout.setVisibility(View.GONE);
-                    headerToBePaid.setVisibility(View.GONE);
-                    paidLayout.setVisibility(View.VISIBLE);
-                    headerPaid.setVisibility(View.VISIBLE);
-                }
-            }
-        });
-
-        payButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Handle pay button click
-            }
+        payButton.setOnClickListener(v -> {
+            // Handle pay button click
         });
 
         // Set the tobePaidRadioButton as checked by default
@@ -94,17 +84,14 @@ public class PaymentActivity extends AppCompatActivity {
         db.collection("bills")
                 .whereEqualTo("status", "to_be_paid")
                 .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            toBePaidLayout.removeAllViews();
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                addBillItemToLayout(document, toBePaidLayout);
-                            }
-                            toBePaidLayout.setVisibility(View.VISIBLE);
-                            headerToBePaid.setVisibility(View.VISIBLE);
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        toBePaidLayout.removeAllViews();
+                        for (QueryDocumentSnapshot document : task.getResult()) {
+                            addBillItemToLayout(document, toBePaidLayout);
                         }
+                        toBePaidLayout.setVisibility(View.VISIBLE);
+                        headerToBePaid.setVisibility(View.VISIBLE);
                     }
                 });
     }
@@ -113,17 +100,14 @@ public class PaymentActivity extends AppCompatActivity {
         db.collection("bills")
                 .whereEqualTo("status", "paid")
                 .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            paidLayout.removeAllViews();
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                addBillItemToLayout(document, paidLayout);
-                            }
-                            paidLayout.setVisibility(View.VISIBLE);
-                            headerPaid.setVisibility(View.VISIBLE);
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        paidLayout.removeAllViews();
+                        for (QueryDocumentSnapshot document : task.getResult()) {
+                            addBillItemToLayout(document, paidLayout);
                         }
+                        paidLayout.setVisibility(View.VISIBLE);
+                        headerPaid.setVisibility(View.VISIBLE);
                     }
                 });
     }
