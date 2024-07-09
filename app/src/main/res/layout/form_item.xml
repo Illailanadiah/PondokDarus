@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@drawable/emanage_bg">
+
+    <TextView
+        android:id="@+id/bill_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bill Name"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/tepapagreen" />
+
+    <TextView
+        android:id="@+id/bill_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bill Details"
+        android:textSize="16sp"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Amount"
+        android:textSize="16sp"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/end_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="End Date"
+        android:textSize="16sp"
+        android:textColor="@color/black" />
+
+    <CheckBox
+        android:id="@+id/checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

@@ -26,5 +26,8 @@
             android:textSize="20sp"
             android:textStyle="bold"
             android:text="@string/salamfinance" />
+
+
+
     </RelativeLayout>
 </RelativeLayout>

@@ -18,4 +18,5 @@
         android:src="@drawable/button_logout_24" />
 
     </RelativeLayout>
+
 </RelativeLayout>

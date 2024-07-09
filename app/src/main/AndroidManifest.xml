@@ -31,11 +31,13 @@
         <activity android:name=".GuardianSignUpActivity"/>
         <activity android:name=".CreateAccountActivity"/>
         <activity android:name=".GuardianEditProfileActivity"/>
-        <activity android:name=".ClerkSignUpActivity"/>
         <activity android:name=".FormListActivity"/>
         <activity android:name=".EmanageListActivity"/>
         <activity android:name=".EmanageAddActivity"/>
         <activity android:name=".EmanageEditActivity"/>
+        <activity android:name=".PaymentOptionsActivity"/>
+        <activity android:name=".PaymentReceiptActivity"/>
+
 
 
         <meta-data

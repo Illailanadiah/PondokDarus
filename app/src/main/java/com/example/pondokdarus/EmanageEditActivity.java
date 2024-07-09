@@ -4,7 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class EmanageEditActivity extends AppCompatActivity {
@@ -55,7 +58,7 @@ public class EmanageEditActivity extends AppCompatActivity {
                 amountEditText.setText(documentSnapshot.getString("amount"));
                 endDateEditText.setText(documentSnapshot.getString("endDate"));
             } else {
-                // Handle document not found
+                Toast.makeText(this, "Document not found", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -68,12 +71,8 @@ public class EmanageEditActivity extends AppCompatActivity {
 
         db.collection("billDetails").document(documentId)
                 .update("billName", billName, "billDetails", billDetails, "amount", amount, "endDate", endDate)
-                .addOnSuccessListener(aVoid -> {
-                    navigateToDetailsActivity();
-                })
-                .addOnFailureListener(e -> {
-                    // Handle failure
-                });
+                .addOnSuccessListener(aVoid -> navigateToDetailsActivity())
+                .addOnFailureListener(e -> Toast.makeText(this, "Error saving details: " + e.getMessage(), Toast.LENGTH_SHORT).show());
     }
 
     private void saveNewDetails() {
@@ -86,16 +85,12 @@ public class EmanageEditActivity extends AppCompatActivity {
 
         db.collection("billDetails")
                 .add(newBill)
-                .addOnSuccessListener(documentReference -> {
-                    navigateToDetailsActivity();
-                })
-                .addOnFailureListener(e -> {
-                    // Handle failure
-                });
+                .addOnSuccessListener(documentReference -> navigateToDetailsActivity())
+                .addOnFailureListener(e -> Toast.makeText(this, "Error saving details: " + e.getMessage(), Toast.LENGTH_SHORT).show());
     }
 
     private void navigateToDetailsActivity() {
-        Intent intent = new Intent(EmanageEditActivity.this, EmanageAddActivity.class);
+        Intent intent = new Intent(EmanageEditActivity.this, EmanageListActivity.class);
         intent.putExtra("SELECTED_FORM", selectedForm);
         startActivity(intent);
         finish();

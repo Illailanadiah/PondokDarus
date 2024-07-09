@@ -1,5 +1,6 @@
 package com.example.pondokdarus;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -136,6 +137,10 @@ public class PaymentOptionsActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Invalid payment method selected", Toast.LENGTH_SHORT).show();
         }
+
+        // Navigate to PaymentReceiptActivity after handling payment
+        Intent intent = new Intent(PaymentOptionsActivity.this, PaymentReceiptActivity.class);
+        startActivity(intent);
     }
 
     private void handleFpxPayment() {

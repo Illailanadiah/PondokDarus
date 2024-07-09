@@ -38,7 +38,7 @@
             <RadioButton
                 android:id="@+id/radio_fpx"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:text="FPX Online Banking"
                 android:layout_marginVertical="10dp"
                 />
@@ -46,28 +46,28 @@
             <RadioButton
                 android:id="@+id/radio_debit_card"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:text="Debit Card"
                 android:layout_marginVertical="10dp"/>
 
             <RadioButton
                 android:id="@+id/radio_credit_card"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:text="Credit Card"
                 android:layout_marginVertical="10dp"/>
 
             <RadioButton
                 android:id="@+id/radio_paypal"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:text="PayPal"
                 android:layout_marginVertical="10dp"/>
 
             <RadioButton
                 android:id="@+id/radio_google_pay"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:text="Google Pay"
                 android:layout_marginVertical="10dp"/>
 

@@ -4,7 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -44,26 +47,31 @@ public class EmanageAddActivity extends AppCompatActivity {
         String amount = amountEditText.getText().toString();
         String endDate = endDateEditText.getText().toString();
 
-        Bill newBill = new Bill(billName, billDetails, amount, endDate, selectedForm);
+        if (billName.isEmpty() || billDetails.isEmpty() || amount.isEmpty() || endDate.isEmpty()) {
+            Toast.makeText(this, "Please fill out all fields", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-        // Convert Bill object to Map
         Map<String, Object> billData = new HashMap<>();
-        billData.put("billName", newBill.getBillName());
-        billData.put("billDetails", newBill.getBillDetails());
-        billData.put("amount", newBill.getAmount());
-        billData.put("endDate", newBill.getEndDate());
-        billData.put("form", newBill.getForm());
+        billData.put("billName", billName);
+        billData.put("billDetails", billDetails);
+        billData.put("amount", amount);
+        billData.put("endDate", endDate);
+        billData.put("form", selectedForm);
 
         db.collection("billDetails")
                 .add(billData)
                 .addOnSuccessListener(documentReference -> {
-                    Intent intent = new Intent(EmanageAddActivity.this, EmanageListActivity.class);
-                    intent.putExtra("SELECTED_FORM", selectedForm);
-                    startActivity(intent);
-                    finish();
+                    Toast.makeText(this, "Bill added successfully", Toast.LENGTH_SHORT).show();
+                    navigateToListActivity();
                 })
-                .addOnFailureListener(e -> {
-                    // Handle failure
-                });
+                .addOnFailureListener(e -> Toast.makeText(this, "Error adding bill: " + e.getMessage(), Toast.LENGTH_SHORT).show());
+    }
+
+    private void navigateToListActivity() {
+        Intent intent = new Intent(EmanageAddActivity.this, EmanageListActivity.class);
+        intent.putExtra("SELECTED_FORM", selectedForm);
+        startActivity(intent);
+        finish();
     }
 }
