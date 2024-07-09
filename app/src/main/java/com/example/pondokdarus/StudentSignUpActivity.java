@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -65,7 +66,6 @@ public class StudentSignUpActivity extends AppCompatActivity {
         studentNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Save student information to Firestore
                 saveStudentInfo();
             }
         });
@@ -123,12 +123,15 @@ public class StudentSignUpActivity extends AppCompatActivity {
             String userId = currentUser.getUid();
             DocumentReference studentRef = mFirestore.collection("students").document(userId);
 
-            Student student = new Student(fullname, icNum, form);
+            Student student = new Student(fullname, icNum, form, userId); // Use the new constructor
 
             studentRef.set(student).addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
                     Toast.makeText(StudentSignUpActivity.this, "Student information saved", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(StudentSignUpActivity.this, GuardianSignUpActivity.class);
+                    intent.putExtra("fullname", fullname);
+                    intent.putExtra("icNum", icNum);
+                    intent.putExtra("form", form);
                     startActivity(intent);
                 } else {
                     Toast.makeText(StudentSignUpActivity.this, "Failed to save student information", Toast.LENGTH_SHORT).show();

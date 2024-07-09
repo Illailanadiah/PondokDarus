@@ -51,8 +51,11 @@ public class ClerkMainActivity extends AppCompatActivity {
         manageButton = findViewById(R.id.payment_btn);
         logoutIcon = findViewById(R.id.logout_icon);
 
-        // Load data from Firestore
-        loadDataFromFirestore();
+        welcomeMessageName.setText("Hawa");
+        clerkName.setText("Hawa Binti Adam");
+        clerkId.setText("RG40-1243");
+        clerkRole.setText("Clerk");
+
 
         manageButton.setOnClickListener(v -> {
             // Handle manage button click
@@ -70,37 +73,5 @@ public class ClerkMainActivity extends AppCompatActivity {
         });
     }
 
-    private void loadDataFromFirestore() {
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser != null) {
-            String uid = currentUser.getUid();
-            DocumentReference clerkRef = mFirestore.collection("clerks").document(uid);
 
-            clerkRef.get().addOnCompleteListener(task -> {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document.exists()) {
-                        String clerkNameWelcome = document.getString("welcomeMessageName");
-                        String clerkNameStr = document.getString("clerkName");
-                        String clerkIdStr = document.getString("clerkId");
-                        String clerkRoleStr = document.getString("clerkRole");
-
-                        welcomeMessageName.setText(clerkNameWelcome);
-                        clerkName.setText(clerkNameStr);
-                        clerkId.setText(clerkIdStr);
-                        clerkRole.setText(clerkRoleStr);
-                    } else {
-                        Toast.makeText(ClerkMainActivity.this, "Profile not found", Toast.LENGTH_SHORT).show();
-                        Log.d(TAG, "Profile document does not exist.");
-                    }
-                } else {
-                    Toast.makeText(ClerkMainActivity.this, "Failed to load profile", Toast.LENGTH_SHORT).show();
-                    Log.e(TAG, "Error getting profile: ", task.getException());
-                }
-            });
-        } else {
-            Toast.makeText(this, "No authenticated user found", Toast.LENGTH_SHORT).show();
-            Log.e(TAG, "No authenticated user found.");
-        }
-    }
 }

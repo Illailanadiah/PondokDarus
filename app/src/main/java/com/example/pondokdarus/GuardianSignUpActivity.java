@@ -30,10 +30,16 @@ public class GuardianSignUpActivity extends AppCompatActivity {
     private FirebaseFirestore mFirestore;
     private ImageView backButton;
 
+    private String studentUserId; // Add this to store the userId
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.guardiansignup);
+
+        // Retrieve the userId from the Intent
+        Intent intent = getIntent();
+        studentUserId = intent.getStringExtra("userId");
 
         // Initialize Firebase Auth and Firestore
         mAuth = FirebaseAuth.getInstance();
@@ -48,8 +54,8 @@ public class GuardianSignUpActivity extends AppCompatActivity {
         backButton = findViewById(R.id.back_icon);
 
         backButton.setOnClickListener(v -> {
-            Intent intent = new Intent(GuardianSignUpActivity.this, StudentSignUpActivity.class);
-            startActivity(intent);
+            Intent backIntent = new Intent(GuardianSignUpActivity.this, StudentSignUpActivity.class);
+            startActivity(backIntent);
             finish();
         });
 
@@ -145,9 +151,9 @@ public class GuardianSignUpActivity extends AppCompatActivity {
         if (currentUser != null) {
             String userId = currentUser.getUid();
             // Create a new document in the "guardians" collection with a generated ID
-            DocumentReference guardianRef = mFirestore.collection("guardians").document();
+            DocumentReference guardianRef = mFirestore.collection("guardians").document( userId);
 
-            Guardian guardian = new Guardian(fullname, icNum, phoneNum, isAgreementChecked, userId);
+            Guardian guardian = new Guardian(fullname, icNum, phoneNum, studentUserId);
 
             guardianRef.set(guardian).addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
@@ -156,30 +162,12 @@ public class GuardianSignUpActivity extends AppCompatActivity {
                     intent.putExtra("fullname", fullname);
                     intent.putExtra("icNum", icNum);
                     intent.putExtra("phoneNum", phoneNum);
+                    intent.putExtra("userId", studentUserId); // Pass the userId
                     startActivity(intent);
                 } else {
                     Toast.makeText(GuardianSignUpActivity.this, "Failed to save guardian information", Toast.LENGTH_SHORT).show();
                 }
             });
         }
-    }
-
-    // Guardian class to represent the structure of the document in Firestore
-    public class Guardian {
-        private String fullname;
-        private String icNum;
-        private String phoneNum;
-        private boolean agreementChecked;
-        private String userId;
-
-        public Guardian(String fullname, String icNum, String phoneNum, boolean agreementChecked, String userId) {
-            this.fullname = fullname;
-            this.icNum = icNum;
-            this.phoneNum = phoneNum;
-            this.agreementChecked = agreementChecked;
-            this.userId = userId;
-        }
-
-        // Getters and setters (if needed)
     }
 }

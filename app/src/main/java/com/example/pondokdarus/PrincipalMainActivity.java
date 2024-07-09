@@ -1,5 +1,6 @@
 package com.example.pondokdarus;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
@@ -19,7 +20,7 @@ public class PrincipalMainActivity extends AppCompatActivity {
 
     private static final String TAG = "PrincipalMainActivity";
     private TextView welcomeMessageName, principalName, principalId, principalRole;
-    private ImageView principalImage;
+    private ImageView principalImage, logoutIcon;
     private FirebaseAuth mAuth;
     private FirebaseFirestore mFirestore;
 
@@ -30,7 +31,6 @@ public class PrincipalMainActivity extends AppCompatActivity {
 
         // Initialize Firebase Auth and Firestore
         mAuth = FirebaseAuth.getInstance();
-        mFirestore = FirebaseFirestore.getInstance();
 
         // Initialize views
         welcomeMessageName = findViewById(R.id.welcomeMessageName);
@@ -38,43 +38,21 @@ public class PrincipalMainActivity extends AppCompatActivity {
         principalId = findViewById(R.id.principalId);
         principalRole = findViewById(R.id.principalRole);
         principalImage = findViewById(R.id.principalImage);
+        logoutIcon = findViewById(R.id.logout_icon);
 
-        // Populate Principal's profile from Firebase
-        populatePrincipalProfile();
-    }
+        welcomeMessageName.setText("Jalil");
+        principalName.setText("Jalil Bin Abdul Rahman");
+        principalId.setText("RG-4567");
+        principalRole.setText("Principal");
 
-    private void populatePrincipalProfile() {
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser != null) {
-            String uid = currentUser.getUid();
-            DocumentReference principalRef = mFirestore.collection("principals").document(uid);
+        logoutIcon.setOnClickListener(v -> {
+            Toast.makeText(PrincipalMainActivity.this, "Logout clicked", Toast.LENGTH_SHORT).show();
+            mAuth.signOut();
+            Intent intent = new Intent(PrincipalMainActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        });
 
-            principalRef.get().addOnCompleteListener(task -> {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document.exists()) {
-                        Principal principal = document.toObject(Principal.class);
-                        if (principal != null) {
-                            welcomeMessageName.setText(principal.getName());
-                            principalName.setText(principal.getName());
-                            principalId.setText(principal.getId());
-                            principalRole.setText(principal.getRole());
 
-                            // Load image using Picasso or any other image loading library
-                            //Picasso.get().load(principal.getImageUrl()).into(principalImage);
-                        }
-                    } else {
-                        Toast.makeText(PrincipalMainActivity.this, "Principal profile not found", Toast.LENGTH_SHORT).show();
-                        Log.d(TAG, "Principal profile document does not exist.");
-                    }
-                } else {
-                    Toast.makeText(PrincipalMainActivity.this, "Failed to load principal profile", Toast.LENGTH_SHORT).show();
-                    Log.e(TAG, "Error getting principal profile: ", task.getException());
-                }
-            });
-        } else {
-            Toast.makeText(this, "No authenticated user found", Toast.LENGTH_SHORT).show();
-            Log.e(TAG, "No authenticated user found.");
-        }
     }
 }

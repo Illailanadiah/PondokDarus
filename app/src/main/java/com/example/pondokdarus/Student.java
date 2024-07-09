@@ -1,54 +1,51 @@
 package com.example.pondokdarus;
 
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
-
 public class Student {
     private String fullname;
     private String icNum;
     private String form;
+    private String userId; // Assuming you want to store the user ID as well
 
-    public Student() {
-        // Default constructor required for calls to DataSnapshot.getValue(Student.class)
-    }
+    // Default constructor required for calls to DataSnapshot.getValue(Student.class)
+    public Student() {}
 
-    public Student(String fullname, String icNum, String form) {
+    public Student(String fullname, String icNum, String form, String userId) {
         this.fullname = fullname;
         this.icNum = icNum;
         this.form = form;
+        this.userId = userId;
     }
 
+    // Getters and setters
     public String getFullname() {
         return fullname;
+    }
+
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
     }
 
     public String getIcNum() {
         return icNum;
     }
 
+    public void setIcNum(String icNum) {
+        this.icNum = icNum;
+    }
+
     public String getForm() {
         return form;
     }
 
-    public static void fetchStudentData(String studentId, FirestoreCallback callback) {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("students").document(studentId).get()
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        DocumentSnapshot document = task.getResult();
-                        if (document.exists()) {
-                            Student student = document.toObject(Student.class);
-                            callback.onCallback(student);
-                        } else {
-                            callback.onCallback(null);
-                        }
-                    } else {
-                        callback.onCallback(null);
-                    }
-                });
+    public void setForm(String form) {
+        this.form = form;
     }
 
-    public interface FirestoreCallback {
-        void onCallback(Student student);
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }
