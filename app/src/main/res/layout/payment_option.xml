@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@drawable/salamfinance_bg"
+    tools:context=".PaymentOptionsActivity"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/padding_bg"
+
+        >
+
+        <!-- Payment Method Selection -->
+        <TextView
+            android:id="@+id/payment_method_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Payment Method"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/tepapagreen"
+            android:padding="16dp" />
+
+        <RadioGroup
+            android:id="@+id/payment_method_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <RadioButton
+                android:id="@+id/radio_fpx"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FPX Online Banking"
+                android:layout_marginVertical="10dp"
+                />
+
+            <RadioButton
+                android:id="@+id/radio_debit_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Debit Card"
+                android:layout_marginVertical="10dp"/>
+
+            <RadioButton
+                android:id="@+id/radio_credit_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Credit Card"
+                android:layout_marginVertical="10dp"/>
+
+            <RadioButton
+                android:id="@+id/radio_paypal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PayPal"
+                android:layout_marginVertical="10dp"/>
+
+            <RadioButton
+                android:id="@+id/radio_google_pay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Google Pay"
+                android:layout_marginVertical="10dp"/>
+
+        </RadioGroup>
+
+        <!-- FPX Online Banking -->
+        <LinearLayout
+            android:id="@+id/fpx_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:paddingTop="16dp">
+
+            <TextView
+                android:id="@+id/fpx_bank_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select Bank"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:paddingBottom="8dp" />
+
+            <Spinner
+                android:id="@+id/fpx_bank_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/fpx_banks" />
+        </LinearLayout>
+
+        <!-- Debit Card -->
+        <LinearLayout
+            android:id="@+id/debit_card_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:paddingTop="16dp">
+
+            <EditText
+                android:id="@+id/debit_card_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Card Number"
+                android:inputType="number" />
+
+
+            <EditText
+                android:id="@+id/debit_card_expiry_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Expiry Date (MMYY)"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/debit_card_cvv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="CVV"
+                android:inputType="numberPassword" />
+
+            <EditText
+                android:id="@+id/debit_card_holder_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Card Holder Name"
+                android:inputType="text" />
+        </LinearLayout>
+
+        <!-- Credit Card -->
+        <LinearLayout
+            android:id="@+id/credit_card_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:paddingTop="16dp">
+
+            <EditText
+                android:id="@+id/credit_card_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Card Number"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/credit_card_expiry_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Expiry Date (MMYY)"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/credit_card_cvv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="CVV"
+                android:inputType="numberPassword" />
+
+            <EditText
+                android:id="@+id/credit_card_holder_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Card Holder Name"
+                android:inputType="text" />
+        </LinearLayout>
+
+        <!-- PayPal -->
+        <LinearLayout
+            android:id="@+id/paypal_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:paddingTop="16dp">
+
+            <EditText
+                android:id="@+id/paypal_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="PayPal Email"
+                android:inputType="textEmailAddress" />
+        </LinearLayout>
+
+        <!-- Google Pay -->
+        <LinearLayout
+            android:id="@+id/google_pay_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:paddingTop="16dp">
+
+            <TextView
+                android:id="@+id/google_pay_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Google Pay will be used for this transaction."
+                android:textSize="16sp"
+                android:paddingBottom="8dp" />
+        </LinearLayout>
+
+        <!-- Submit Button -->
+        <Button
+            android:id="@+id/submit_button"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:text="Submit Payment"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginVertical="24dp"
+            android:background="@drawable/tepagreen_bkg"
+            android:textColor="@color/satin"
+             />
+    </LinearLayout>
+</ScrollView>

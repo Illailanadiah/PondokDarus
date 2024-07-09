@@ -120,8 +120,8 @@ public class StudentSignUpActivity extends AppCompatActivity {
 
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
-            String uid = currentUser.getUid();
-            DocumentReference studentRef = mFirestore.collection("students").document(uid);
+            String userId = currentUser.getUid();
+            DocumentReference studentRef = mFirestore.collection("students").document(userId);
 
             Student student = new Student(fullname, icNum, form);
 

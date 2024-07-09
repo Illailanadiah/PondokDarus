@@ -7,54 +7,49 @@ public class Guardian {
     private String fullname;
     private String icNum;
     private String phoneNum;
-    private boolean isAgreementChecked;
+    private String userId;
 
     public Guardian() {
         // Default constructor required for calls to DataSnapshot.getValue(Guardian.class)
     }
 
-    public Guardian(String fullname, String icNum, String phoneNum, boolean isAgreementChecked) {
+    public Guardian(String fullname, String icNum, String phoneNum, String userId) {
         this.fullname = fullname;
         this.icNum = icNum;
         this.phoneNum = phoneNum;
-        this.isAgreementChecked = isAgreementChecked;
+        this.userId = userId;
     }
+
 
     public String getFullname() {
         return fullname;
+    }
+
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
     }
 
     public String getIcNum() {
         return icNum;
     }
 
+    public void setIcNum(String icNum) {
+        this.icNum = icNum;
+    }
+
     public String getPhoneNum() {
         return phoneNum;
     }
 
-    public boolean isAgreementChecked() {
-        return isAgreementChecked;
+    public void setPhoneNum(String phoneNum) {
+        this.phoneNum = phoneNum;
     }
 
-    public static void fetchGuardianData(String guardianId, FirestoreCallback callback) {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("guardians").document(guardianId).get()
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        DocumentSnapshot document = task.getResult();
-                        if (document.exists()) {
-                            Guardian guardian = document.toObject(Guardian.class);
-                            callback.onCallback(guardian);
-                        } else {
-                            callback.onCallback(null);
-                        }
-                    } else {
-                        callback.onCallback(null);
-                    }
-                });
+    public String getUserId() {
+        return userId;
     }
 
-    public interface FirestoreCallback {
-        void onCallback(Guardian guardian);
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }

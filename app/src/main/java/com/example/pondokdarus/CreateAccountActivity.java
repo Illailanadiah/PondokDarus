@@ -103,24 +103,30 @@ public class CreateAccountActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         FirebaseUser user = mAuth.getCurrentUser();
                         if (user != null) {
-                            String uid = user.getUid();
-                            // Create a new User object
-                            User newUser = new User(email, "Full Name", "IC Number", "Phone Number", true);
+                            String userId = user.getUid();
+                            // Get guardian details from the previous activity
+                            Intent intent = getIntent();
+                            String fullname = intent.getStringExtra("fullname");
+                            String icNum = intent.getStringExtra("icNum");
+                            String phoneNum = intent.getStringExtra("phoneNum");
 
-                            // Store user data in Firestore
-                            mFirestore.collection("users").document(uid).set(newUser)
-                                    .addOnSuccessListener(aVoid -> Log.d(TAG, "User data added to Firestore"))
-                                    .addOnFailureListener(e -> Log.w(TAG, "Error adding user data to Firestore", e));
+                            // Create a new Guardian object
+                            Guardian newGuardian = new Guardian(fullname, icNum, phoneNum, userId);
 
-                            // Store user data in Realtime Database
-                            mDatabase.child("users").child(uid).setValue(newUser)
-                                    .addOnSuccessListener(aVoid -> Log.d(TAG, "User data added to Realtime Database"))
-                                    .addOnFailureListener(e -> Log.w(TAG, "Error adding user data to Realtime Database", e));
+                            // Store guardian data in Firestore
+                            mFirestore.collection("guardians").document(userId).set(newGuardian)
+                                    .addOnSuccessListener(aVoid -> Log.d(TAG, "Guardian data added to Firestore"))
+                                    .addOnFailureListener(e -> Log.w(TAG, "Error adding guardian data to Firestore", e));
+
+                            // Store guardian data in Realtime Database
+                            mDatabase.child("guardians").child(userId).setValue(newGuardian)
+                                    .addOnSuccessListener(aVoid -> Log.d(TAG, "Guardian data added to Realtime Database"))
+                                    .addOnFailureListener(e -> Log.w(TAG, "Error adding guardian data to Realtime Database", e));
 
                             // Redirect to main activity
                             Toast.makeText(CreateAccountActivity.this, "Account created.", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(CreateAccountActivity.this, GuardianMainActivity.class);
-                            startActivity(intent);
+                            Intent mainIntent = new Intent(CreateAccountActivity.this, GuardianMainActivity.class);
+                            startActivity(mainIntent);
                             finish();
                         }
                     } else {
@@ -133,4 +139,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                     progressBar.setVisibility(View.GONE);
                 });
     }
+
+    // Guardian class to represent the structure of the document in Firestore
+
 }

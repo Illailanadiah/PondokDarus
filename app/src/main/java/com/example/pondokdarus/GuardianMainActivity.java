@@ -41,9 +41,9 @@ public class GuardianMainActivity extends AppCompatActivity {
 
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
-            String uid = currentUser.getUid();
-            fetchGuardianData(uid);
-            fetchStudentData(uid);
+            String userId = currentUser.getUid();
+            fetchGuardianData(userId);
+            fetchStudentData(userId);
         }
 
         contactButton.setOnClickListener(v -> {
@@ -80,8 +80,8 @@ public class GuardianMainActivity extends AppCompatActivity {
         });
     }
 
-    private void fetchGuardianData(String uid) {
-        mFirestore.collection("guardians").document(uid).get()
+    private void fetchGuardianData(String userId) {
+        mFirestore.collection("guardians").document(userId).get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         DocumentSnapshot document = task.getResult();
@@ -97,24 +97,11 @@ public class GuardianMainActivity extends AppCompatActivity {
                     }
                 });
 
-        // Fetch email from "users" collection
-        mFirestore.collection("users").document(uid).get()
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        DocumentSnapshot document = task.getResult();
-                        if (document.exists()) {
-                            guardianEmail = document.getString("email");
-                        } else {
-                            Toast.makeText(GuardianMainActivity.this, "User email not found", Toast.LENGTH_SHORT).show();
-                        }
-                    } else {
-                        Toast.makeText(GuardianMainActivity.this, "Failed to load user email", Toast.LENGTH_SHORT).show();
-                    }
-                });
+
     }
 
-    private void fetchStudentData(String uid) {
-        mFirestore.collection("students").document(uid).get()
+    private void fetchStudentData(String userId) {
+        mFirestore.collection("students").document(userId).get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         DocumentSnapshot document = task.getResult();

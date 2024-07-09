@@ -22,7 +22,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class GuardianSignUpActivity extends AppCompatActivity {
 
     private EditText fullnameEditText;
-    private EditText icNumEditText, phoneNumEditText; // Changed to EditText
+    private EditText icNumEditText, phoneNumEditText;
     private CheckBox agreementCheckBox;
     private Button guardianNextButton;
 
@@ -41,8 +41,8 @@ public class GuardianSignUpActivity extends AppCompatActivity {
 
         // Initialize views
         fullnameEditText = findViewById(R.id.fullname);
-        icNumEditText = findViewById(R.id.ic_num); // Changed to EditText
-        phoneNumEditText = findViewById(R.id.phonenum); // Changed to EditText
+        icNumEditText = findViewById(R.id.ic_num);
+        phoneNumEditText = findViewById(R.id.phonenum);
         agreementCheckBox = findViewById(R.id.agreement);
         guardianNextButton = findViewById(R.id.guardianNextButton);
         backButton = findViewById(R.id.back_icon);
@@ -53,8 +53,8 @@ public class GuardianSignUpActivity extends AppCompatActivity {
             finish();
         });
 
-        icNumEditText.addTextChangedListener(icNumTextWatcher); // Use EditText reference
-        phoneNumEditText.addTextChangedListener(phoneNumTextWatcher); // Use EditText reference
+        icNumEditText.addTextChangedListener(icNumTextWatcher);
+        phoneNumEditText.addTextChangedListener(phoneNumTextWatcher);
 
         guardianNextButton.setOnClickListener(v -> saveGuardianInfo());
     }
@@ -105,10 +105,10 @@ public class GuardianSignUpActivity extends AppCompatActivity {
             input = input.substring(2);
         }
         formatted.append(input);
-        icNumEditText.removeTextChangedListener(icNumTextWatcher); // Use EditText reference
+        icNumEditText.removeTextChangedListener(icNumTextWatcher);
         icNumEditText.setText(formatted.toString());
         icNumEditText.setSelection(formatted.length());
-        icNumEditText.addTextChangedListener(icNumTextWatcher); // Use EditText reference
+        icNumEditText.addTextChangedListener(icNumTextWatcher);
     }
 
     private void formatPhoneNumber(Editable s) {
@@ -119,10 +119,10 @@ public class GuardianSignUpActivity extends AppCompatActivity {
         }
 
         // Set formatted text, preserving cursor position
-        phoneNumEditText.removeTextChangedListener(phoneNumTextWatcher); // Use EditText reference
+        phoneNumEditText.removeTextChangedListener(phoneNumTextWatcher);
         phoneNumEditText.setText(input);
         phoneNumEditText.setSelection(input.length());
-        phoneNumEditText.addTextChangedListener(phoneNumTextWatcher); // Use EditText reference
+        phoneNumEditText.addTextChangedListener(phoneNumTextWatcher);
     }
 
     private void saveGuardianInfo() {
@@ -143,20 +143,43 @@ public class GuardianSignUpActivity extends AppCompatActivity {
 
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
-            String uid = currentUser.getUid();
-            DocumentReference guardianRef = mFirestore.collection("guardians").document(uid);
+            String userId = currentUser.getUid();
+            // Create a new document in the "guardians" collection with a generated ID
+            DocumentReference guardianRef = mFirestore.collection("guardians").document();
 
-            Guardian guardian = new Guardian(fullname, icNum, phoneNum, isAgreementChecked);
+            Guardian guardian = new Guardian(fullname, icNum, phoneNum, isAgreementChecked, userId);
 
             guardianRef.set(guardian).addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
                     Toast.makeText(GuardianSignUpActivity.this, "Guardian information saved", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(GuardianSignUpActivity.this, CreateAccountActivity.class);
+                    intent.putExtra("fullname", fullname);
+                    intent.putExtra("icNum", icNum);
+                    intent.putExtra("phoneNum", phoneNum);
                     startActivity(intent);
                 } else {
                     Toast.makeText(GuardianSignUpActivity.this, "Failed to save guardian information", Toast.LENGTH_SHORT).show();
                 }
             });
         }
+    }
+
+    // Guardian class to represent the structure of the document in Firestore
+    public class Guardian {
+        private String fullname;
+        private String icNum;
+        private String phoneNum;
+        private boolean agreementChecked;
+        private String userId;
+
+        public Guardian(String fullname, String icNum, String phoneNum, boolean agreementChecked, String userId) {
+            this.fullname = fullname;
+            this.icNum = icNum;
+            this.phoneNum = phoneNum;
+            this.agreementChecked = agreementChecked;
+            this.userId = userId;
+        }
+
+        // Getters and setters (if needed)
     }
 }

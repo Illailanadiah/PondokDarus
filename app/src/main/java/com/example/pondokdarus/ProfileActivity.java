@@ -82,7 +82,7 @@ public class ProfileActivity extends AppCompatActivity {
                     String guardianPhoneNum = document.getString("phoneNum");
                     String guardianEmail = document.getString("email");
 
-                    guardianNameTextView.setText(guardianFullname);
+                    guardianNameTextView.setText("Full name:"+guardianFullname);
                     guardianICNumTextView.setText("IC: " + guardianIcNum);
                     guardianPhoneNumTextView.setText("Phone: " + guardianPhoneNum);
                     guardianEmailTextView.setText("Email: " + guardianEmail);
