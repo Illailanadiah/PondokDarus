@@ -22,5 +22,6 @@ public class PaymentReceiptActivity extends AppCompatActivity {
             startActivity(intent);
             finish();  // Optionally finish the activity to remove it from the back stack
         });
+
     }
 }

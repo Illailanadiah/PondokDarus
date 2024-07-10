@@ -70,58 +70,58 @@
             android:id="@+id/header_tobepaid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
             <CheckBox
                 android:id="@+id/headercheck"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:gravity="center"
                 android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"/>
+                android:layout_marginEnd="5dp"
+                android:gravity="center" />
 
             <TextView
                 android:id="@+id/headerbill"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="5dp"
+                android:gravity="center_horizontal"
                 android:text="@string/bill_head"
-                android:textSize="16sp"
                 android:textColor="@color/tepapagreen"
-                android:textStyle="bold"
-                android:gravity="center_horizontal" />
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/headerdate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginStart="5dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="5dp"
+                android:gravity="center_horizontal"
                 android:text="@string/endDate_head"
-                android:textSize="16sp"
                 android:textColor="@color/tepapagreen"
-                android:textStyle="bold"
-                android:gravity="center_horizontal" />
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/headeramount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginStart="5dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="5dp"
+                android:gravity="center_horizontal"
                 android:text="@string/amount_head"
-                android:textSize="16sp"
                 android:textColor="@color/tepapagreen"
-                android:textStyle="bold"
-                android:gravity="center_horizontal" />
+                android:textSize="16sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
@@ -134,48 +134,48 @@
                 android:id="@+id/checkbox"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:gravity="center"
                 android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"/>
+                android:layout_marginEnd="5dp"
+                android:gravity="center" />
 
             <TextView
                 android:id="@+id/billname_unpaid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="5dp"
+                android:gravity="center_horizontal"
                 android:text="@string/billname"
-                android:textSize="16sp"
-                android:gravity="center_horizontal" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/date_unpaid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginStart="5dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="5dp"
+                android:gravity="center_horizontal"
                 android:text="@string/date"
                 android:textColor="@color/tepapagreen"
-                android:textSize="16sp"
-                android:gravity="center_horizontal" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/amount_unpaid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginStart="5dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="5dp"
-                android:text="@string/amount"
+                android:gravity="center_horizontal"
                 android:maxLength="10"
+                android:text="@string/amount"
                 android:textColor="#D42F2F"
-                android:textSize="16sp"
-                android:gravity="center_horizontal" />
+                android:textSize="16sp" />
         </LinearLayout>
 
         <Button

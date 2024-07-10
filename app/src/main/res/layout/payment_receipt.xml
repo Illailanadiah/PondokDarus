@@ -49,7 +49,7 @@
             android:id="@+id/bill_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Example Bill Name"
+            android:text="Tuition Fee Form 1 "
             android:textSize="16sp"
             android:paddingVertical="4dp" />
 
@@ -64,15 +64,15 @@
             android:textColor="@color/tepapagreen"
             android:paddingVertical="8dp" />
 
+        <!-- Amount -->
         <TextView
             android:id="@+id/bill_details"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Example bill details go here. This includes a brief description or any relevant information."
-            android:textSize="16sp"
-            android:paddingVertical="4dp" />
+            android:paddingVertical="4dp"
+            android:text="Semester 1"
+            android:textSize="16sp" />
 
-        <!-- Amount -->
         <TextView
             android:id="@+id/amount_title"
             android:layout_width="wrap_content"
@@ -87,7 +87,7 @@
             android:id="@+id/amount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="RM 123.45"
+            android:text="RM 500.00"
             android:textSize="16sp"
             android:paddingVertical="4dp" />
 
@@ -102,15 +102,15 @@
             android:textColor="@color/tepapagreen"
             android:paddingVertical="8dp" />
 
+        <!-- Payment Method -->
         <TextView
             android:id="@+id/date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="12 July 2024"
-            android:textSize="16sp"
-            android:paddingVertical="4dp" />
+            android:paddingVertical="4dp"
+            android:text="10 July 2024"
+            android:textSize="16sp" />
 
-        <!-- Payment Method -->
         <TextView
             android:id="@+id/payment_method_title"
             android:layout_width="wrap_content"
@@ -125,7 +125,7 @@
             android:id="@+id/payment_method"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Credit Card"
+            android:text="FPX Online Banking"
             android:textSize="16sp"
             android:paddingVertical="4dp" />
 
