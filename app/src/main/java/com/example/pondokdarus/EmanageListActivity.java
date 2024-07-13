@@ -20,114 +20,58 @@ import java.util.Map;
 
 public class EmanageListActivity extends AppCompatActivity {
 
-    private FirebaseFirestore db;
-    private LinearLayout listContainer;
+
     private ImageView editIcon, backIcon, addIcon, deleteIcon;
+
+    private TextView number , headerBill, headerDate, headerAmount , numberBill, billName, date, amount;
+    private TextView titleTextView;
     private String selectedForm;
-    private List<String> selectedDocuments;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.emanage_list);
 
-        db = FirebaseFirestore.getInstance();
-        listContainer = findViewById(R.id.list_container);
         editIcon = findViewById(R.id.edit_icon);
         backIcon = findViewById(R.id.back_icon);
         addIcon = findViewById(R.id.add_icon);
         deleteIcon = findViewById(R.id.delete_icon);
-        selectedDocuments = new ArrayList<>();
 
-        selectedForm = getIntent().getStringExtra("SELECTED_FORM");
+        number = findViewById(R.id.number);
+        headerBill = findViewById(R.id.headerbill);
+        headerDate = findViewById(R.id.headerdate);
+        headerAmount = findViewById(R.id.headeramount);
+        numberBill = findViewById(R.id.num);
+        billName = findViewById(R.id.billname);
+        date = findViewById(R.id.date);
+        amount = findViewById(R.id.amount);
+        titleTextView = findViewById(R.id.title);
+        selectedForm = null;
+
+        Intent intent = getIntent();
+        String title = intent.getStringExtra("SELECTED_FORM");
+        if(title != null) {
+            titleTextView.setText(title);
+            selectedForm = title;
+        }
+
 
         backIcon.setOnClickListener(v -> {
-            Intent intent = new Intent(EmanageListActivity.this, FormListActivity.class);
-            startActivity(intent);
+            Intent backintent = new Intent(EmanageListActivity.this, FormListActivity.class);
+            startActivity(backintent);
             finish();
         });
 
-        editIcon.setOnClickListener(v -> navigateToEditActivity());
-
-        addIcon.setOnClickListener(v -> navigateToAddActivity());
-
-        deleteIcon.setOnClickListener(v -> deleteSelectedDocuments());
-
-        loadBillDetails();
-    }
-
-    private void loadBillDetails() {
-        db.collection("billDetails")
-                .whereEqualTo("form", selectedForm)
-                .get()
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        for (QueryDocumentSnapshot document : task.getResult()) {
-                            addBillToList(document.getId(), document.getData());
-                        }
-                    } else {
-                        Toast.makeText(this, "Error getting documents: " + task.getException(), Toast.LENGTH_SHORT).show();
-                    }
-                });
-    }
-
-    private void addBillToList(String id, Map<String, Object> data) {
-        View formItemView = getLayoutInflater().inflate(R.layout.form_item, listContainer, false);
-
-        TextView billName = formItemView.findViewById(R.id.bill_name);
-        TextView billDetails = formItemView.findViewById(R.id.bill_details);
-        TextView amount = formItemView.findViewById(R.id.amount);
-        TextView endDate = formItemView.findViewById(R.id.end_date);
-        CheckBox checkBox = formItemView.findViewById(R.id.checkbox);
-
-        billName.setText(data.get("billName").toString());
-        billDetails.setText(data.get("billDetails").toString());
-        amount.setText(data.get("amount").toString());
-        endDate.setText(data.get("endDate").toString());
-
-        formItemView.setOnClickListener(v -> navigateToEditActivity(id));
-        checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (isChecked) {
-                selectedDocuments.add(id);
-            } else {
-                selectedDocuments.remove(id);
-            }
+        editIcon.setOnClickListener(v -> {
+            Intent editintent = new Intent(EmanageListActivity.this, EmanageEditActivity.class);
+            startActivity(editintent);
+            finish();
         });
 
-        listContainer.addView(formItemView);
+
+
     }
 
-    private void navigateToEditActivity() {
-        Intent intent = new Intent(EmanageListActivity.this, EmanageEditActivity.class);
-        intent.putExtra("SELECTED_FORM", selectedForm);
-        startActivity(intent);
-    }
 
-    private void navigateToEditActivity(String id) {
-        Intent intent = new Intent(EmanageListActivity.this, EmanageEditActivity.class);
-        intent.putExtra("DOCUMENT_ID", id);
-        intent.putExtra("SELECTED_FORM", selectedForm);
-        startActivity(intent);
-    }
-
-    private void navigateToAddActivity() {
-        Intent intent = new Intent(EmanageListActivity.this, EmanageAddActivity.class);
-        intent.putExtra("SELECTED_FORM", selectedForm);
-        startActivity(intent);
-    }
-
-    private void deleteSelectedDocuments() {
-        for (String documentId : selectedDocuments) {
-            db.collection("billDetails").document(documentId)
-                    .delete()
-                    .addOnSuccessListener(aVoid -> {
-                        // Successfully deleted
-                        loadBillDetails();
-                    })
-                    .addOnFailureListener(e -> {
-                        // Failed to delete
-                        Toast.makeText(this, "Error deleting document: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                    });
-        }
-    }
 }

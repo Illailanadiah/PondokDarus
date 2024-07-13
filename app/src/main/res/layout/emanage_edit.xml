@@ -51,30 +51,139 @@
 
 
     <LinearLayout
-        android:id="@+id/list_container"
+        android:id="@+id/edit_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/title_container"
         android:orientation="vertical"
         android:background="@drawable/emanage_bg">
 
-        <!-- List items will be added dynamically -->
+    <LinearLayout
+        android:id="@+id/editlist_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title_container"
+        android:orientation="vertical"
+        android:background="@drawable/emanage_bg">
 
-       <!-- <Button
-            android:id="@+id/editSaveButton"
-            style="@android:style/Widget.Button"
-            android:layout_width="wrap_content"
+
+        <LinearLayout
+            android:id="@+id/header_tobepaid"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="180dp"
-            android:background="@drawable/tepagreen_bkg"
-            android:drawableLeft="@drawable/baseline_save_alt_24"
-            android:drawablePadding="10dp"
-            android:gravity="center_horizontal"
-            android:padding="20dp"
-            android:text="SAVE"
-            android:textColor="@color/satin"
-            android:textSize="20sp" /> -->
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
+
+            <CheckBox
+                android:id="@+id/headercheck"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/headerbill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="5dp"
+                android:gravity="center_horizontal"
+                android:text="@string/bill_head"
+                android:textColor="@color/tepapagreen"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/headerdate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="5dp"
+                android:gravity="center_horizontal"
+                android:text="@string/endDate_head"
+                android:textColor="@color/tepapagreen"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/headeramount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="13dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="5dp"
+                android:gravity="center_horizontal"
+                android:text="@string/amount_head"
+                android:textColor="@color/tepapagreen"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/bill_item_tobepaid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/checkbox"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/billname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="5dp"
+                android:gravity="center_horizontal"
+                android:text="Tuition Fee"
+                android:textColor="@color/tepapagreen"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="5dp"
+                android:gravity="center_horizontal"
+                android:text="31/07/24"
+                android:textColor="@color/tepapagreen"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="5dp"
+                android:gravity="center_horizontal"
+                android:maxLength="10"
+                android:text="RM 500.00"
+                android:textColor="@color/tepapagreen"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+
+
+    </LinearLayout>
     </LinearLayout>
 
     <ImageView

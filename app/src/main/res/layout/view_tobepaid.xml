@@ -100,7 +100,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginStart="5dp"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="5dp"
                 android:gravity="center_horizontal"
@@ -114,7 +114,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginStart="5dp"
+                android:layout_marginStart="13dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="5dp"
                 android:gravity="center_horizontal"
@@ -147,7 +147,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="5dp"
                 android:gravity="center_horizontal"
-                android:text="@string/billname"
+                android:text="Tuition Fee"
                 android:textSize="16sp" />
 
             <TextView
@@ -155,11 +155,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginStart="5dp"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="5dp"
                 android:gravity="center_horizontal"
-                android:text="@string/date"
+                android:text="31/07/24"
                 android:textColor="@color/tepapagreen"
                 android:textSize="16sp" />
 
@@ -168,12 +168,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginStart="5dp"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="5dp"
                 android:gravity="center_horizontal"
                 android:maxLength="10"
-                android:text="@string/amount"
+                android:text="RM 500.00"
                 android:textColor="#D42F2F"
                 android:textSize="16sp" />
         </LinearLayout>

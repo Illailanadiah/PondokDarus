@@ -3,6 +3,7 @@ package com.example.pondokdarus;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,6 +24,7 @@ public class PrincipalMainActivity extends AppCompatActivity {
     private ImageView principalImage, logoutIcon;
     private FirebaseAuth mAuth;
     private FirebaseFirestore mFirestore;
+    private Button reportButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,7 @@ public class PrincipalMainActivity extends AppCompatActivity {
         principalRole = findViewById(R.id.principalRole);
         principalImage = findViewById(R.id.principalImage);
         logoutIcon = findViewById(R.id.logout_icon);
+        reportButton = findViewById(R.id.ereport_Button);
 
         welcomeMessageName.setText("Jalil");
         principalName.setText("Jalil Bin Abdul Rahman");
@@ -52,6 +55,15 @@ public class PrincipalMainActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         });
+
+        reportButton.setOnClickListener(v -> {
+
+            Intent intent = new Intent(PrincipalMainActivity.this, PrincipalReportActivity.class);
+            startActivity(intent);
+            finish();
+        }
+        );
+
 
 
     }

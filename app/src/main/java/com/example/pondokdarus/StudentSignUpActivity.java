@@ -46,6 +46,8 @@ public class StudentSignUpActivity extends AppCompatActivity {
         studentNextButton = findViewById(R.id.studentNextButton);
         backButton = findViewById(R.id.back_icon);
 
+
+
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

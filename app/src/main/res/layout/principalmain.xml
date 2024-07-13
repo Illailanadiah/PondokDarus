@@ -124,7 +124,7 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/payment_btn"
+                android:id="@+id/ereport_Button"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"

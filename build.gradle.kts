@@ -7,7 +7,13 @@ buildscript {
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.10")
 
     }
+
+
+
 }
+
+
+
 
 plugins {
     id("com.android.application") version "8.5.0" apply false
@@ -15,4 +21,3 @@ plugins {
     id("org.jetbrains.kotlin.jvm") version "1.8.10" apply false
     id("com.google.gms.google-services") version "4.4.2" apply false
 }
-

@@ -18,16 +18,27 @@ public class FormListActivity extends AppCompatActivity {
         Button buttonForm4 = findViewById(R.id.button_form4);
         Button buttonForm5 = findViewById(R.id.button_form5);
 
-        buttonForm1.setOnClickListener(v -> navigateToEmanageListActivity("FORM 1"));
-        buttonForm2.setOnClickListener(v -> navigateToEmanageListActivity("FORM 2"));
-        buttonForm3.setOnClickListener(v -> navigateToEmanageListActivity("FORM 3"));
-        buttonForm4.setOnClickListener(v -> navigateToEmanageListActivity("FORM 4"));
-        buttonForm5.setOnClickListener(v -> navigateToEmanageListActivity("FORM 5"));
-    }
+        buttonForm1.setOnClickListener(v -> {
+            Intent intent = new Intent(FormListActivity.this, EmanageListActivity.class);
+            startActivity(intent);
+        });
+        buttonForm2.setOnClickListener(v -> {
+            Intent intent = new Intent(FormListActivity.this, EmanageListActivity.class);
+            startActivity(intent);
+        });
+        buttonForm3.setOnClickListener(v -> {
+            Intent intent = new Intent(FormListActivity.this, EmanageListActivity.class);
+            startActivity(intent);
+        });
+        buttonForm4.setOnClickListener(v -> {
+            Intent intent = new Intent(FormListActivity.this, EmanageListActivity.class);
+            startActivity(intent);
+        });
+        buttonForm5.setOnClickListener(v -> {
+            Intent intent = new Intent(FormListActivity.this, EmanageListActivity.class);
+            startActivity(intent);
+        });
 
-    private void navigateToEmanageListActivity(String form) {
-        Intent intent = new Intent(FormListActivity.this, EmanageListActivity.class);
-        intent.putExtra("SELECTED_FORM", form);
-        startActivity(intent);
+        // Other buttons don't have click listeners
     }
 }

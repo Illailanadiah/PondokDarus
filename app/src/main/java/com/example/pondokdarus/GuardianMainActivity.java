@@ -43,7 +43,6 @@ public class GuardianMainActivity extends AppCompatActivity {
         if (currentUser != null) {
             String userId = currentUser.getUid();
             fetchGuardianData(userId);
-            fetchStudentData(userId);
         }
 
         contactButton.setOnClickListener(v -> {
@@ -100,21 +99,5 @@ public class GuardianMainActivity extends AppCompatActivity {
 
     }
 
-    private void fetchStudentData(String userId) {
-        mFirestore.collection("students").document(userId).get()
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        DocumentSnapshot document = task.getResult();
-                        if (document.exists()) {
-                            studentFullname = document.getString("fullname");
-                            studentIcNum = document.getString("icNum");
-                            studentForm = document.getString("form");
-                        } else {
-                            Toast.makeText(GuardianMainActivity.this, "Student profile not found", Toast.LENGTH_SHORT).show();
-                        }
-                    } else {
-                        Toast.makeText(GuardianMainActivity.this, "Failed to load student profile", Toast.LENGTH_SHORT).show();
-                    }
-                });
-    }
+
 }
