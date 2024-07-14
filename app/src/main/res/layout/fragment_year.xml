@@ -3,13 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".YearFragment">
+    tools:context=".YearFragment"
+    android:id="@+id/yearFragment">
 
     <TextView
-        android:id="@+id/monthText"
+        android:id="@+id/yearText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="MONTH"
+        android:text="YEAR"
         android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"

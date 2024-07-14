@@ -23,6 +23,7 @@
         <activity android:name=".GuardianMainActivity"/>
         <activity android:name=".StaffLoginActivity"/>
         <activity android:name=".PrincipalMainActivity"/>
+        <activity android:name=".PrincipalReportActivity"/>
         <activity android:name=".ClerkMainActivity"/>
         <activity android:name=".ViewContactActivity"/>
         <activity android:name=".PaymentActivity"/>

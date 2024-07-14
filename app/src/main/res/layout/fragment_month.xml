@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MonthFragment">
+    tools:context=".MonthFragment"
+    android:id="@+id/monthFragment">
 
     <TextView
         android:id="@+id/monthText"
