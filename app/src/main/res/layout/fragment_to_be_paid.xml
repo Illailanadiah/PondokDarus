@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:id="@+id/tobepaid">
+
+    <!-- Header -->
+    <LinearLayout
+        android:id="@+id/headerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        android:gravity="center_vertical">
+
+        <CheckBox
+            android:id="@+id/headerCheckbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"/>
+
+        <TextView
+            android:id="@+id/headerBill"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/bill_head"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/tepapagreen"/>
+
+        <TextView
+            android:id="@+id/headerDate"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/endDate_head"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/tepapagreen"/>
+
+        <TextView
+            android:id="@+id/headerAmount"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/amount_head"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/tepapagreen"/>
+    </LinearLayout>
+
+    <!-- Item -->
+    <LinearLayout
+        android:id="@+id/itemLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        android:gravity="center_vertical">
+
+        <CheckBox
+            android:id="@+id/itemCheckbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"/>
+
+        <TextView
+            android:id="@+id/itemBillName"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Tuition Fee"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/itemDate"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="31/07/24"
+            android:textSize="16sp"
+            android:textColor="@color/tepapagreen"/>
+
+        <TextView
+            android:id="@+id/itemAmount"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="RM 500.00"
+            android:textSize="16sp"
+            android:textColor="#D42F2F"/>
+
+        <!-- TextView to navigate to PaymentReceiptActivity -->
+        <TextView
+            android:id="@+id/itemView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/view"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="@color/tepapagreen"
+            android:gravity="center_horizontal"
+            android:clickable="true"
+            android:onClick="navigateToPaymentReceipt" />
+    </LinearLayout>
+
+    <!-- Pay Button -->
+    <Button
+        android:id="@+id/payBtn"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="center_horizontal"
+        android:padding="18dp"
+        android:text="PAY"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:background="@drawable/tepagreen_bkg"
+        android:onClick="navigateToPaymentOptions" />
+
+</LinearLayout>

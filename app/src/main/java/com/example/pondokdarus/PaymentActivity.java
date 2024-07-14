@@ -4,79 +4,68 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.TextView;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 public class PaymentActivity extends AppCompatActivity {
 
-    private RadioGroup paymentRadioGroup;
-    private RadioButton tobePaidRadioButton;
-    private RadioButton paidRadioButton;
-    private Button payButton;
-    private View toBePaidLayout, headerToBePaid,headerPaid, paidLayout, bill_item_paid, bill_item_tobepaid;
-    private TextView viewPaid;
+    private ImageView backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.view_tobepaid);
+        setContentView(R.layout.view_payment);
 
-        paymentRadioGroup = findViewById(R.id.paymentRadioGroup);
-        tobePaidRadioButton = findViewById(R.id.tobePaid_RadioButton);
-        paidRadioButton = findViewById(R.id.paid_RadioButton);
-        payButton = findViewById(R.id.paybtn);
-        toBePaidLayout = findViewById(R.id.tobepaid_layout);
-        headerToBePaid = findViewById(R.id.header_tobepaid);
-        headerPaid = findViewById(R.id.header_paid);
-        paidLayout = findViewById(R.id.paid_layout);
-        bill_item_paid = findViewById(R.id.bill_item_paid);
-        bill_item_tobepaid = findViewById(R.id.bill_item_tobepaid);
-        viewPaid = findViewById(R.id.view_paid);
+        // Initialize buttons
+        setupFragmentButton(R.id.tobepaidBtn, ToBePaidFragment.class, "tobepaidFragment");
+        setupFragmentButton(R.id.paidBtn, PaidFragment.class, "paidFragment");
+        backButton = findViewById(R.id.back_icon);
 
-        payButton.setOnClickListener(v -> {
-            Intent intent = new Intent(PaymentActivity.this, PaymentOptionsActivity.class);
-            startActivity(intent);
-        });
-
-
-        // In your PaymentActivity'sonCreate() method
-        paymentRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {
-
-            if (checkedId == R.id.paid_RadioButton) {
-                loadPaidBills(); // Load the paid bills
-                toBePaidLayout.setVisibility(View.GONE);
-                headerToBePaid.setVisibility(View.GONE);
-                paidLayout.setVisibility(View.VISIBLE);
-                headerPaid.setVisibility(View.VISIBLE);
-                bill_item_paid.setVisibility(View.VISIBLE);
-            } else if (checkedId == R.id.tobePaid_RadioButton) {
-                loadToBePaidBills(); // Load the to-be-paid billstoBePaidLayout.setVisibility(View.VISIBLE);
-                headerToBePaid.setVisibility(View.VISIBLE);
-                paidLayout.setVisibility(View.GONE);
-                headerPaid.setVisibility(View.GONE);
-                bill_item_paid.setVisibility(View.GONE);
-                toBePaidLayout.setVisibility(View.VISIBLE);
-                bill_item_tobepaid.setVisibility(View.VISIBLE);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PaymentActivity.this, GuardianMainActivity.class);
+                startActivity(intent);
             }
         });
+    }
 
-        viewPaid.setOnClickListener(v -> {
-            Intent intent = new Intent(PaymentActivity.this, PaymentReceiptActivity.class);
-            startActivity(intent);
-
+    private void setupFragmentButton(int buttonId, Class<? extends Fragment> fragmentClass, String backstackName) {
+        Button button = findViewById(buttonId);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replaceFragment(fragmentClass, backstackName);
+            }
         });
-
-
     }
 
-    private void loadToBePaidBills() {
-
+    private void replaceFragment(Class<? extends Fragment> fragmentClass, String backstackName) {
+        try {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.tobepaidLayout, fragmentClass.newInstance());
+            fragmentTransaction.setReorderingAllowed(true);
+            fragmentTransaction.addToBackStack(backstackName);
+            fragmentTransaction.commit();
+        } catch (InstantiationException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
     }
 
-    private void loadPaidBills() {
+    // Method to navigate to PaymentOptionsActivity
+    public void navigateToPaymentOptions(View view) {
+        Intent intent = new Intent(this, PaymentOptionsActivity.class);
+        startActivity(intent);
+    }
 
+    // Method to navigate to PaymentReceiptActivity
+    public void navigateToPaymentReceipt(View view) {
+        Intent intent = new Intent(this, PaymentReceiptActivity.class);
+        startActivity(intent);
     }
 }

@@ -42,6 +42,8 @@ android {
 
 }
 
+
+
 dependencies {
 
     implementation("androidx.appcompat:appcompat:1.7.0")
@@ -77,7 +79,7 @@ dependencies {
     implementation ("com.google.firebase:firebase-storage:20.0.0")
     implementation ("com.squareup.picasso:picasso:2.71828")
     implementation("com.google.ar.sceneform:filament-android:1.17.1")
-
+    implementation ("com.github.PhilJay:MPAndroidChart:v3.1.0")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.0")

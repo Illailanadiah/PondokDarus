@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:id="@+id/paidlayout">
+
+    <!-- Header -->
+    <LinearLayout
+        android:id="@+id/headerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/numHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:text="@string/no_head"
+            android:textSize="16sp"
+            android:textColor="@color/tepapagreen"
+            android:textStyle="bold"
+            android:gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/headerBill"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:text="@string/bill_head"
+            android:textSize="16sp"
+            android:textColor="@color/tepapagreen"
+            android:textStyle="bold"
+            android:gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/headerAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:text="@string/amount_head"
+            android:textSize="16sp"
+            android:textColor="@color/tepapagreen"
+            android:textStyle="bold"
+            android:gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/headerDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:text="@string/detail_head"
+            android:textSize="16sp"
+            android:textColor="@color/tepapagreen"
+            android:textStyle="bold"
+            android:gravity="center_horizontal" />
+    </LinearLayout>
+
+    <!-- Item -->
+    <LinearLayout
+        android:id="@+id/itemLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/itemNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:text="1."
+            android:textSize="16sp"
+            android:gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/itemBillName"
+            android:layout_width="186dp"
+            android:layout_height="wrap_content"
+
+            android:gravity="center_horizontal"
+            android:text="Tuition Fee Form 1 "
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/itemAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="RM 500.00"
+            android:textColor="#4FAF6A"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/itemView"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:padding="5dp"
+            android:text="@string/view"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="@color/tepapagreen"
+            android:gravity="center_horizontal"
+            android:clickable="true"
+            android:onClick="navigateToPaymentReceipt" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,78 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:background="@drawable/background2"
     android:gravity="center_horizontal"
-    tools:context=".PrincipalReportActivity">
+    android:background="@drawable/background2"
+    tools:context=".PaymentActivity">
 
-    <include layout="@layout/toolbar_general"/>
+    <!-- Toolbar included -->
+    <include layout="@layout/toolbar_general" />
 
+    <!-- REPORT title -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="REPORT"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="5dp"
+        android:text="PAYMENT"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="25dp"
         android:textSize="35sp"
         android:letterSpacing="0.2"
         android:textColor="@color/tepapagreen"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
+    <!-- Buttons for switching between TO BE PAID and PAID -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/gradeBtn"
+            android:id="@+id/tobepaidBtn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Grade"
+            android:text="TO BE PAID"
             android:textSize="15sp"
             android:textColor="@color/tepapagreen"
-            android:background="@drawable/report_button_bg"/>
+            android:background="@drawable/report_button_bg" />
 
         <Button
-            android:id="@+id/monthBtn"
+            android:id="@+id/paidBtn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Month"
+            android:text="PAID"
             android:textSize="15sp"
             android:textColor="@color/tepapagreen"
-            android:background="@drawable/report_button_bg"/>
-
-        <Button
-            android:id="@+id/yearBtn"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Year"
-            android:textSize="15sp"
-            android:textColor="@color/tepapagreen"
-            android:background="@drawable/report_button_bg"/>
-
+            android:background="@drawable/report_button_bg" />
     </LinearLayout>
 
+    <!-- FrameLayout for TO BE PAID -->
     <FrameLayout
-        android:id="@+id/gradeFragment"
+        android:id="@+id/tobepaidLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/reportview_bg" />
 
+    <!-- FrameLayout for PAID -->
     <FrameLayout
-        android:id="@+id/monthFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/reportview_bg"
-         />
-
-    <FrameLayout
-        android:id="@+id/yearFragment"
+        android:id="@+id/paidLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/reportview_bg" />
