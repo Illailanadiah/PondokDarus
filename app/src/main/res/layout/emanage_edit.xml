@@ -6,8 +6,10 @@
     android:background="@drawable/background2"
     tools:context=".EmanageEditActivity">
 
+    <!-- Include your toolbar -->
     <include layout="@layout/toolbar_general"/>
 
+    <!-- Title Container -->
     <RelativeLayout
         android:id="@+id/title_container"
         android:layout_width="match_parent"
@@ -45,11 +47,11 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:contentDescription="Add"
-            android:src="@drawable/baseline_add_circle_24" />
+            android:src="@drawable/baseline_add_circle_24"
+            android:onClick="navigateToAddActivity" />
     </RelativeLayout>
 
-
-
+    <!-- Edit Container -->
     <LinearLayout
         android:id="@+id/edit_container"
         android:layout_width="match_parent"
@@ -58,74 +60,66 @@
         android:orientation="vertical"
         android:background="@drawable/emanage_bg">
 
-    <LinearLayout
-        android:id="@+id/editlist_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/title_container"
-        android:orientation="vertical"
-        android:background="@drawable/emanage_bg">
-
-
+        <!-- List Header -->
         <LinearLayout
-            android:id="@+id/header_tobepaid"
+            android:id="@+id/editlist_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
+            android:layout_below="@id/title_container"
+            android:orientation="vertical"
+            android:background="@drawable/emanage_bg">
 
-
-            <CheckBox
-                android:id="@+id/headercheck"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
-                android:gravity="center" />
-
-            <TextView
-                android:id="@+id/headerbill"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/header_tobepaid"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="5dp"
-                android:gravity="center_horizontal"
-                android:text="@string/bill_head"
-                android:textColor="@color/tepapagreen"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/headerdate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="5dp"
-                android:gravity="center_horizontal"
-                android:text="@string/endDate_head"
-                android:textColor="@color/tepapagreen"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                <CheckBox
+                    android:id="@+id/header_check"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:gravity="center" />
 
-            <TextView
-                android:id="@+id/headeramount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginStart="13dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="5dp"
-                android:gravity="center_horizontal"
-                android:text="@string/amount_head"
-                android:textColor="@color/tepapagreen"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/header_bill"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center_horizontal"
+                    android:text="@string/bill_head"
+                    android:textColor="@color/tepapagreen"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/header_date"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:gravity="center_horizontal"
+                    android:text="@string/endDate_head"
+                    android:textColor="@color/tepapagreen"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/header_amount"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:gravity="center_horizontal"
+                    android:text="@string/amount_head"
+                    android:textColor="@color/tepapagreen"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
         </LinearLayout>
 
+        <!-- Sample Bill Item -->
         <LinearLayout
             android:id="@+id/bill_item_tobepaid"
             android:layout_width="match_parent"
@@ -133,7 +127,7 @@
             android:orientation="horizontal">
 
             <CheckBox
-                android:id="@+id/checkbox"
+                android:id="@+id/item_check"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="5dp"
@@ -141,51 +135,39 @@
                 android:gravity="center" />
 
             <TextView
-                android:id="@+id/billname"
-                android:layout_width="wrap_content"
+                android:id="@+id/item_billname"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="5dp"
+                android:layout_weight="3"
                 android:gravity="center_horizontal"
                 android:text="Tuition Fee"
                 android:textColor="@color/tepapagreen"
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/date"
-                android:layout_width="wrap_content"
+                android:id="@+id/item_date"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="5dp"
+                android:layout_weight="2"
                 android:gravity="center_horizontal"
                 android:text="31/07/24"
                 android:textColor="@color/tepapagreen"
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/amount"
-                android:layout_width="wrap_content"
+                android:id="@+id/item_amount"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="5dp"
+                android:layout_weight="2"
                 android:gravity="center_horizontal"
-                android:maxLength="10"
                 android:text="RM 500.00"
                 android:textColor="@color/tepapagreen"
                 android:textSize="16sp" />
         </LinearLayout>
 
-
-
-    </LinearLayout>
     </LinearLayout>
 
+    <!-- Delete Icon -->
     <ImageView
         android:id="@+id/delete_icon"
         android:layout_width="wrap_content"
@@ -194,5 +176,7 @@
         android:layout_alignParentEnd="true"
         android:layout_margin="16dp"
         android:contentDescription="Delete"
-        android:src="@drawable/baseline_delete_outline_24" />
+        android:src="@drawable/baseline_delete_outline_24"
+        android:onClick="deleteSelectedItems" />
+
 </RelativeLayout>

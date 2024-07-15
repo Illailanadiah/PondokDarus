@@ -49,14 +49,14 @@ public class ProfileActivity extends AppCompatActivity {
 
         studentNameTextView.setText("Nur Alia Binti Ali");
         studentICNumTextView.setText("081214-03-1476");
-        studentFormTextView.getSelectionEnd(); // Select the first item in the spinner
+        studentFormTextView.setText("Form 4"); // Select the first item in the spinner
 
         if (currentUser != null) {
             // Get the user's ID
             String userId = currentUser.getUid();
             // Fetch data from Firestore using the user's ID
             fetchGuardianData(userId);
-           // fetchStudentData(userId);
+            //fetchStudentData(userId);
         } else {
             // Handle case where user is not authenticated
         }
@@ -90,7 +90,7 @@ public class ProfileActivity extends AppCompatActivity {
                     guardianICNumTextView.setText("IC: " + guardianIcNum);
                     guardianPhoneNumTextView.setText("Phone: " + guardianPhoneNum);
                     guardianEmailTextView.setText("Email: " + guardianEmail);
-                    guardianPasswordTextView.setText("Password: ********");
+                    guardianPasswordTextView.setText("Password: *******");
                 } else {
                     // Handle case where document does not exist
                 }
@@ -100,7 +100,7 @@ public class ProfileActivity extends AppCompatActivity {
         });
     }
 
-   /* private void fetchStudentData(String userId) {
+    /*private void fetchStudentData(String userId) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         DocumentReference docRef = db.collection("students").document(userId);
         docRef.get().addOnCompleteListener(task -> {

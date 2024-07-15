@@ -158,4 +158,25 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="jan">JANUARY</string>
+    <string name="feb">FEBRUARY</string>
+    <string name="mac">MARCH</string>
+    <string name="apr">APRIL</string>
+    <string name="may">MAY</string>
+    <string name="jun">JUNE</string>
+    <string name="jul">JULY</string>
+    <string name="aug">AUGUST</string>
+    <string name="sep">SEPTEMBER</string>
+    <string name="oct">OCTOBER</string>
+    <string name="nov">NOVEMBER</string>
+    <string name="dec">DECEMBER</string>
+
+    <string name="form">FORMS</string>
+    <string name="month">MONTHS</string>
+    <string name="year">YEARS</string>
+    <string name="totpaid">TOTAL PAID</string>
+    <string name="percent">"%"</string>
+
+
+
 </resources>

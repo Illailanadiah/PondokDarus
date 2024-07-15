@@ -137,7 +137,7 @@ public class GuardianSignUpActivity extends AppCompatActivity {
         String phoneNum = phoneNumEditText.getText().toString().trim();
         boolean isAgreementChecked = agreementCheckBox.isChecked();
 
-        if (TextUtils.isEmpty(fullname) || TextUtils.isEmpty(icNum) || TextUtils.isEmpty(phoneNum)) {
+        /*if (TextUtils.isEmpty(fullname) || TextUtils.isEmpty(icNum) || TextUtils.isEmpty(phoneNum)) {
             Toast.makeText(this, "Please fill out all fields", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -145,15 +145,15 @@ public class GuardianSignUpActivity extends AppCompatActivity {
         if (!isAgreementChecked) {
             Toast.makeText(this, "You must agree to the terms", Toast.LENGTH_SHORT).show();
             return;
-        }
+        }*/
 
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
             String userId = currentUser.getUid();
             // Create a new document in the "guardians" collection with a generated ID
-            DocumentReference guardianRef = mFirestore.collection("guardians").document( userId);
+            DocumentReference guardianRef = mFirestore.collection("guardians").document( studentUserId);
 
-            Guardian guardian = new Guardian(fullname, icNum, phoneNum, studentUserId);
+            Guardian guardian = new Guardian(fullname, icNum, phoneNum, userId);
 
             guardianRef.set(guardian).addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {

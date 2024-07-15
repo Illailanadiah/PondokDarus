@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/salamfinance_bg"
+    android:background="@drawable/salam_finance"
     tools:context=".ClerkMainActivity"
     >
 
@@ -12,7 +12,7 @@
         android:id="@+id/contentLayout"
         android:layout_width="match_parent"
         android:layout_height="750dp"
-        android:layout_marginTop="240dp"
+        android:layout_marginTop="250dp"
         android:background="@drawable/paddingtopcorner_bg"
         android:gravity="center_horizontal"
         android:orientation="vertical"
@@ -118,7 +118,7 @@
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/paddingtopcorner_bg"
             android:gravity="center_horizontal"
             android:orientation="vertical">
@@ -127,7 +127,7 @@
                 android:id="@+id/payment_btn"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/tepagreen_bkg"
                 android:drawableTop="@drawable/emanage_icon"
                 android:drawablePadding="10dp"

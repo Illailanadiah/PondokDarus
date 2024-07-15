@@ -6,8 +6,10 @@
     android:background="@drawable/background2"
     tools:context=".EmanageListActivity">
 
+    <!-- Include your toolbar -->
     <include layout="@layout/toolbar_general"/>
 
+    <!-- Title Container -->
     <RelativeLayout
         android:id="@+id/title_container"
         android:layout_width="match_parent"
@@ -45,37 +47,33 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:contentDescription="Add"
-            android:src="@drawable/baseline_edit_note_24" />
-
+            android:src="@drawable/baseline_edit_note_24"
+            android:onClick="navigateToEmanageEdit"/>
 
     </RelativeLayout>
 
-
+    <!-- List Container -->
     <LinearLayout
         android:id="@+id/list_container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@id/title_container"
         android:orientation="vertical"
         android:background="@drawable/emanage_bg">
 
-
+        <!-- Header Row -->
         <LinearLayout
-            android:id="@+id/header_tobepaid"
+            android:id="@+id/header_row"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
-
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
 
             <TextView
-                android:id="@+id/number"
+                android:id="@+id/header_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="5dp"
+                android:layout_weight="1"
                 android:gravity="center_horizontal"
                 android:text="NO."
                 android:textColor="@color/tepapagreen"
@@ -83,13 +81,10 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/headerbill"
+                android:id="@+id/header_bill"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="5dp"
+                android:layout_weight="3"
                 android:gravity="center_horizontal"
                 android:text="@string/bill_head"
                 android:textColor="@color/tepapagreen"
@@ -97,13 +92,10 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/headerdate"
+                android:id="@+id/header_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="5dp"
+                android:layout_weight="2"
                 android:gravity="center_horizontal"
                 android:text="@string/endDate_head"
                 android:textColor="@color/tepapagreen"
@@ -111,13 +103,10 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/headeramount"
+                android:id="@+id/header_amount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginStart="13dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="5dp"
+                android:layout_weight="2"
                 android:gravity="center_horizontal"
                 android:text="@string/amount_head"
                 android:textColor="@color/tepapagreen"
@@ -125,67 +114,56 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
+        <!-- Sample Bill Item -->
         <LinearLayout
-            android:id="@+id/bill_item_tobepaid"
+            android:id="@+id/bill_item"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/num"
+                android:id="@+id/item_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="15dp"
+                android:layout_weight="1"
                 android:gravity="center_horizontal"
                 android:text="1."
                 android:textColor="@color/tepapagreen"
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/billname"
+                android:id="@+id/item_bill_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="5dp"
+                android:layout_weight="3"
                 android:gravity="center_horizontal"
                 android:text="Tuition Fee"
                 android:textColor="@color/tepapagreen"
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/date"
+                android:id="@+id/item_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="5dp"
+                android:layout_weight="2"
                 android:gravity="center_horizontal"
                 android:text="31/07/24"
                 android:textColor="@color/tepapagreen"
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/amount"
+                android:id="@+id/item_amount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="5dp"
+                android:layout_weight="2"
                 android:gravity="center_horizontal"
-                android:maxLength="10"
                 android:text="RM 500.00"
                 android:textColor="@color/tepapagreen"
                 android:textSize="16sp" />
         </LinearLayout>
 
+        <!-- Add more bill items dynamically or through adapter as needed -->
+
     </LinearLayout>
 
-
-    </RelativeLayout>
+</RelativeLayout>

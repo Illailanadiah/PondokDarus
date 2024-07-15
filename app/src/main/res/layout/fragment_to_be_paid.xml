@@ -94,18 +94,7 @@
             android:textSize="16sp"
             android:textColor="#D42F2F"/>
 
-        <!-- TextView to navigate to PaymentReceiptActivity -->
-        <TextView
-            android:id="@+id/itemView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/view"
-            android:textStyle="bold"
-            android:textSize="16sp"
-            android:textColor="@color/tepapagreen"
-            android:gravity="center_horizontal"
-            android:clickable="true"
-            android:onClick="navigateToPaymentReceipt" />
+
     </LinearLayout>
 
     <!-- Pay Button -->

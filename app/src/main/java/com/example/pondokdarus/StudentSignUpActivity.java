@@ -115,10 +115,10 @@ public class StudentSignUpActivity extends AppCompatActivity {
         String icNum = icNumEditText.getText().toString().trim();
         String form = formSpinner.getSelectedItem().toString();
 
-        if (fullname.isEmpty() || icNum.isEmpty() || form.isEmpty()) {
+        /*if (fullname.isEmpty() || icNum.isEmpty() || form.isEmpty()) {
             Toast.makeText(this, "Please fill out all fields", Toast.LENGTH_SHORT).show();
             return;
-        }
+        }*/
 
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
@@ -134,6 +134,7 @@ public class StudentSignUpActivity extends AppCompatActivity {
                     intent.putExtra("fullname", fullname);
                     intent.putExtra("icNum", icNum);
                     intent.putExtra("form", form);
+                    intent.putExtra("userId", userId);
                     startActivity(intent);
                 } else {
                     Toast.makeText(StudentSignUpActivity.this, "Failed to save student information", Toast.LENGTH_SHORT).show();

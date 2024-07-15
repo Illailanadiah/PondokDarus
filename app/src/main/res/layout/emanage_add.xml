@@ -11,11 +11,11 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@layout/toolbar_general"
+        android:layout_below="@id/toolbar_general"
         android:paddingHorizontal="16dp"
         android:background="@drawable/emanage_bg"
-        android:layout_marginTop="100dp"
-        >
+        android:layout_marginTop="100dp">
+
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
@@ -73,7 +73,7 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="20dp"
             android:textColorHint="@color/softbrown"
-            android:hint="bill details"
+            android:hint="Bill details"
             android:background="@drawable/edittext_bg"
             android:padding="16dp"/>
 
@@ -108,6 +108,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:hint="@string/amount"
+                    android:inputType="numberDecimal"
                     android:textColorHint="@color/softbrown"
                     android:background="@drawable/edittext_bg"
                     android:padding="16dp"/>
@@ -136,6 +137,7 @@
                     android:padding="16dp"
                     android:drawablePadding="16dp"
                     android:hint="@string/date"
+                    android:inputType="date"
                     android:textColorHint="@color/softbrown"
                     android:autofillHints="date"
                     android:drawableEnd="@drawable/baseline_calendar_month_24"/>
@@ -143,15 +145,14 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/emanageSaveButton"
+            android:id="@+id/save_button"
             style="@android:style/Widget.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/amount_end_date_container"
-            android:layout_centerInParent="true"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
             android:background="@drawable/tepagreen_bkg"
-            android:drawablePadding="10dp"
             android:drawableLeft="@drawable/baseline_save_alt_24"
             android:padding="20dp"
             android:text="SAVE"

@@ -79,9 +79,10 @@ public class CreateAccountActivity extends AppCompatActivity {
                     guardianData.put("icNum", getIntent().getStringExtra("icNum"));
                     guardianData.put("phoneNum", getIntent().getStringExtra("phoneNum"));
                     guardianData.put("email", email);
+                    guardianData.put("password", password);
                     guardianData.put("userId", studentUserId); // Add the userId to the guardian data
 
-                    mFirestore.collection("guardians").document(userId)
+                    mFirestore.collection("guardians").document(studentUserId)
                             .set(guardianData)
                             .addOnSuccessListener(aVoid -> {
                                 progressBar.setVisibility(View.GONE);
